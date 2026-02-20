@@ -1,0 +1,215 @@
+<!DOCTYPE html>
+<html lang="fr">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta name="description" content="Portfolio de Mouhamadou Lamine Sow - AI Engineer, RL Researcher, Optimization Specialist">
+    <title>Lamine Sow | Portfolio</title>
+    <link rel="stylesheet" href="styles.css">
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700&family=Space+Grotesk:wght@400;500;600;700&display=swap" rel="stylesheet">
+</head>
+<body>
+    <!-- Loader -->
+    <div class="loader" id="loader">
+        <div class="loader-content">
+            <div class="loader-logo">LS</div>
+            <div class="loader-progress">
+                <div class="loader-bar"></div>
+            </div>
+        </div>
+    </div>
+
+    <!-- Navigation -->
+    <nav class="nav" id="nav">
+        <div class="nav-container">
+            <div class="nav-logo">
+                <a href="#home">LS</a>
+            </div>
+            <ul class="nav-menu" id="navMenu">
+                <li><a href="#home" class="nav-link active">Accueil</a></li>
+                <li><a href="#about" class="nav-link">À propos</a></li>
+                <li><a href="#projects" class="nav-link">Projets</a></li>
+                <li><a href="#contact" class="nav-link">Contact</a></li>
+            </ul>
+            <button class="nav-toggle" id="navToggle" aria-label="Toggle navigation">
+                <span></span>
+                <span></span>
+                <span></span>
+            </button>
+        </div>
+    </nav>
+
+    <!-- Hero Section -->
+    <section id="home" class="hero">
+        <div class="hero-content">
+            <div class="hero-text">
+                <h1 class="hero-title">
+                    <span class="title-line">Mouhamadou</span>
+                    <span class="title-line">Lamine Sow</span>
+                </h1>
+                <p class="hero-subtitle">
+                    <span id="typewriter"></span>
+                </p>
+                <p class="hero-description">
+                    Étudiant en Informatique (niveau Master).<br>
+                    Spécialisé en ML Engineering, Operations Research et Decision Systems.
+                </p>
+                <div class="hero-buttons">
+                    <a href="#projects" class="btn btn-primary">Voir mes projets</a>
+                    <a href="#contact" class="btn btn-secondary">Me contacter</a>
+                </div>
+            </div>
+            <div class="hero-visual">
+                <div class="hero-shape"></div>
+            </div>
+        </div>
+        <div class="scroll-indicator">
+            <div class="scroll-arrow"></div>
+        </div>
+    </section>
+
+    <!-- About Section -->
+    <section id="about" class="about">
+        <div class="container">
+            <h2 class="section-title">À propos</h2>
+            <div class="about-content">
+                <div class="about-text">
+                    <p>
+                        Passionné par l'intelligence artificielle et l'optimisation, je me spécialise dans 
+                        le Reinforcement Learning et les systèmes de décision. Mon parcours académique et mes 
+                        projets pratiques m'ont permis de développer une expertise solide en ML Engineering 
+                        et Operations Research.
+                    </p>
+                    <div class="stats-grid">
+                        <div class="stat-item">
+                            <div class="stat-number">2+</div>
+                            <div class="stat-label">Projets publiés</div>
+                        </div>
+                        <div class="stat-item">
+                            <div class="stat-number">MSc</div>
+                            <div class="stat-label">En cours</div>
+                        </div>
+                        <div class="stat-item">
+                            <div class="stat-number">100+</div>
+                            <div class="stat-label">Commits GitHub</div>
+                        </div>
+                    </div>
+                </div>
+                <div class="about-skills">
+                    <h3>Compétences</h3>
+                    <div class="skills-list">
+                        <span class="skill-tag">Python</span>
+                        <span class="skill-tag">Machine Learning</span>
+                        <span class="skill-tag">Reinforcement Learning</span>
+                        <span class="skill-tag">Operations Research</span>
+                        <span class="skill-tag">Deep Learning</span>
+                        <span class="skill-tag">Optimization</span>
+                        <span class="skill-tag">PyTorch</span>
+                        <span class="skill-tag">TensorFlow</span>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Projects Section -->
+    <section id="projects" class="projects">
+        <div class="container">
+            <h2 class="section-title">Projets</h2>
+            <div class="projects-grid">
+                <div class="project-card">
+                    <div class="project-image">
+                        <div class="project-placeholder">RL</div>
+                    </div>
+                    <div class="project-content">
+                        <h3 class="project-title">Reinforcement Learning</h3>
+                        <p class="project-description">
+                            Projets de recherche en Reinforcement Learning pour l'optimisation de trajectoires 
+                            et systèmes de décision.
+                        </p>
+                        <div class="project-tags">
+                            <span class="tag">RL</span>
+                            <span class="tag">Optimization</span>
+                            <span class="tag">Python</span>
+                        </div>
+                        <a href="https://github.com/lamine2004sow" class="project-link">Voir sur GitHub →</a>
+                    </div>
+                </div>
+                <div class="project-card">
+                    <div class="project-image">
+                        <div class="project-placeholder">OR</div>
+                    </div>
+                    <div class="project-content">
+                        <h3 class="project-title">Operations Research</h3>
+                        <p class="project-description">
+                            Applications d'optimisation combinatoire et de recherche opérationnelle 
+                            pour résoudre des problèmes complexes.
+                        </p>
+                        <div class="project-tags">
+                            <span class="tag">Optimization</span>
+                            <span class="tag">OR</span>
+                            <span class="tag">Algorithms</span>
+                        </div>
+                        <a href="https://github.com/lamine2004sow" class="project-link">Voir sur GitHub →</a>
+                    </div>
+                </div>
+                <div class="project-card">
+                    <div class="project-image">
+                        <div class="project-placeholder">ML</div>
+                    </div>
+                    <div class="project-content">
+                        <h3 class="project-title">ML Engineering</h3>
+                        <p class="project-description">
+                            Développement de systèmes de Machine Learning robustes et scalables 
+                            pour des applications industrielles.
+                        </p>
+                        <div class="project-tags">
+                            <span class="tag">ML</span>
+                            <span class="tag">Engineering</span>
+                            <span class="tag">PyTorch</span>
+                        </div>
+                        <a href="https://github.com/lamine2004sow" class="project-link">Voir sur GitHub →</a>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Contact Section -->
+    <section id="contact" class="contact">
+        <div class="container">
+            <h2 class="section-title">Contact</h2>
+            <div class="contact-content">
+                <div class="contact-info">
+                    <p>
+                        Intéressé par une collaboration ou une discussion sur l'IA, le RL ou l'optimisation ? 
+                        N'hésitez pas à me contacter.
+                    </p>
+                    <div class="contact-links">
+                        <a href="https://github.com/lamine2004sow" class="contact-link" target="_blank" rel="noopener">
+                            <span>GitHub</span>
+                        </a>
+                        <a href="https://linkedin.com/in/lamine-sow" class="contact-link" target="_blank" rel="noopener">
+                            <span>LinkedIn</span>
+                        </a>
+                        <a href="mailto:contact@example.com" class="contact-link">
+                            <span>Email</span>
+                        </a>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Footer -->
+    <footer class="footer">
+        <div class="container">
+            <p>&copy; 2026 Mouhamadou Lamine Sow. Tous droits réservés.</p>
+        </div>
+    </footer>
+
+    <script src="script.js"></script>
+</body>
+</html>
