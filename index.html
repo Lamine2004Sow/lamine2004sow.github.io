@@ -47,19 +47,19 @@
     <!-- Hero Section -->
     <section id="home" class="hero">
         <div class="hero-content">
-            <div class="hero-text">
+            <div class="hero-text hero-reveal">
                 <h1 class="hero-title">
-                    <span class="title-line">Mouhamadou</span>
-                    <span class="title-line">Lamine Sow</span>
+                    <span class="title-line-wrap"><span class="title-line">Mouhamadou</span></span>
+                    <span class="title-line-wrap"><span class="title-line title-line-accent">Lamine Sow</span></span>
                 </h1>
-                <p class="hero-subtitle">
+                <p class="hero-subtitle hero-reveal-item" data-delay="2">
                     <span id="typewriter"></span>
                 </p>
-                <p class="hero-description">
+                <p class="hero-description hero-reveal-item" data-delay="3">
                     Étudiant en Informatique (niveau Master).<br>
                     Spécialisé en ML Engineering, Operations Research et Decision Systems.
                 </p>
-                <div class="hero-buttons">
+                <div class="hero-buttons hero-reveal-item" data-delay="4">
                     <a href="#projects" class="btn btn-primary">Voir mes projets</a>
                     <a href="#contact" class="btn btn-secondary">Me contacter</a>
                     <a href="Mouhamadou-Lamine-SOW-FlowCV-Resume.pdf" class="btn btn-outline" target="_blank" rel="noopener">Télécharger le CV</a>
@@ -69,7 +69,8 @@
                 <div class="hero-shape"></div>
             </div>
         </div>
-        <div class="scroll-indicator">
+        <div class="scroll-indicator hero-reveal-item" data-delay="5">
+            <span class="scroll-text">scroll down</span>
             <div class="scroll-arrow"></div>
         </div>
     </section>
@@ -77,7 +78,7 @@
     <!-- About Section -->
     <section id="about" class="about">
         <div class="container">
-            <h2 class="section-title">À propos</h2>
+            <h2 class="section-title scroll-reveal">À propos</h2>
             <div class="about-content">
                 <div class="about-text">
                     <p>
@@ -98,7 +99,7 @@
                             <div class="stat-label">Cycle ingénieur</div>
                         </div>
                         <div class="stat-item">
-                            <div class="stat-number">2+</div>
+                            <div class="stat-number"><span class="stat-counter" data-target="2" data-suffix="+">0</span></div>
                             <div class="stat-label">Projets ML & OR</div>
                         </div>
                         <div class="stat-item">
@@ -124,7 +125,7 @@
     <!-- Experience Section -->
     <section id="experience" class="experience">
         <div class="container">
-            <h2 class="section-title">Expériences</h2>
+            <h2 class="section-title scroll-reveal">Expériences</h2>
             <div class="timeline">
                 <div class="timeline-item">
                     <div class="timeline-marker"></div>
@@ -148,7 +149,7 @@
     <!-- Education Section -->
     <section id="education" class="education">
         <div class="container">
-            <h2 class="section-title">Parcours</h2>
+            <h2 class="section-title scroll-reveal">Parcours</h2>
             <div class="timeline">
                 <div class="timeline-item">
                     <div class="timeline-marker"></div>
@@ -187,7 +188,7 @@
     <!-- Skills Section -->
     <section id="skills" class="skills">
         <div class="container">
-            <h2 class="section-title">Compétences</h2>
+            <h2 class="section-title scroll-reveal">Compétences</h2>
             <div class="skills-grid">
                 <div class="skills-category">
                     <h3>Programmation</h3>
@@ -264,7 +265,7 @@
     <!-- Projects Section -->
     <section id="projects" class="projects">
         <div class="container">
-            <h2 class="section-title">Projets</h2>
+            <h2 class="section-title scroll-reveal">Projets</h2>
             <div class="projects-grid">
                 <div class="project-card">
                     <div class="project-image">
@@ -327,7 +328,7 @@
     <!-- Contact Section -->
     <section id="contact" class="contact">
         <div class="container">
-            <h2 class="section-title">Contact</h2>
+            <h2 class="section-title scroll-reveal">Contact</h2>
             <div class="contact-content">
                 <div class="contact-info">
                     <p>

@@ -1,14 +1,16 @@
 // ============================================
-// Loader
+// Loader + Hero reveal (style melboucierayane)
 // ============================================
 window.addEventListener('load', () => {
     const loader = document.getElementById('loader');
+    const heroReveal = document.querySelector('.hero-reveal');
     setTimeout(() => {
         loader.classList.add('hidden');
         setTimeout(() => {
             loader.style.display = 'none';
+            if (heroReveal) heroReveal.classList.add('started');
         }, 500);
-    }, 1500);
+    }, 1200);
 });
 
 // ============================================
@@ -123,43 +125,100 @@ function typeWriter() {
     setTimeout(typeWriter, typingSpeed);
 }
 
-// Start typewriter after loader
+// Start typewriter after hero subtitle is revealed (~3s)
 setTimeout(() => {
     if (typewriterElement) {
         typeWriter();
     }
-}, 2000);
+}, 3000);
 
 // ============================================
-// Scroll Animations
+// Scroll Animations (reveal + stagger style melboucierayane)
 // ============================================
 const observerOptions = {
-    threshold: 0.1,
-    rootMargin: '0px 0px -50px 0px'
+    threshold: 0.12,
+    rootMargin: '0px 0px -40px 0px'
 };
 
-const observer = new IntersectionObserver((entries) => {
+const observerReveal = new IntersectionObserver((entries) => {
     entries.forEach(entry => {
         if (entry.isIntersecting) {
-            entry.target.style.opacity = '1';
-            entry.target.style.transform = 'translateY(0)';
+            entry.target.classList.add('revealed');
         }
     });
 }, observerOptions);
 
-// Observe elements for animation
+function getStaggerSiblings(el) {
+    const parent = el.closest('.about-quick') || el.closest('.timeline') || el.closest('.projects-grid') ||
+        el.closest('.about-content') || el.closest('.skills-grid') || el.closest('.soft-skills-grid') || el.closest('.stats-grid');
+    if (!parent) return [el];
+    let sel = '.stat-item';
+    if (el.classList.contains('about-card')) sel = '.about-card';
+    else if (el.classList.contains('about-text')) sel = '.about-text';
+    else if (el.classList.contains('timeline-item')) sel = '.timeline-item';
+    else if (el.classList.contains('project-card')) sel = '.project-card';
+    else if (el.classList.contains('skills-category')) sel = '.skills-category';
+    else if (el.classList.contains('soft-skill-item')) sel = '.soft-skill-item';
+    return Array.from(parent.querySelectorAll(sel));
+}
+
+const observerStagger = new IntersectionObserver((entries) => {
+    entries.forEach(entry => {
+        if (!entry.isIntersecting) return;
+        const el = entry.target;
+        const list = getStaggerSiblings(el);
+        const index = list.indexOf(el);
+        const delay = index * 0.1;
+        el.style.transitionDelay = `${delay}s`;
+        el.style.opacity = '1';
+        el.style.transform = 'translateY(0)';
+        observerStagger.unobserve(el);
+    });
+}, observerOptions);
+
+// Section titles: reveal + underline
+document.querySelectorAll('.section-title.scroll-reveal').forEach(el => {
+    observerReveal.observe(el);
+});
+
+// Staggered content (same list as before, but delay by sibling index)
 document.addEventListener('DOMContentLoaded', () => {
-    const animateElements = document.querySelectorAll(
-        '.project-card, .stat-item, .about-text, .about-quick, .timeline-item, .skills-category, .soft-skill-item'
-    );
-    
-    animateElements.forEach((el, index) => {
-        el.style.opacity = '0';
-        el.style.transform = 'translateY(30px)';
-        el.style.transition = `opacity 0.6s ease ${index * 0.08}s, transform 0.6s ease ${index * 0.08}s`;
-        observer.observe(el);
+    const staggerSelectors = [
+        '.project-card', '.stat-item', '.about-text', '.about-card',
+        '.timeline-item', '.skills-category', '.soft-skill-item'
+    ];
+    staggerSelectors.forEach(sel => {
+        document.querySelectorAll(sel).forEach(el => {
+            el.style.opacity = '0';
+            el.style.transform = 'translateY(32px)';
+            el.style.transition = 'opacity 0.65s cubic-bezier(0.22, 1, 0.36, 1), transform 0.65s cubic-bezier(0.22, 1, 0.36, 1)';
+            observerStagger.observe(el);
+        });
     });
 });
+
+// Counter animation (stats)
+const counterObserver = new IntersectionObserver((entries) => {
+    entries.forEach(entry => {
+        if (!entry.isIntersecting) return;
+        const el = entry.target;
+        const target = parseInt(el.dataset.target, 10) || 0;
+        const suffix = el.dataset.suffix || '';
+        const duration = 1200;
+        const start = performance.now();
+        function update(now) {
+            const t = Math.min((now - start) / duration, 1);
+            const easeOut = 1 - Math.pow(1 - t, 3);
+            const value = Math.round(easeOut * target);
+            el.textContent = value + suffix;
+            if (t < 1) requestAnimationFrame(update);
+        }
+        requestAnimationFrame(update);
+        counterObserver.unobserve(el);
+    });
+}, { threshold: 0.3 });
+
+document.querySelectorAll('.stat-counter').forEach(el => counterObserver.observe(el));
 
 // ============================================
 // Parallax Effect (optional)
