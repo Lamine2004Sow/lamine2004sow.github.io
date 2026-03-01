@@ -122,17 +122,19 @@ function initLenis() {
     smoothWheel: true,
   });
 
-  function raf(time) {
-    lenis.raf(time);
-    requestAnimationFrame(raf);
-  }
-  requestAnimationFrame(raf);
-
-  // Sync with GSAP ScrollTrigger
-  if (typeof gsap !== 'undefined' && typeof ScrollTrigger !== 'undefined') {
-    lenis.on('scroll', ScrollTrigger.update);
+  // Use ONLY gsap.ticker — do NOT add a separate requestAnimationFrame loop
+  // (double RAF would update Lenis twice per frame and break ScrollTrigger sync)
+  if (typeof gsap !== 'undefined') {
     gsap.ticker.add((time) => lenis.raf(time * 1000));
     gsap.ticker.lagSmoothing(0);
+  } else {
+    // Fallback if GSAP not loaded
+    function raf(time) { lenis.raf(time); requestAnimationFrame(raf); }
+    requestAnimationFrame(raf);
+  }
+
+  if (typeof ScrollTrigger !== 'undefined') {
+    lenis.on('scroll', ScrollTrigger.update);
   }
 }
 
@@ -256,84 +258,88 @@ function initMobileMenu() {
 /* ══════════════════════════════════════════════════════════════
    9. GSAP + SCROLL TRIGGER ANIMATIONS
 ══════════════════════════════════════════════════════════════ */
+/* Helper: is element already visible in viewport? */
+function inViewport(el, threshold = 0.95) {
+  const r = el.getBoundingClientRect();
+  return r.top < window.innerHeight * threshold && r.bottom > 0;
+}
+
+/* Helper: animate now OR on scroll depending on position */
+function revealEl(el, fromVars, toVars, delayImmediate = 0) {
+  if (inViewport(el)) {
+    // Already visible — animate immediately (no ScrollTrigger needed)
+    gsap.fromTo(el, fromVars, { ...toVars, delay: delayImmediate, scrollTrigger: null });
+  } else {
+    gsap.fromTo(el, fromVars, {
+      ...toVars,
+      scrollTrigger: {
+        trigger: el,
+        start: 'top 92%',
+        toggleActions: 'play none none none',
+      },
+    });
+  }
+}
+
 function initGSAP() {
   if (typeof gsap === 'undefined') return;
   if (typeof ScrollTrigger !== 'undefined') {
     gsap.registerPlugin(ScrollTrigger);
   }
 
-  // Reveal elements on scroll
-  $$('.reveal').forEach(el => {
-    gsap.fromTo(el,
+  // .reveal — fade up
+  $$('.reveal').forEach((el, i) => {
+    revealEl(
+      el,
       { opacity: 0, y: 36 },
-      {
-        scrollTrigger: {
-          trigger: el,
-          start: 'top 90%',
-          toggleActions: 'play none none none',
-        },
-        opacity: 1,
-        y: 0,
-        duration: 0.8,
-        ease: 'power3.out',
-      }
+      { opacity: 1, y: 0, duration: 0.8, ease: 'power3.out' },
+      Math.min(i * 0.06, 0.35)
     );
   });
 
-  // Reveal from left
-  $$('.reveal-left').forEach(el => {
-    gsap.fromTo(el,
+  // .reveal-left — fade right
+  $$('.reveal-left').forEach((el, i) => {
+    revealEl(
+      el,
       { opacity: 0, x: -40 },
-      {
-        scrollTrigger: {
-          trigger: el,
-          start: 'top 90%',
-          toggleActions: 'play none none none',
-        },
-        opacity: 1,
-        x: 0,
-        duration: 0.8,
-        ease: 'power3.out',
-      }
+      { opacity: 1, x: 0, duration: 0.8, ease: 'power3.out' },
+      i * 0.08
     );
   });
 
-  // Stagger reveal for grids
+  // .stagger-reveal grids
   $$('.stagger-reveal').forEach(container => {
-    const children = container.children;
-    gsap.fromTo(children,
-      { opacity: 0, y: 40 },
-      {
-        scrollTrigger: {
-          trigger: container,
-          start: 'top 85%',
-          toggleActions: 'play none none none',
-        },
-        opacity: 1,
-        y: 0,
-        duration: 0.7,
-        stagger: 0.12,
-        ease: 'power3.out',
-      }
+    const children = [...container.children];
+    if (inViewport(container)) {
+      gsap.fromTo(children,
+        { opacity: 0, y: 40 },
+        { opacity: 1, y: 0, duration: 0.7, stagger: 0.12, ease: 'power3.out' }
+      );
+    } else {
+      gsap.fromTo(children,
+        { opacity: 0, y: 40 },
+        {
+          opacity: 1, y: 0, duration: 0.7, stagger: 0.12, ease: 'power3.out',
+          scrollTrigger: { trigger: container, start: 'top 88%', toggleActions: 'play none none none' },
+        }
+      );
+    }
+  });
+
+  // .sec-marker — slide from left
+  $$('.sec-marker').forEach((el, i) => {
+    revealEl(
+      el,
+      { opacity: 0, x: -20 },
+      { opacity: 1, x: 0, duration: 0.6, ease: 'power2.out' },
+      i * 0.05
     );
   });
 
-  // Section markers
-  $$('.sec-marker').forEach(el => {
-    gsap.fromTo(el,
-      { opacity: 0, x: -20 },
-      {
-        scrollTrigger: {
-          trigger: el,
-          start: 'top 92%',
-        },
-        opacity: 1,
-        x: 0,
-        duration: 0.6,
-        ease: 'power2.out',
-      }
-    );
-  });
+  // Refresh once after setup for any edge cases
+  setTimeout(() => {
+    if (typeof ScrollTrigger !== 'undefined') ScrollTrigger.refresh();
+  }, 150);
 }
 
 /* ══════════════════════════════════════════════════════════════
@@ -523,6 +529,8 @@ function initProjectPage() {
         }
       );
     });
+
+    setTimeout(() => ScrollTrigger.refresh(), 100);
   }
 }
 
