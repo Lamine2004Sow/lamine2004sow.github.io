@@ -1,0 +1,464 @@
+<!DOCTYPE html>
+<html lang="fr">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>Lamine Sow — AI Engineer & ML Researcher</title>
+
+  <!-- SEO -->
+  <meta name="description" content="Portfolio de Lamine Sow — Étudiant passionné en Intelligence Artificielle, Machine Learning, Reinforcement Learning et MLOps. Basé en France." />
+  <meta name="author" content="Lamine Sow" />
+  <meta property="og:title" content="Lamine Sow — AI Engineer" />
+  <meta property="og:description" content="Étudiant passionné en IA, ML, RL et MLOps. Basé en France." />
+  <meta property="og:type" content="website" />
+  <meta property="og:url" content="https://lamine2004sow.github.io" />
+
+  <!-- Fonts -->
+  <link rel="preconnect" href="https://fonts.googleapis.com" />
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+  <link href="https://fonts.googleapis.com/css2?family=Space+Mono:ital,wght@0,400;0,700;1,400&family=Space+Grotesk:wght@300;400;500;600;700&display=swap" rel="stylesheet" />
+
+  <!-- Styles -->
+  <link rel="stylesheet" href="style.css" />
+</head>
+<body>
+
+  <!-- ═══ LOADER ═══════════════════════════════════════════════ -->
+  <div id="loader" role="status" aria-label="Chargement du portfolio">
+    <div class="loader-wrap">
+      <div class="loader-mascot-wrap">
+        <video src="assets/animation/Robot.webm" autoplay loop muted playsinline aria-hidden="true"></video>
+      </div>
+      <div class="loader-terminal" id="loaderTerminal" aria-live="polite"></div>
+      <div class="loader-bar-row">
+        <span>SYSTEM BOOT</span>
+        <span id="loaderPctLabel">0%</span>
+      </div>
+      <div class="loader-bar-track">
+        <div class="loader-bar-fill" id="loaderBar"></div>
+      </div>
+      <div class="loader-pct" id="loaderPct">0%</div>
+    </div>
+  </div>
+
+  <!-- ═══ OVERLAYS ═════════════════════════════════════════════ -->
+  <div class="grid-overlay" aria-hidden="true"></div>
+  <div class="scanlines" aria-hidden="true"></div>
+  <div class="noise-overlay" aria-hidden="true"></div>
+
+  <!-- Coordinate tracker -->
+  <div class="coord-tracker" id="coordTracker" aria-hidden="true">
+    X: <span id="cX">0000</span><br>
+    Y: <span id="cY">0000</span>
+  </div>
+
+  <!-- Custom cursor -->
+  <div class="cursor-dot" id="cursorDot" aria-hidden="true"></div>
+  <div class="cursor-ring" id="cursorRing" aria-hidden="true"></div>
+
+  <!-- ═══ NAVIGATION ════════════════════════════════════════════ -->
+  <nav id="navbar" aria-label="Navigation principale">
+    <div class="container">
+      <div class="nav-inner">
+        <a href="#hero" class="nav-logo">LS<span class="dot">.</span>AI</a>
+
+        <ul class="nav-links">
+          <li><a href="#about">À propos</a></li>
+          <li><a href="#skills">Compétences</a></li>
+          <li><a href="#projects">Projets</a></li>
+          <li><a href="#contact">Contact</a></li>
+        </ul>
+
+        <button class="nav-burger" id="navBurger" aria-label="Menu" aria-expanded="false">
+          <span></span><span></span><span></span>
+        </button>
+      </div>
+    </div>
+  </nav>
+
+  <!-- Mobile Menu -->
+  <div class="mobile-menu" id="mobileMenu" role="dialog" aria-label="Menu mobile">
+    <button class="mobile-menu-close" id="mobileClose" aria-label="Fermer le menu">✕</button>
+    <a href="#about"    onclick="closeMobile()"><span class="m-num">[01]</span> À propos</a>
+    <a href="#skills"   onclick="closeMobile()"><span class="m-num">[02]</span> Compétences</a>
+    <a href="#projects" onclick="closeMobile()"><span class="m-num">[03]</span> Projets</a>
+    <a href="#contact"  onclick="closeMobile()"><span class="m-num">[04]</span> Contact</a>
+  </div>
+
+  <!-- ═══ HERO ══════════════════════════════════════════════════ -->
+  <section id="hero">
+    <div class="hero-bg-line" aria-hidden="true"></div>
+    <div class="container">
+      <div class="hero-inner">
+
+        <!-- Left: Text -->
+        <div class="hero-text">
+          <p class="hero-eyebrow reveal">PORTFOLIO — 2026</p>
+
+          <h1 class="hero-name">
+            <span class="glitch" data-text="LAMINE">LAMINE</span><br>
+            <span class="glitch" data-text="SOW">SOW</span>
+          </h1>
+
+          <p class="hero-subtitle reveal" id="heroSubtitle">
+            <span id="typewriterTarget"></span><span class="cursor-blink"></span>
+          </p>
+
+          <p class="hero-desc reveal">
+            Étudiant passionné en Intelligence Artificielle et Machine Learning.
+            Je construis des systèmes intelligents — des mathématiques fondamentales
+            aux déploiements en production.
+          </p>
+
+          <div class="hero-actions reveal">
+            <a href="#projects" class="btn btn-primary">
+              <span>Explorer mes projets</span>
+              <span>→</span>
+            </a>
+            <a href="#contact" class="btn btn-ghost">
+              <span>Me contacter</span>
+            </a>
+          </div>
+        </div>
+
+        <!-- Right: Mascot -->
+        <div class="hero-visual reveal">
+          <video
+            class="hero-video"
+            src="assets/animation/Robot.webm"
+            autoplay loop muted playsinline
+            aria-label="Mascotte animée du portfolio"
+          ></video>
+        </div>
+      </div>
+
+      <!-- Scroll cue -->
+      <div class="scroll-cue" aria-hidden="true">
+        <span>SCROLL</span>
+        <span class="arrow">↓</span>
+      </div>
+
+      <!-- Mouse coordinates (right edge) -->
+      <div class="hero-mouse-coords" id="heroCoords" aria-hidden="true">
+        X:<span id="hcX">0000</span> · Y:<span id="hcY">0000</span>
+      </div>
+    </div>
+  </section>
+
+  <!-- ═══ ABOUT ════════════════════════════════════════════════ -->
+  <section id="about" class="sec-pad">
+    <div class="container">
+      <div class="sec-marker reveal">[01] À PROPOS</div>
+      <div class="about-grid">
+
+        <!-- Text + stats -->
+        <div class="about-text">
+          <p class="reveal">
+            Étudiant passionné par <strong>l'Intelligence Artificielle</strong> et le <strong>Machine Learning</strong>.
+            Je construis des systèmes intelligents — des mathématiques fondamentales aux déploiements en production.
+            Mon approche : comprendre chaque algorithme en profondeur, l'implémenter <span class="hl">from scratch</span>,
+            puis le déployer.
+          </p>
+          <p class="reveal">
+            Spécialisé en <strong>Reinforcement Learning</strong> et <strong>Recherche Opérationnelle</strong>,
+            je travaille sur des problèmes complexes d'optimisation et d'apprentissage automatique.
+            Passionné par la recherche et l'innovation, je cherche constamment à repousser les limites
+            de ce qui est possible avec l'IA.
+          </p>
+
+          <!-- Stats -->
+          <div class="stats-grid">
+            <div class="stat-card reveal">
+              <div class="stat-num" data-target="10">0</div>
+              <div class="stat-lbl">Projets réalisés</div>
+            </div>
+            <div class="stat-card reveal">
+              <div class="stat-num" data-target="25">0</div>
+              <div class="stat-lbl">Algos from scratch</div>
+            </div>
+            <div class="stat-card reveal">
+              <div class="stat-num" data-target="50">0</div>
+              <div class="stat-lbl">K lignes de code</div>
+            </div>
+            <div class="stat-card reveal">
+              <div class="stat-num" data-target="3">0</div>
+              <div class="stat-lbl">Domaines maîtrisés</div>
+            </div>
+          </div>
+        </div>
+
+        <!-- Visual -->
+        <div class="about-visual reveal">
+          <video
+            class="about-video"
+            src="assets/animation/Robot.webm"
+            autoplay loop muted playsinline
+            aria-label="Robot mascotte"
+          ></video>
+          <div class="about-info-block">
+            STATUT &nbsp;·&nbsp; <span class="v">ÉTUDIANT ACTIF</span><br>
+            LOCALISATION &nbsp;·&nbsp; <span class="v">FRANCE</span><br>
+            FOCUS &nbsp;·&nbsp; <span class="v">AI / ML / RL</span><br>
+            DISPONIBILITÉ &nbsp;·&nbsp; <span class="v">STAGE / ALTERNANCE</span>
+          </div>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- ═══ SKILLS ════════════════════════════════════════════════ -->
+  <section id="skills" class="sec-pad">
+    <div class="container">
+      <div class="sec-marker reveal">[02] COMPÉTENCES</div>
+      <h2 class="sec-title reveal">Stack Technique</h2>
+      <p class="sec-desc reveal">
+        De la théorie mathématique à la mise en production —
+        chaque outil maîtrisé en profondeur.
+      </p>
+
+      <div class="skills-grid stagger-reveal">
+
+        <div class="skill-card">
+          <div class="skill-hd">
+            <div class="skill-ico" aria-hidden="true">🧠</div>
+            <div class="skill-name">Machine<br>Learning</div>
+          </div>
+          <div class="skill-tags">
+            <span class="skill-tag">Régression</span>
+            <span class="skill-tag">Classification</span>
+            <span class="skill-tag">Ensemble</span>
+            <span class="skill-tag">SVM</span>
+            <span class="skill-tag">KNN</span>
+            <span class="skill-tag">Arbres</span>
+          </div>
+        </div>
+
+        <div class="skill-card">
+          <div class="skill-hd">
+            <div class="skill-ico" aria-hidden="true">⚡</div>
+            <div class="skill-name">Deep<br>Learning</div>
+          </div>
+          <div class="skill-tags">
+            <span class="skill-tag">Neural Nets</span>
+            <span class="skill-tag">CNN</span>
+            <span class="skill-tag">RNN</span>
+            <span class="skill-tag">Transformers</span>
+            <span class="skill-tag">PyTorch</span>
+            <span class="skill-tag">TensorFlow</span>
+          </div>
+        </div>
+
+        <div class="skill-card">
+          <div class="skill-hd">
+            <div class="skill-ico" aria-hidden="true">🤖</div>
+            <div class="skill-name">Reinforcement<br>Learning</div>
+          </div>
+          <div class="skill-tags">
+            <span class="skill-tag">Q-Learning</span>
+            <span class="skill-tag">DQN</span>
+            <span class="skill-tag">PPO</span>
+            <span class="skill-tag">Policy Gradient</span>
+            <span class="skill-tag">A3C</span>
+            <span class="skill-tag">Multi-Agent</span>
+          </div>
+        </div>
+
+        <div class="skill-card">
+          <div class="skill-hd">
+            <div class="skill-ico" aria-hidden="true">🔧</div>
+            <div class="skill-name">MLOps</div>
+          </div>
+          <div class="skill-tags">
+            <span class="skill-tag">MLflow</span>
+            <span class="skill-tag">DVC</span>
+            <span class="skill-tag">Docker</span>
+            <span class="skill-tag">CI/CD</span>
+            <span class="skill-tag">FastAPI</span>
+            <span class="skill-tag">Monitoring</span>
+          </div>
+        </div>
+
+        <div class="skill-card">
+          <div class="skill-hd">
+            <div class="skill-ico" aria-hidden="true">📐</div>
+            <div class="skill-name">Recherche<br>Opérationnelle</div>
+          </div>
+          <div class="skill-tags">
+            <span class="skill-tag">Prog. Linéaire</span>
+            <span class="skill-tag">Graphes</span>
+            <span class="skill-tag">TSP</span>
+            <span class="skill-tag">Monte Carlo</span>
+            <span class="skill-tag">Métaheuristiques</span>
+          </div>
+        </div>
+
+        <div class="skill-card">
+          <div class="skill-hd">
+            <div class="skill-ico" aria-hidden="true">🛠</div>
+            <div class="skill-name">Outils &<br>Langages</div>
+          </div>
+          <div class="skill-tags">
+            <span class="skill-tag">Python</span>
+            <span class="skill-tag">NumPy</span>
+            <span class="skill-tag">Pandas</span>
+            <span class="skill-tag">Scikit-learn</span>
+            <span class="skill-tag">Git</span>
+            <span class="skill-tag">Linux</span>
+          </div>
+        </div>
+
+      </div>
+    </div>
+  </section>
+
+  <!-- ═══ PROJECTS ══════════════════════════════════════════════ -->
+  <section id="projects" class="sec-pad">
+    <div class="container">
+      <div class="sec-marker reveal">[03] PROJETS</div>
+      <h2 class="sec-title reveal">Travaux &amp; Recherches</h2>
+      <p class="sec-desc reveal">
+        Projets organisés par domaine — chaque catégorie regroupe
+        des implémentations allant de la théorie à la pratique.
+      </p>
+
+      <div class="proj-grid stagger-reveal">
+
+        <!-- Card 1: RL -->
+        <a href="project/rl_projects.html" class="proj-card" aria-label="Projets Reinforcement Learning">
+          <div class="proj-card-num">[01] / CATÉGORIE</div>
+          <span class="proj-card-icon" aria-hidden="true">🤖</span>
+          <h3 class="proj-card-title">Reinforcement<br>Learning</h3>
+          <p class="proj-card-sub">6 PROJETS</p>
+          <p class="proj-card-desc">
+            Des bandits manchots aux systèmes multi-agents —
+            Q-Learning, DQN, PPO et au-delà. Environnements
+            custom avec visualisation Pygame.
+          </p>
+          <span class="proj-card-arrow">Voir les projets <span>→</span></span>
+        </a>
+
+        <!-- Card 2: ML/DL -->
+        <a href="project/ml_projects.html" class="proj-card" aria-label="Projets Machine Learning et Deep Learning">
+          <div class="proj-card-num">[02] / CATÉGORIE</div>
+          <span class="proj-card-icon" aria-hidden="true">⚡</span>
+          <h3 class="proj-card-title">Machine Learning<br>&amp; Deep Learning</h3>
+          <p class="proj-card-sub">5 PROJETS</p>
+          <p class="proj-card-desc">
+            Régression, arbres, réseaux de neurones, CNN,
+            Transformers — tous implémentés from scratch.
+            Du papier à l'implémentation.
+          </p>
+          <span class="proj-card-arrow">Voir les projets <span>→</span></span>
+        </a>
+
+        <!-- Card 3: MLOps/OR -->
+        <a href="project/ops_projects.html" class="proj-card" aria-label="Projets MLOps et Recherche Opérationnelle">
+          <div class="proj-card-num">[03] / CATÉGORIE</div>
+          <span class="proj-card-icon" aria-hidden="true">⚙️</span>
+          <h3 class="proj-card-title">MLOps &amp;<br>Recherche Opérat.</h3>
+          <p class="proj-card-sub">5 PROJETS</p>
+          <p class="proj-card-desc">
+            Pipelines de production, monitoring, optimisation
+            linéaire, TSP et simulations Monte Carlo.
+            De la théorie aux systèmes réels.
+          </p>
+          <span class="proj-card-arrow">Voir les projets <span>→</span></span>
+        </a>
+
+      </div>
+    </div>
+  </section>
+
+  <!-- ═══ CONTACT ════════════════════════════════════════════════ -->
+  <section id="contact" class="sec-pad">
+    <div class="container">
+      <div class="sec-marker reveal">[04] CONTACT</div>
+      <div class="contact-grid">
+
+        <div>
+          <h2 class="sec-title reveal">Entrons en<br>contact.</h2>
+          <p class="contact-lead reveal">
+            Disponible pour des opportunités de stage, alternance
+            ou collaboration sur des projets IA/ML. N'hésitez pas à me contacter.
+          </p>
+        </div>
+
+        <div class="contact-links reveal-left">
+          <a href="https://github.com/Lamine2004Sow" class="contact-link" target="_blank" rel="noopener">
+            <span class="cl-label">GitHub</span>
+            <span class="cl-val">github.com/Lamine2004Sow</span>
+          </a>
+          <a href="#" class="contact-link">
+            <span class="cl-label">LinkedIn</span>
+            <span class="cl-val">lamine-sow</span>
+          </a>
+          <a href="mailto:lamine@example.com" class="contact-link">
+            <span class="cl-label">Email</span>
+            <span class="cl-val">lamine@example.com</span>
+          </a>
+        </div>
+
+      </div>
+    </div>
+  </section>
+
+  <!-- ═══ FOOTER ════════════════════════════════════════════════ -->
+  <footer>
+    <div class="container">
+      <div class="footer-inner">
+
+        <div class="footer-logo">LS<span class="dot">.</span>AI — 2026</div>
+
+        <div class="footer-clock" id="footerClock" aria-live="polite" aria-label="Heure en temps réel">
+          00:00:00 (GMT+1)
+        </div>
+
+        <!-- Decorative scale -->
+        <div class="footer-scale" aria-hidden="true">
+          <span class="f-scale-label">-25</span>
+          <span class="f-tick major"></span>
+          <span class="f-tick"></span>
+          <span class="f-tick"></span>
+          <span class="f-tick"></span>
+          <span class="f-tick major"></span>
+          <span class="f-tick"></span>
+          <span class="f-tick"></span>
+          <span class="f-tick"></span>
+          <span class="f-tick major"></span>
+          <span class="f-tick"></span>
+          <span class="f-tick"></span>
+          <span class="f-tick"></span>
+          <span class="f-tick major"></span>
+          <span class="f-tick"></span>
+          <span class="f-tick"></span>
+          <span class="f-tick"></span>
+          <span class="f-tick major"></span>
+          <span class="f-scale-label">+25</span>
+        </div>
+
+        <div class="footer-copy">
+          Designed &amp; Built by Lamine Sow
+        </div>
+
+      </div>
+    </div>
+  </footer>
+
+  <!-- ═══ SCRIPTS ═══════════════════════════════════════════════ -->
+  <!-- GSAP -->
+  <script src="https://cdnjs.cloudflare.com/ajax/libs/gsap/3.12.5/gsap.min.js"></script>
+  <script src="https://cdnjs.cloudflare.com/ajax/libs/gsap/3.12.5/ScrollTrigger.min.js"></script>
+  <!-- Lenis smooth scroll -->
+  <script src="https://unpkg.com/lenis@1.1.18/dist/lenis.min.js"></script>
+  <!-- Main script -->
+  <script src="script.js"></script>
+
+  <script>
+    function closeMobile() {
+      document.getElementById('mobileMenu').classList.remove('open');
+      document.getElementById('navBurger').classList.remove('open');
+      document.getElementById('navBurger').setAttribute('aria-expanded','false');
+    }
+  </script>
+</body>
+</html>

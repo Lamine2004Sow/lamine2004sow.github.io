@@ -1,0 +1,250 @@
+<!DOCTYPE html>
+<html lang="fr">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>MLOps & Recherche Opérationnelle — Lamine Sow</title>
+
+  <meta name="description" content="Projets MLOps et Recherche Opérationnelle de Lamine Sow — Pipelines, Monitoring, Optimisation, TSP, Monte Carlo." />
+  <meta name="author" content="Lamine Sow" />
+
+  <!-- Fonts -->
+  <link rel="preconnect" href="https://fonts.googleapis.com" />
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+  <link href="https://fonts.googleapis.com/css2?family=Space+Mono:ital,wght@0,400;0,700;1,400&family=Space+Grotesk:wght@300;400;500;600;700&display=swap" rel="stylesheet" />
+
+  <!-- Styles -->
+  <link rel="stylesheet" href="../style.css" />
+</head>
+<body class="project-page">
+
+  <!-- ═══ OVERLAYS ═════════════════════════════════════════════ -->
+  <div class="grid-overlay" aria-hidden="true"></div>
+  <div class="scanlines"    aria-hidden="true"></div>
+  <div class="noise-overlay" aria-hidden="true"></div>
+
+  <!-- Coordinate tracker -->
+  <div class="coord-tracker" id="coordTracker" aria-hidden="true">
+    X: <span id="cX">0000</span><br>
+    Y: <span id="cY">0000</span>
+  </div>
+
+  <!-- Custom cursor -->
+  <div class="cursor-dot"  id="cursorDot"  aria-hidden="true"></div>
+  <div class="cursor-ring" id="cursorRing" aria-hidden="true"></div>
+
+  <!-- ═══ NAVIGATION ════════════════════════════════════════════ -->
+  <nav id="navbar" aria-label="Navigation principale">
+    <div class="container">
+      <div class="nav-inner">
+        <a href="../index.html" class="nav-logo">LS<span class="dot">.</span>AI</a>
+
+        <ul class="nav-links">
+          <li><a href="../index.html#about">À propos</a></li>
+          <li><a href="../index.html#skills">Compétences</a></li>
+          <li><a href="../index.html#projects">Projets</a></li>
+          <li><a href="../index.html#contact">Contact</a></li>
+        </ul>
+
+        <button class="nav-burger" id="navBurger" aria-label="Menu" aria-expanded="false">
+          <span></span><span></span><span></span>
+        </button>
+      </div>
+    </div>
+  </nav>
+
+  <!-- Mobile Menu -->
+  <div class="mobile-menu" id="mobileMenu" role="dialog" aria-label="Menu mobile">
+    <button class="mobile-menu-close" id="mobileClose" aria-label="Fermer le menu">✕</button>
+    <a href="../index.html#about"    onclick="closeMobile()"><span class="m-num">[01]</span> À propos</a>
+    <a href="../index.html#skills"   onclick="closeMobile()"><span class="m-num">[02]</span> Compétences</a>
+    <a href="../index.html#projects" onclick="closeMobile()"><span class="m-num">[03]</span> Projets</a>
+    <a href="../index.html#contact"  onclick="closeMobile()"><span class="m-num">[04]</span> Contact</a>
+  </div>
+
+  <!-- ═══ PAGE HERO ══════════════════════════════════════════════ -->
+  <header class="page-hero">
+    <div class="container">
+      <a href="../index.html#projects" class="page-back">← Retour au portfolio</a>
+      <div class="sec-marker">[03] PROJETS — CATÉGORIE 03</div>
+      <h1 class="sec-title">MLOps &amp; Recherche<br>Opérationnelle</h1>
+      <p class="page-hero-tag">5 PROJETS · MLFLOW · DOCKER · FASTAPI · PULP · PYGAME</p>
+    </div>
+  </header>
+
+  <!-- ═══ PROJECT LIST ══════════════════════════════════════════ -->
+  <main class="proj-list">
+    <div class="container">
+
+      <!-- Project 01 -->
+      <article class="proj-item">
+        <div class="proj-thumb" aria-hidden="true">
+          <span class="proj-thumb-lbl">[ PIPELINE ]</span>
+        </div>
+        <div class="proj-item-body">
+          <div class="proj-item-num">[01] / 05 — MLOPS</div>
+          <h2 class="proj-item-title">Pipeline MLOps<br>End-to-End</h2>
+          <div class="tag-row">
+            <span class="tag">MLflow</span>
+            <span class="tag">Docker</span>
+            <span class="tag">FastAPI</span>
+            <span class="tag">CI/CD</span>
+          </div>
+          <p class="proj-item-desc">
+            Pipeline complet de ML en production : entraînement, versionnement avec DVC,
+            déploiement API avec FastAPI, conteneurisation Docker et monitoring.
+            Intégration CI/CD avec GitHub Actions pour l'automatisation des tests
+            et du déploiement. Registry de modèles avec MLflow Tracking.
+          </p>
+          <div class="proj-item-links">
+            <a href="#" class="plink plink-g" data-placeholder="true">💻 GITHUB</a>
+            <a href="#" class="plink plink-s" data-placeholder="true">📄 RAPPORT</a>
+          </div>
+        </div>
+      </article>
+
+      <!-- Project 02 -->
+      <article class="proj-item">
+        <div class="proj-thumb" aria-hidden="true">
+          <span class="proj-thumb-lbl">[ MONITORING ]</span>
+        </div>
+        <div class="proj-item-body">
+          <div class="proj-item-num">[02] / 05 — MLOPS</div>
+          <h2 class="proj-item-title">Monitoring &amp; Data Drift<br>Détection en Production</h2>
+          <div class="tag-row">
+            <span class="tag">Evidently</span>
+            <span class="tag">Grafana</span>
+            <span class="tag">Python</span>
+          </div>
+          <p class="proj-item-desc">
+            Système de monitoring de modèles ML en production. Détection de data drift
+            et concept drift avec alertes automatiques via Grafana et Prometheus.
+            Dashboard de visualisation des métriques de performance et de la
+            distribution des données en temps réel.
+          </p>
+          <div class="proj-item-links">
+            <a href="#" class="plink plink-g" data-placeholder="true">💻 GITHUB</a>
+            <a href="#" class="plink plink-s" data-placeholder="true">📄 RAPPORT</a>
+          </div>
+        </div>
+      </article>
+
+      <!-- Project 03 -->
+      <article class="proj-item">
+        <div class="proj-thumb" aria-hidden="true">
+          <span class="proj-thumb-lbl">[ LINEAR PROG ]</span>
+        </div>
+        <div class="proj-item-body">
+          <div class="proj-item-num">[03] / 05 — RECHERCHE OPÉRATIONNELLE</div>
+          <h2 class="proj-item-title">Programmation Linéaire<br>Optimisation</h2>
+          <div class="tag-row">
+            <span class="tag">Python</span>
+            <span class="tag">PuLP</span>
+            <span class="tag">Visualisation</span>
+          </div>
+          <p class="proj-item-desc">
+            Résolution de problèmes d'optimisation linéaire : simplexe, dualité,
+            analyse de sensibilité avec visualisation des régions réalisables en 2D.
+            Applications pratiques : planification de production, allocation de ressources,
+            problèmes de transport.
+          </p>
+          <div class="proj-item-links">
+            <a href="#" class="plink plink-g" data-placeholder="true">💻 GITHUB</a>
+            <a href="#" class="plink plink-s" data-placeholder="true">📄 RAPPORT</a>
+          </div>
+        </div>
+      </article>
+
+      <!-- Project 04 -->
+      <article class="proj-item">
+        <div class="proj-thumb" aria-hidden="true">
+          <span class="proj-thumb-lbl">[ TSP / GENETIC ]</span>
+        </div>
+        <div class="proj-item-body">
+          <div class="proj-item-num">[04] / 05 — RECHERCHE OPÉRATIONNELLE</div>
+          <h2 class="proj-item-title">TSP<br>Algorithmes Génétiques</h2>
+          <div class="tag-row">
+            <span class="tag">Python</span>
+            <span class="tag">Recherche Opérat.</span>
+            <span class="tag">Pygame</span>
+          </div>
+          <p class="proj-item-desc">
+            Résolution du problème du voyageur de commerce avec métaheuristiques :
+            algorithme génétique, recuit simulé et recherche tabou.
+            Visualisation en temps réel de l'évolution des solutions avec Pygame.
+            Comparaison des performances et analyse de convergence.
+          </p>
+          <div class="proj-item-links">
+            <a href="#" class="plink plink-g" data-placeholder="true">💻 GITHUB</a>
+            <a href="#" class="plink plink-s" data-placeholder="true">🔗 DÉMO</a>
+            <a href="#" class="plink plink-s" data-placeholder="true">📄 RAPPORT</a>
+          </div>
+        </div>
+      </article>
+
+      <!-- Project 05 -->
+      <article class="proj-item">
+        <div class="proj-thumb" aria-hidden="true">
+          <span class="proj-thumb-lbl">[ MONTE CARLO ]</span>
+        </div>
+        <div class="proj-item-body">
+          <div class="proj-item-num">[05] / 05 — RECHERCHE OPÉRATIONNELLE</div>
+          <h2 class="proj-item-title">Simulation Monte Carlo<br>Applications</h2>
+          <div class="tag-row">
+            <span class="tag">Python</span>
+            <span class="tag">NumPy</span>
+            <span class="tag">Simulation</span>
+          </div>
+          <p class="proj-item-desc">
+            Méthodes de Monte Carlo appliquées à l'estimation de pi, pricing d'options
+            financières (Black-Scholes) et simulation de files d'attente (M/M/1).
+            Analyse de la convergence selon le nombre de simulations et
+            comparaison avec les solutions analytiques.
+          </p>
+          <div class="proj-item-links">
+            <a href="#" class="plink plink-g" data-placeholder="true">💻 GITHUB</a>
+            <a href="#" class="plink plink-s" data-placeholder="true">📄 RAPPORT</a>
+          </div>
+        </div>
+      </article>
+
+    </div>
+  </main>
+
+  <!-- ═══ FOOTER ════════════════════════════════════════════════ -->
+  <footer>
+    <div class="container">
+      <div class="footer-inner">
+        <div class="footer-logo">LS<span class="dot">.</span>AI — 2026</div>
+        <div class="footer-clock" id="footerClock" aria-live="polite">00:00:00 (GMT+1)</div>
+        <div class="footer-scale" aria-hidden="true">
+          <span class="f-scale-label">-25</span>
+          <span class="f-tick major"></span>
+          <span class="f-tick"></span><span class="f-tick"></span><span class="f-tick"></span>
+          <span class="f-tick major"></span>
+          <span class="f-tick"></span><span class="f-tick"></span><span class="f-tick"></span>
+          <span class="f-tick major"></span>
+          <span class="f-tick"></span><span class="f-tick"></span><span class="f-tick"></span>
+          <span class="f-tick major"></span>
+          <span class="f-scale-label">+25</span>
+        </div>
+        <div class="footer-copy">Designed &amp; Built by Lamine Sow</div>
+      </div>
+    </div>
+  </footer>
+
+  <!-- ═══ SCRIPTS ═══════════════════════════════════════════════ -->
+  <script src="https://cdnjs.cloudflare.com/ajax/libs/gsap/3.12.5/gsap.min.js"></script>
+  <script src="https://cdnjs.cloudflare.com/ajax/libs/gsap/3.12.5/ScrollTrigger.min.js"></script>
+  <script src="https://unpkg.com/lenis@1.1.18/dist/lenis.min.js"></script>
+  <script src="../script.js"></script>
+
+  <script>
+    function closeMobile() {
+      document.getElementById('mobileMenu').classList.remove('open');
+      document.getElementById('navBurger').classList.remove('open');
+      document.getElementById('navBurger').setAttribute('aria-expanded','false');
+    }
+  </script>
+</body>
+</html>
