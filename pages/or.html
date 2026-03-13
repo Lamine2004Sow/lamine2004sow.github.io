@@ -1,0 +1,153 @@
+<!DOCTYPE html>
+<html lang="fr">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>Recherche Opérationnelle — Lamine Sow</title>
+  <meta name="description" content="Projets de Recherche Opérationnelle : optimisation combinatoire, programmation linéaire, méta-heuristiques." />
+  <link rel="preconnect" href="https://fonts.googleapis.com" />
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+  <link href="https://fonts.googleapis.com/css2?family=Space+Grotesk:wght@400;500;600;700&family=DM+Sans:ital,wght@0,400;0,500;0,700;1,400&display=swap" rel="stylesheet" />
+  <link rel="stylesheet" href="/css/style.css" />
+  <link rel="stylesheet" href="/css/animations.css" />
+  <link rel="stylesheet" href="/css/pages.css" />
+  <link rel="stylesheet" href="/css/responsive.css" />
+</head>
+<body>
+  <header class="nav scrolled" id="nav">
+    <a href="/" class="nav__logo">LS<span class="accent">.</span></a>
+    <nav class="nav__links">
+      <a href="/" class="nav__link">Accueil</a>
+      <a href="/pages/rl.html" class="nav__link">RL</a>
+      <a href="/pages/ml.html" class="nav__link">ML</a>
+      <a href="/pages/articles.html" class="nav__link">Articles</a>
+    </nav>
+    <button class="nav__burger" id="navBurger" aria-label="Menu" aria-expanded="false">
+      <span></span><span></span><span></span>
+    </button>
+  </header>
+
+  <div class="mobile-menu" id="mobileMenu" aria-hidden="true">
+    <nav class="mobile-menu__nav">
+      <a href="/" class="mobile-menu__link">Accueil</a>
+      <a href="/pages/rl.html" class="mobile-menu__link">Reinforcement Learning</a>
+      <a href="/pages/ml.html" class="mobile-menu__link">Machine Learning</a>
+      <a href="/pages/articles.html" class="mobile-menu__link">Articles</a>
+    </nav>
+  </div>
+
+  <main>
+    <section class="page-hero">
+      <div class="container">
+        <div class="page-hero__content">
+          <a href="/" class="page-hero__back magnetic">
+            <svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><line x1="19" y1="12" x2="5" y2="12"/><polyline points="12 19 5 12 12 5"/></svg>
+            Retour
+          </a>
+          <span class="page-hero__category">Recherche Opérationnelle</span>
+          <h1 class="page-hero__title">Optimisation &<br />Modélisation<span class="accent">.</span></h1>
+          <p class="page-hero__desc">
+            Projets d'optimisation combinatoire, programmation linéaire en nombres entiers,
+            méta-heuristiques (algorithmes génétiques, recuit simulé, recherche tabou)
+            et modélisation de problèmes réels complexes.
+          </p>
+        </div>
+      </div>
+    </section>
+
+    <section class="projects-list">
+      <div class="container">
+        <div class="projects-list__grid">
+
+          <div class="project-detail-card reveal-up">
+            <span class="project-detail-card__number">Projet 01</span>
+            <h3 class="project-detail-card__title">Optimisation de Routage de Véhicules (VRP)</h3>
+            <p class="project-detail-card__desc">
+              Solver hybride pour le Vehicle Routing Problem avec fenêtres de temps.
+              Combinaison de MILP (Gurobi/OR-Tools) avec des algorithmes génétiques
+              et recuit simulé. Benchmark sur les instances de Solomon.
+            </p>
+            <div class="project-detail-card__tags">
+              <span class="tag">Python</span>
+              <span class="tag">OR-Tools</span>
+              <span class="tag">MILP</span>
+              <span class="tag">Algo Génétique</span>
+              <span class="tag">Recuit Simulé</span>
+            </div>
+            <div class="project-detail-card__footer">
+              <a href="#" class="project-detail-card__link" target="_blank" rel="noopener">
+                <svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M9 19c-5 1.5-5-2.5-7-3m14 6v-3.87a3.37 3.37 0 0 0-.94-2.61c3.14-.35 6.44-1.54 6.44-7A5.44 5.44 0 0 0 20 4.77 5.07 5.07 0 0 0 19.91 1S18.73.65 16 2.48a13.38 13.38 0 0 0-7 0C6.27.65 5.09 1 5.09 1A5.07 5.07 0 0 0 5 4.77a5.44 5.44 0 0 0-1.5 3.78c0 5.42 3.3 6.61 6.44 7A3.37 3.37 0 0 0 9 18.13V22"/></svg>
+                GitHub
+              </a>
+              <a href="/pages/article.html?slug=vrp-metaheuristics" class="project-detail-card__link project-detail-card__link--article">
+                <svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M14 2H6a2 2 0 0 0-2 2v16a2 2 0 0 0 2 2h12a2 2 0 0 0 2-2V8z"/><polyline points="14 2 14 8 20 8"/><line x1="16" y1="13" x2="8" y2="13"/><line x1="16" y1="17" x2="8" y2="17"/></svg>
+                Rapport
+              </a>
+            </div>
+          </div>
+
+          <div class="project-detail-card reveal-up">
+            <span class="project-detail-card__number">Projet 02</span>
+            <h3 class="project-detail-card__title">Ordonnancement de Production</h3>
+            <p class="project-detail-card__desc">
+              Modélisation et résolution du Job Shop Scheduling Problem.
+              Comparaison entre méthodes exactes (branch & bound) et
+              heuristiques (recherche tabou, algorithme de colonies de fourmis).
+            </p>
+            <div class="project-detail-card__tags">
+              <span class="tag">Python</span>
+              <span class="tag">C++</span>
+              <span class="tag">JSSP</span>
+              <span class="tag">Branch & Bound</span>
+              <span class="tag">Recherche Tabou</span>
+            </div>
+            <div class="project-detail-card__footer">
+              <a href="#" class="project-detail-card__link" target="_blank" rel="noopener">
+                <svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M9 19c-5 1.5-5-2.5-7-3m14 6v-3.87a3.37 3.37 0 0 0-.94-2.61c3.14-.35 6.44-1.54 6.44-7A5.44 5.44 0 0 0 20 4.77 5.07 5.07 0 0 0 19.91 1S18.73.65 16 2.48a13.38 13.38 0 0 0-7 0C6.27.65 5.09 1 5.09 1A5.07 5.07 0 0 0 5 4.77a5.44 5.44 0 0 0-1.5 3.78c0 5.42 3.3 6.61 6.44 7A3.37 3.37 0 0 0 9 18.13V22"/></svg>
+                GitHub
+              </a>
+            </div>
+          </div>
+
+          <div class="project-detail-card reveal-up">
+            <span class="project-detail-card__number">Projet 03</span>
+            <h3 class="project-detail-card__title">Simplexe & Programmation Linéaire</h3>
+            <p class="project-detail-card__desc">
+              Implémentation from-scratch de l'algorithme du simplexe (primal et dual),
+              méthode du Big-M, et analyse de sensibilité. Visualisation 2D/3D des
+              polytopes de contraintes et des solutions optimales.
+            </p>
+            <div class="project-detail-card__tags">
+              <span class="tag">Python</span>
+              <span class="tag">NumPy</span>
+              <span class="tag">Simplexe</span>
+              <span class="tag">PL</span>
+              <span class="tag">Matplotlib</span>
+            </div>
+            <div class="project-detail-card__footer">
+              <a href="#" class="project-detail-card__link" target="_blank" rel="noopener">
+                <svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M9 19c-5 1.5-5-2.5-7-3m14 6v-3.87a3.37 3.37 0 0 0-.94-2.61c3.14-.35 6.44-1.54 6.44-7A5.44 5.44 0 0 0 20 4.77 5.07 5.07 0 0 0 19.91 1S18.73.65 16 2.48a13.38 13.38 0 0 0-7 0C6.27.65 5.09 1 5.09 1A5.07 5.07 0 0 0 5 4.77a5.44 5.44 0 0 0-1.5 3.78c0 5.42 3.3 6.61 6.44 7A3.37 3.37 0 0 0 9 18.13V22"/></svg>
+                GitHub
+              </a>
+            </div>
+          </div>
+
+        </div>
+      </div>
+    </section>
+  </main>
+
+  <footer class="footer">
+    <div class="container footer__inner">
+      <span class="footer__copy">&copy; 2026 Lamine Sow</span>
+      <div class="footer__links">
+        <a href="https://github.com/lamine2004sow" target="_blank" rel="noopener" class="footer__link" aria-label="GitHub">
+          <svg width="22" height="22" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M9 19c-5 1.5-5-2.5-7-3m14 6v-3.87a3.37 3.37 0 0 0-.94-2.61c3.14-.35 6.44-1.54 6.44-7A5.44 5.44 0 0 0 20 4.77 5.07 5.07 0 0 0 19.91 1S18.73.65 16 2.48a13.38 13.38 0 0 0-7 0C6.27.65 5.09 1 5.09 1A5.07 5.07 0 0 0 5 4.77a5.44 5.44 0 0 0-1.5 3.78c0 5.42 3.3 6.61 6.44 7A3.37 3.37 0 0 0 9 18.13V22"/></svg>
+        </a>
+      </div>
+    </div>
+  </footer>
+
+  <script type="module" src="/js/page-init.js"></script>
+</body>
+</html>

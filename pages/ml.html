@@ -1,0 +1,176 @@
+<!DOCTYPE html>
+<html lang="fr">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>Machine Learning — Lamine Sow</title>
+  <meta name="description" content="Projets de Machine Learning : Deep Learning, Computer Vision, NLP, réseaux de neurones." />
+  <link rel="preconnect" href="https://fonts.googleapis.com" />
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+  <link href="https://fonts.googleapis.com/css2?family=Space+Grotesk:wght@400;500;600;700&family=DM+Sans:ital,wght@0,400;0,500;0,700;1,400&display=swap" rel="stylesheet" />
+  <link rel="stylesheet" href="/css/style.css" />
+  <link rel="stylesheet" href="/css/animations.css" />
+  <link rel="stylesheet" href="/css/pages.css" />
+  <link rel="stylesheet" href="/css/responsive.css" />
+</head>
+<body>
+  <header class="nav scrolled" id="nav">
+    <a href="/" class="nav__logo">LS<span class="accent">.</span></a>
+    <nav class="nav__links">
+      <a href="/" class="nav__link">Accueil</a>
+      <a href="/pages/rl.html" class="nav__link">RL</a>
+      <a href="/pages/or.html" class="nav__link">OR</a>
+      <a href="/pages/articles.html" class="nav__link">Articles</a>
+    </nav>
+    <button class="nav__burger" id="navBurger" aria-label="Menu" aria-expanded="false">
+      <span></span><span></span><span></span>
+    </button>
+  </header>
+
+  <div class="mobile-menu" id="mobileMenu" aria-hidden="true">
+    <nav class="mobile-menu__nav">
+      <a href="/" class="mobile-menu__link">Accueil</a>
+      <a href="/pages/rl.html" class="mobile-menu__link">Reinforcement Learning</a>
+      <a href="/pages/or.html" class="mobile-menu__link">Recherche Opérationnelle</a>
+      <a href="/pages/articles.html" class="mobile-menu__link">Articles</a>
+    </nav>
+  </div>
+
+  <main>
+    <section class="page-hero">
+      <div class="container">
+        <div class="page-hero__content">
+          <a href="/" class="page-hero__back magnetic">
+            <svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><line x1="19" y1="12" x2="5" y2="12"/><polyline points="12 19 5 12 12 5"/></svg>
+            Retour
+          </a>
+          <span class="page-hero__category">Machine Learning & Deep Learning</span>
+          <h1 class="page-hero__title">Intelligence<br />Artificielle<span class="accent">.</span></h1>
+          <p class="page-hero__desc">
+            Projets couvrant les réseaux de neurones profonds, la vision par ordinateur, le NLP,
+            et le machine learning classique. De l'implémentation from-scratch de CNN aux pipelines
+            NLP avec Transformers.
+          </p>
+        </div>
+      </div>
+    </section>
+
+    <section class="projects-list">
+      <div class="container">
+        <div class="projects-list__grid">
+
+          <div class="project-detail-card reveal-up">
+            <span class="project-detail-card__number">Projet 01</span>
+            <h3 class="project-detail-card__title">Neural Style Transfer</h3>
+            <p class="project-detail-card__desc">
+              Implémentation from-scratch d'un réseau de transfert de style artistique basé
+              sur VGG-19. Optimisation de la loss perceptuelle combinant content loss et
+              style loss (matrices de Gram) avec génération en temps réel.
+            </p>
+            <div class="project-detail-card__tags">
+              <span class="tag">Python</span>
+              <span class="tag">PyTorch</span>
+              <span class="tag">CNN</span>
+              <span class="tag">VGG-19</span>
+              <span class="tag">Computer Vision</span>
+            </div>
+            <div class="project-detail-card__footer">
+              <a href="#" class="project-detail-card__link" target="_blank" rel="noopener">
+                <svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M9 19c-5 1.5-5-2.5-7-3m14 6v-3.87a3.37 3.37 0 0 0-.94-2.61c3.14-.35 6.44-1.54 6.44-7A5.44 5.44 0 0 0 20 4.77 5.07 5.07 0 0 0 19.91 1S18.73.65 16 2.48a13.38 13.38 0 0 0-7 0C6.27.65 5.09 1 5.09 1A5.07 5.07 0 0 0 5 4.77a5.44 5.44 0 0 0-1.5 3.78c0 5.42 3.3 6.61 6.44 7A3.37 3.37 0 0 0 9 18.13V22"/></svg>
+                GitHub
+              </a>
+              <a href="/pages/article.html?slug=neural-style-transfer" class="project-detail-card__link project-detail-card__link--article">
+                <svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M14 2H6a2 2 0 0 0-2 2v16a2 2 0 0 0 2 2h12a2 2 0 0 0 2-2V8z"/><polyline points="14 2 14 8 20 8"/><line x1="16" y1="13" x2="8" y2="13"/><line x1="16" y1="17" x2="8" y2="17"/></svg>
+                Rapport
+              </a>
+            </div>
+          </div>
+
+          <div class="project-detail-card reveal-up">
+            <span class="project-detail-card__number">Projet 02</span>
+            <h3 class="project-detail-card__title">Sentiment Analyzer Multi-Langue</h3>
+            <p class="project-detail-card__desc">
+              Pipeline NLP complète pour l'analyse de sentiment multi-langue. Fine-tuning
+              de modèles Transformers (BERT, XLM-RoBERTa) sur des datasets africains.
+              API REST pour l'inférence en temps réel.
+            </p>
+            <div class="project-detail-card__tags">
+              <span class="tag">Python</span>
+              <span class="tag">HuggingFace</span>
+              <span class="tag">Transformers</span>
+              <span class="tag">NLP</span>
+              <span class="tag">FastAPI</span>
+            </div>
+            <div class="project-detail-card__footer">
+              <a href="#" class="project-detail-card__link" target="_blank" rel="noopener">
+                <svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M9 19c-5 1.5-5-2.5-7-3m14 6v-3.87a3.37 3.37 0 0 0-.94-2.61c3.14-.35 6.44-1.54 6.44-7A5.44 5.44 0 0 0 20 4.77 5.07 5.07 0 0 0 19.91 1S18.73.65 16 2.48a13.38 13.38 0 0 0-7 0C6.27.65 5.09 1 5.09 1A5.07 5.07 0 0 0 5 4.77a5.44 5.44 0 0 0-1.5 3.78c0 5.42 3.3 6.61 6.44 7A3.37 3.37 0 0 0 9 18.13V22"/></svg>
+                GitHub
+              </a>
+            </div>
+          </div>
+
+          <div class="project-detail-card reveal-up">
+            <span class="project-detail-card__number">Projet 03</span>
+            <h3 class="project-detail-card__title">Classification d'images médicales</h3>
+            <p class="project-detail-card__desc">
+              Réseau convolutif pour la détection de pathologies sur des radiographies
+              thoraciques. Data augmentation avancée, transfer learning depuis ResNet-50,
+              et analyse Grad-CAM pour l'explicabilité.
+            </p>
+            <div class="project-detail-card__tags">
+              <span class="tag">Python</span>
+              <span class="tag">PyTorch</span>
+              <span class="tag">ResNet</span>
+              <span class="tag">Grad-CAM</span>
+              <span class="tag">Medical AI</span>
+            </div>
+            <div class="project-detail-card__footer">
+              <a href="#" class="project-detail-card__link" target="_blank" rel="noopener">
+                <svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M9 19c-5 1.5-5-2.5-7-3m14 6v-3.87a3.37 3.37 0 0 0-.94-2.61c3.14-.35 6.44-1.54 6.44-7A5.44 5.44 0 0 0 20 4.77 5.07 5.07 0 0 0 19.91 1S18.73.65 16 2.48a13.38 13.38 0 0 0-7 0C6.27.65 5.09 1 5.09 1A5.07 5.07 0 0 0 5 4.77a5.44 5.44 0 0 0-1.5 3.78c0 5.42 3.3 6.61 6.44 7A3.37 3.37 0 0 0 9 18.13V22"/></svg>
+                GitHub
+              </a>
+            </div>
+          </div>
+
+          <div class="project-detail-card reveal-up">
+            <span class="project-detail-card__number">Projet 04</span>
+            <h3 class="project-detail-card__title">Prédiction de séries temporelles</h3>
+            <p class="project-detail-card__desc">
+              Modèles LSTM et Transformer pour la prédiction de consommation énergétique.
+              Comparaison avec ARIMA et Prophet. Pipeline complète avec feature engineering
+              et validation walk-forward.
+            </p>
+            <div class="project-detail-card__tags">
+              <span class="tag">Python</span>
+              <span class="tag">TensorFlow</span>
+              <span class="tag">LSTM</span>
+              <span class="tag">Time Series</span>
+              <span class="tag">Scikit-learn</span>
+            </div>
+            <div class="project-detail-card__footer">
+              <a href="#" class="project-detail-card__link" target="_blank" rel="noopener">
+                <svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M9 19c-5 1.5-5-2.5-7-3m14 6v-3.87a3.37 3.37 0 0 0-.94-2.61c3.14-.35 6.44-1.54 6.44-7A5.44 5.44 0 0 0 20 4.77 5.07 5.07 0 0 0 19.91 1S18.73.65 16 2.48a13.38 13.38 0 0 0-7 0C6.27.65 5.09 1 5.09 1A5.07 5.07 0 0 0 5 4.77a5.44 5.44 0 0 0-1.5 3.78c0 5.42 3.3 6.61 6.44 7A3.37 3.37 0 0 0 9 18.13V22"/></svg>
+                GitHub
+              </a>
+            </div>
+          </div>
+
+        </div>
+      </div>
+    </section>
+  </main>
+
+  <footer class="footer">
+    <div class="container footer__inner">
+      <span class="footer__copy">&copy; 2026 Lamine Sow</span>
+      <div class="footer__links">
+        <a href="https://github.com/lamine2004sow" target="_blank" rel="noopener" class="footer__link" aria-label="GitHub">
+          <svg width="22" height="22" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M9 19c-5 1.5-5-2.5-7-3m14 6v-3.87a3.37 3.37 0 0 0-.94-2.61c3.14-.35 6.44-1.54 6.44-7A5.44 5.44 0 0 0 20 4.77 5.07 5.07 0 0 0 19.91 1S18.73.65 16 2.48a13.38 13.38 0 0 0-7 0C6.27.65 5.09 1 5.09 1A5.07 5.07 0 0 0 5 4.77a5.44 5.44 0 0 0-1.5 3.78c0 5.42 3.3 6.61 6.44 7A3.37 3.37 0 0 0 9 18.13V22"/></svg>
+        </a>
+      </div>
+    </div>
+  </footer>
+
+  <script type="module" src="/js/page-init.js"></script>
+</body>
+</html>

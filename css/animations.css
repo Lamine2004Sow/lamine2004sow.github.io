@@ -1,0 +1,148 @@
+/* ============================================
+   GSAP REVEAL CLASSES (initial states — GSAP animates TO)
+   ============================================ */
+.reveal-up {
+  opacity: 0;
+  transform: translateY(40px);
+  will-change: transform, opacity;
+}
+
+.reveal-left {
+  opacity: 0;
+  transform: translateX(-40px);
+  will-change: transform, opacity;
+}
+
+.reveal-right {
+  opacity: 0;
+  transform: translateX(40px);
+  will-change: transform, opacity;
+}
+
+.reveal-scale {
+  opacity: 0;
+  transform: scale(0.9);
+  will-change: transform, opacity;
+}
+
+/* ============================================
+   PAGE LOADER EXIT
+   ============================================ */
+@keyframes fadeOut {
+  to {
+    opacity: 0;
+    visibility: hidden;
+  }
+}
+
+/* ============================================
+   TYPEWRITER CURSOR
+   ============================================ */
+@keyframes cursorBlink {
+  0%, 100% { opacity: 1; }
+  50% { opacity: 0; }
+}
+
+.typewriter-cursor {
+  animation: cursorBlink 0.8s step-end infinite;
+}
+
+/* ============================================
+   SCROLL INDICATOR
+   ============================================ */
+@keyframes scrollBounce {
+  0%, 100% { transform: translateY(0); }
+  50% { transform: translateY(8px); }
+}
+
+.hero__scroll {
+  animation: scrollBounce 2s ease-in-out infinite;
+}
+
+/* ============================================
+   GLOW PULSE (for accent elements)
+   ============================================ */
+@keyframes glowPulse {
+  0%, 100% {
+    box-shadow: 0 0 20px var(--accent-glow);
+  }
+  50% {
+    box-shadow: 0 0 40px var(--accent-glow-strong);
+  }
+}
+
+/* ============================================
+   BADGE HOVER GLOW
+   ============================================ */
+.badge {
+  transition: all 0.4s var(--ease-out-expo);
+}
+
+/* ============================================
+   MAGNETIC BUTTON EFFECT (handled by JS but base styles here)
+   ============================================ */
+.magnetic {
+  will-change: transform;
+  transition: transform 0.4s var(--ease-out-expo);
+}
+
+/* ============================================
+   CARD TILT (base)
+   ============================================ */
+.tilt {
+  will-change: transform;
+  transform-style: preserve-3d;
+}
+
+/* ============================================
+   LOADING STATE FOR 3D MODELS
+   ============================================ */
+@keyframes shimmer {
+  0% {
+    background-position: -200% 0;
+  }
+  100% {
+    background-position: 200% 0;
+  }
+}
+
+.model-loading {
+  background: linear-gradient(
+    90deg,
+    var(--bg-secondary) 25%,
+    var(--bg-tertiary) 50%,
+    var(--bg-secondary) 75%
+  );
+  background-size: 200% 100%;
+  animation: shimmer 2s ease-in-out infinite;
+}
+
+/* ============================================
+   REDUCED MOTION
+   ============================================ */
+@media (prefers-reduced-motion: reduce) {
+  *,
+  *::before,
+  *::after {
+    animation-duration: 0.01ms !important;
+    animation-iteration-count: 1 !important;
+    transition-duration: 0.01ms !important;
+    scroll-behavior: auto !important;
+  }
+
+  .reveal-up,
+  .reveal-left,
+  .reveal-right,
+  .reveal-scale {
+    opacity: 1;
+    transform: none;
+  }
+
+  .hero__scroll {
+    animation: none;
+  }
+
+  .typewriter-cursor {
+    animation: none;
+  }
+}

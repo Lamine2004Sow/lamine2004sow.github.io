@@ -1,0 +1,21 @@
+{
+  "name": "lamine-sow-portfolio",
+  "private": true,
+  "version": "1.0.0",
+  "type": "module",
+  "scripts": {
+    "dev": "vite",
+    "build": "vite build",
+    "preview": "vite preview"
+  },
+  "dependencies": {
+    "gsap": "^3.12.4",
+    "katex": "^0.16.38",
+    "lenis": "^1.0.42",
+    "marked": "^17.0.4",
+    "three": "^0.160.0"
+  },
+  "devDependencies": {
+    "vite": "^5.0.12"
+  }
+}

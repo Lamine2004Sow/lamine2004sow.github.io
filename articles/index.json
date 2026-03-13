@@ -1,0 +1,26 @@
+[
+  {
+    "slug": "marl-cooperative-navigation",
+    "title": "Apprentissage par Renforcement Multi-Agent pour la Navigation Coopérative",
+    "subtitle": "Étude comparative de MADDPG et QMIX sur des scénarios de navigation avec obstacles dynamiques.",
+    "category": "RL",
+    "date": "Mars 2026",
+    "readTime": "12 min"
+  },
+  {
+    "slug": "neural-style-transfer",
+    "title": "Transfert de Style Neuronal : Implémentation et Analyse",
+    "subtitle": "De Gatys et al. à l'optimisation perceptuelle en temps réel avec VGG-19.",
+    "category": "ML",
+    "date": "Février 2026",
+    "readTime": "10 min"
+  },
+  {
+    "slug": "vrp-metaheuristics",
+    "title": "Résolution du VRP par Approches Hybrides Exactes/Métaheuristiques",
+    "subtitle": "Combinaison de MILP et algorithmes génétiques pour le routage de véhicules avec fenêtres de temps.",
+    "category": "OR",
+    "date": "Janvier 2026",
+    "readTime": "15 min"
+  }
+]

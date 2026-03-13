@@ -1,0 +1,159 @@
+/* ============================================
+   RESPONSIVE — TABLET (≤ 1024px)
+   ============================================ */
+@media (max-width: 1024px) {
+  .projects__grid {
+    grid-template-columns: 1fr;
+    gap: 20px;
+  }
+
+  .contact__grid {
+    grid-template-columns: 1fr;
+    gap: 48px;
+  }
+
+  .skills__items {
+    grid-template-columns: repeat(auto-fill, minmax(140px, 1fr));
+  }
+}
+
+/* ============================================
+   RESPONSIVE — MOBILE (≤ 768px)
+   ============================================ */
+@media (max-width: 768px) {
+  :root {
+    --nav-height: 60px;
+  }
+
+  .nav__links {
+    display: none;
+  }
+
+  .nav__burger {
+    display: flex;
+  }
+
+  .hero__title {
+    font-size: clamp(2.5rem, 12vw, 4.5rem);
+  }
+
+  .hero__cta {
+    flex-direction: column;
+    align-items: center;
+  }
+
+  .hero__cta .btn {
+    width: 100%;
+    max-width: 280px;
+    justify-content: center;
+  }
+
+  .hero__scroll {
+    bottom: 20px;
+  }
+
+  .section__title {
+    font-size: clamp(1.75rem, 6vw, 2.5rem);
+  }
+
+  .about__paragraph {
+    font-size: 1rem;
+  }
+
+  .about__badges {
+    gap: 8px;
+  }
+
+  .badge {
+    font-size: 0.75rem;
+    padding: 6px 12px;
+  }
+
+  .skills__items {
+    grid-template-columns: repeat(2, 1fr);
+    gap: 8px;
+  }
+
+  .skill-card {
+    padding: 12px 14px;
+  }
+
+  .skill-card__name {
+    font-size: 0.78rem;
+  }
+
+  .project-card__content {
+    padding: 20px;
+  }
+
+  .project-card__title {
+    font-size: 1.1rem;
+  }
+
+  .timeline {
+    padding-left: 32px;
+  }
+
+  .timeline__dot {
+    left: -32px;
+    width: 12px;
+    height: 12px;
+  }
+
+  .timeline__content {
+    padding: 20px;
+  }
+
+  .footer__inner {
+    flex-direction: column;
+    gap: 16px;
+    text-align: center;
+  }
+
+  .cursor {
+    display: none !important;
+  }
+}
+
+/* ============================================
+   RESPONSIVE — SMALL MOBILE (≤ 480px)
+   ============================================ */
+@media (max-width: 480px) {
+  .hero__title {
+    font-size: clamp(2rem, 14vw, 3.5rem);
+  }
+
+  .hero__label {
+    font-size: 0.65rem;
+  }
+
+  .skills__items {
+    grid-template-columns: 1fr 1fr;
+  }
+
+  .skill-card__icon {
+    font-size: 1.1rem;
+  }
+
+  .robot-bg.visible {
+    opacity: 0.25;
+  }
+}
+
+/* ============================================
+   RESPONSIVE — LARGE DESKTOP (≥ 1440px)
+   ============================================ */
+@media (min-width: 1440px) {
+  :root {
+    --container-max: 1360px;
+  }
+
+  .hero__title {
+    font-size: 9rem;
+  }
+
+  .projects__grid {
+    grid-template-columns: repeat(2, 1fr);
+    gap: 32px;
+  }
+}
