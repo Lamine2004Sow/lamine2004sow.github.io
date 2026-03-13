@@ -17,8 +17,16 @@ async function init() {
   _initNavigation();
   _initContactForm();
 
-  if (webgl) await _initScenes();
-  _hideLoader();
+  try {
+    if (webgl) await _initScenes();
+  } catch (err) {
+    console.warn('Scènes 3D non initialisées:', err);
+  } finally {
+    _hideLoader();
+  }
+
+  // Sécurité : masquer le loader même si init bloque (ex. script en erreur)
+  setTimeout(() => _hideLoader(), 5000);
 }
 
 async function _initScenes() {
