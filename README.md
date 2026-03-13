@@ -62,12 +62,19 @@ npm run preview
 
 ## Déploiement sur GitHub Pages
 
-1. Ajoute dans `vite.config.js` :
-   ```js
-   base: '/lamine2004sow.github.io/',
-   ```
-2. `npm run build`
-3. Push le dossier `dist/` ou configure GitHub Actions
+Ce dépôt est configuré pour un site **utilisateur** (`lamine2004sow.github.io`) → l’URL sera `https://lamine2004sow.github.io/`. Pas besoin de modifier `base` dans Vite.
+
+### Déploiement automatique (recommandé)
+
+1. Pousse le code sur GitHub (branche `main`).
+2. Sur le dépôt : **Settings** → **Pages** → **Build and deployment** :
+   - **Source** : **GitHub Actions**.
+3. À chaque push sur `main`, le workflow `.github/workflows/deploy-pages.yml` build et déploie le site.
+
+### Déploiement manuel
+
+1. `npm run build`
+2. Va dans **Settings** → **Pages** → **Source** : choisis la branche `gh-pages` et le dossier `/(root)` si tu y pousses `dist/`, ou utilise un outil (ex. `ghp-import`).
 
 ## Accessibilité
 
