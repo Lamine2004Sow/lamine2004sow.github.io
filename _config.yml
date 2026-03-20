@@ -1,0 +1,107 @@
+# ==========================================
+# CONFIGURATION DU SITE — à personnaliser
+# ==========================================
+
+theme: jekyll-theme-chirpy
+
+lang: fr
+timezone: Europe/Paris
+
+# ---- Infos principales ----
+title: "[Ton Prénom Nom]"          # ex: Lamine Sow
+tagline: "Étudiant Ingénieur | Recherche de stage 6 mois"
+description: >-
+  Portfolio académique et professionnel.
+  Étudiant en [ta filière] à [ton école/université].
+
+url: "https://lamine2004sow.github.io"
+
+# ---- Liens sociaux ----
+github:
+  username: lamine2004sow
+
+social:
+  name: "[Ton Prénom Nom]"          # ex: Lamine Sow
+  email: "[ton.email@example.com]"
+  links:
+    - https://github.com/lamine2004sow
+    - https://www.linkedin.com/in/[ton-profil-linkedin]
+    # - https://twitter.com/[ton_twitter]
+
+# ---- Avatar ----
+avatar: /assets/img/avatar.jpg     # place ta photo ici (200×200 px minimum)
+
+# ---- Options du thème ----
+theme_mode:                        # laisser vide = auto (suit l'OS), ou "light"/"dark"
+
+toc: true                          # table des matières dans les posts
+
+# ---- Pagination ----
+paginate: 10
+
+# ---- Commentaires ----
+comments:
+  provider:                        # laisser vide pour désactiver
+
+# ---- Analytics ----
+analytics:
+  provider:                        # laisser vide pour désactiver
+
+# ---- Collections ----
+collections:
+  tabs:
+    output: true
+    sort_by: order
+
+# ---- Defaults ----
+defaults:
+  - scope:
+      path: ""
+      type: posts
+    values:
+      layout: post
+      comments: false
+      toc: true
+  - scope:
+      path: "_tabs"
+      type: tabs
+    values:
+      layout: page
+      permalink: /:title/
+  - scope:
+      path: assets/img/favicons
+    values:
+      swcache: true
+
+# ---- Sass ----
+sass:
+  style: compressed
+
+# ---- Compress HTML ----
+compress_html:
+  clippings: all
+  comments: all
+  endings: all
+  profile: false
+  blanklines: false
+  ignore:
+    envs: [development]
+
+# ---- Exclusions ----
+exclude:
+  - "*.gem"
+  - "*.gemspec"
+  - tools
+  - README.md
+  - LICENSE
+  - "*.config.js"
+  - package*.json
+
+jekyll-archives:
+  enabled: [categories, tags]
+  layouts:
+    category: category
+    tag: tag
+  permalinks:
+    tag: /tags/:name/
+    category: /categories/:name/
