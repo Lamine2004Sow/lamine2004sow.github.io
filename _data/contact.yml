@@ -1,17 +1,12 @@
 # Icônes de contact affichées dans la sidebar
-# Retire les lignes dont tu n'as pas besoin
 
 - type: github
   icon: "fab fa-github"
 
 - type: linkedin
   icon: "fab fa-linkedin"
-  url: "https://www.linkedin.com/in/[ton-profil-linkedin]"
+  url: "https://www.linkedin.com/in/lamine-sow"
 
 - type: email
   icon: "fas fa-envelope"
-  noblank: true
-
-- type: rss
-  icon: "fas fa-rss"
   noblank: true
