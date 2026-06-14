@@ -4,6 +4,22 @@
 <meta charset="utf-8">
 <meta name="viewport" content="width=device-width, initial-scale=1">
 <script src="./support.js"></script>
+<!-- données — un fichier par section -->
+<script src="./data/identity.js"></script>
+<script src="./data/about.js"></script>
+<script src="./data/cv.js"></script>
+<script src="./data/skills.js"></script>
+<script src="./data/contact.js"></script>
+<script src="./data/demos.js"></script>
+<script src="./data/publications.js"></script>
+<!-- projets — ajouter un <script> ici pour chaque nouveau projet -->
+<script src="./data/projects.js"></script>
+<script src="./data/projects/p1-vision-landmarks.js"></script>
+<script src="./data/projects/p2-satellite-scheduling.js"></script>
+<script src="./data/projects/p3-anomaly-nlp.js"></script>
+<script src="./data/projects/p4-mlops-pipeline.js"></script>
+<!-- doit être chargé en dernier -->
+<script src="./data/index.js"></script>
 </head>
 <body>
 <x-dc>
@@ -12,24 +28,8 @@
   <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
   <link href="https://fonts.googleapis.com/css2?family=Newsreader:ital,opsz,wght@0,6..72,400;0,6..72,500;0,6..72,600;1,6..72,400;1,6..72,500&family=JetBrains+Mono:wght@400;500;600&display=swap" rel="stylesheet">
   <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/katex@0.16.9/dist/katex.min.css">
+  <link rel="stylesheet" href="./style.css">
   <script defer src="https://cdn.jsdelivr.net/npm/katex@0.16.9/dist/katex.min.js"></script>
-  <style>
-    *{box-sizing:border-box}
-    html,body{margin:0;padding:0}
-    body{
-      --bg:#faf9f6; --paper:#ffffff; --ink:#1a1a1f; --muted:#76767f; --line:#e7e4dd;
-      --accent:#2563eb; --accent-soft:#eef3ff;
-      --font-head:'Newsreader',Georgia,serif; --font-body:'Newsreader',Georgia,serif;
-      --font-mono:'JetBrains Mono',ui-monospace,monospace; --grid-img:none;
-      -webkit-font-smoothing:antialiased; text-rendering:optimizeLegibility;
-    }
-    a{color:inherit;text-decoration:none}
-    ::selection{background:var(--accent-soft)}
-    ::-webkit-scrollbar{width:10px;height:10px}
-    ::-webkit-scrollbar-thumb{background:var(--line);border-radius:10px;border:3px solid transparent;background-clip:content-box}
-    @keyframes scFade{from{opacity:0;transform:translateY(8px)}to{opacity:1;transform:none}}
-    .katex{font-size:1.05em}
-  </style>
 </helmet>
 <div ref="{{ rootRef }}" style="display:flex; align-items:flex-start; min-height:100vh; background:var(--bg); background-image:var(--grid-img); color:var(--ink); font-family:var(--font-body); font-size:16px;">
 
@@ -91,19 +91,16 @@
           <div style="font-family:var(--font-mono); font-size:11px; letter-spacing:1px; color:var(--muted); margin-bottom:8px;">{{ aboutKicker }}</div>
           <h1 style="font-family:var(--font-head); font-size:42px; font-weight:600; line-height:1.08; letter-spacing:-0.02em; margin:0 0 4px;">{{ name }}</h1>
           <div style="font-family:var(--font-head); font-style:italic; font-size:22px; color:var(--muted); margin:0 0 30px;">{{ aboutTagline }}</div>
-
           <div style="max-width:660px;">
             <sc-for list="{{ aboutParas }}" as="p" hint-placeholder-count="2">
               <p style="font-family:var(--font-body); font-size:17px; line-height:1.75; margin:0 0 18px; color:var(--ink);">{{ p }}</p>
             </sc-for>
           </div>
-
           <div style="display:flex; flex-wrap:wrap; gap:8px; margin:26px 0 34px;">
             <sc-for list="{{ domains }}" as="d" hint-placeholder-count="5">
               <span style="font-family:var(--font-mono); font-size:11px; letter-spacing:0.3px; color:var(--ink); border:1px solid var(--line); border-radius:2px; padding:6px 11px; background:var(--paper);">{{ d }}</span>
             </sc-for>
           </div>
-
           <div style="display:flex; flex-wrap:wrap; gap:16px; align-items:center; border-top:1px solid var(--line); padding-top:22px;">
             <div style="font-family:var(--font-mono); font-size:12px; color:var(--muted);"><span style="display:inline-block;width:7px;height:7px;border-radius:50%;background:var(--accent);margin-right:8px;"></span>{{ statusLine }}</div>
             <div style="flex:1;"></div>
@@ -117,7 +114,6 @@
         <div style="animation:scFade .35s ease;">
           <div style="font-family:var(--font-mono); font-size:11px; letter-spacing:1px; color:var(--muted); margin-bottom:8px;">{{ cvKicker }}</div>
           <h1 style="font-family:var(--font-head); font-size:38px; font-weight:600; letter-spacing:-0.02em; margin:0 0 36px;">{{ cvTitle }}</h1>
-
           <sc-for list="{{ cvBlocks }}" as="blk" hint-placeholder-count="2">
             <div style="margin-bottom:40px;">
               <div style="font-family:var(--font-mono); font-size:10px; letter-spacing:2px; color:var(--accent); margin-bottom:20px; padding-bottom:8px; border-bottom:1px solid var(--line);">{{ blk.label }}</div>
@@ -142,7 +138,6 @@
           <div style="font-family:var(--font-mono); font-size:11px; letter-spacing:1px; color:var(--muted); margin-bottom:8px;">{{ skillsKicker }}</div>
           <h1 style="font-family:var(--font-head); font-size:38px; font-weight:600; letter-spacing:-0.02em; margin:0 0 6px;">{{ skillsTitle }}</h1>
           <p style="font-family:var(--font-body); font-size:16px; line-height:1.6; color:var(--muted); max-width:620px; margin:0 0 36px;">{{ skillsIntro }}</p>
-
           <div style="display:grid; grid-template-columns:repeat(auto-fill,minmax(280px,1fr)); gap:1px; background:var(--line); border:1px solid var(--line);">
             <sc-for list="{{ skillGroups }}" as="g" hint-placeholder-count="6">
               <div style="background:var(--paper); padding:22px 22px 24px;">
@@ -167,7 +162,6 @@
           <div style="font-family:var(--font-mono); font-size:11px; letter-spacing:1px; color:var(--muted); margin-bottom:8px;">{{ projectsKicker }}</div>
           <h1 style="font-family:var(--font-head); font-size:38px; font-weight:600; letter-spacing:-0.02em; margin:0 0 6px;">{{ projectsTitle }}</h1>
           <p style="font-family:var(--font-body); font-size:16px; line-height:1.6; color:var(--muted); max-width:620px; margin:0 0 34px;">{{ projectsIntro }}</p>
-
           <div style="display:flex; flex-direction:column; gap:1px; background:var(--line); border:1px solid var(--line);">
             <sc-for list="{{ projectCards }}" as="p" hint-placeholder-count="4">
               <a href="#" onClick="{{ p.onOpen }}" style="display:grid; grid-template-columns:46px 1fr auto; gap:20px; align-items:center; background:var(--paper); padding:24px 26px; transition:background .15s;" style-hover="background:var(--accent-soft)">
@@ -196,7 +190,6 @@
       <sc-if value="{{ showReport }}" hint-placeholder-val="{{ true }}">
         <div style="animation:scFade .35s ease;">
           <a href="#" onClick="{{ backToProjects }}" style="font-family:var(--font-mono); font-size:12px; color:var(--accent); display:inline-block; margin-bottom:26px;">{{ backLabel }}</a>
-
           <div style="background:var(--paper); border:1px solid var(--line); border-radius:2px; padding:54px 60px 60px; box-shadow:0 1px 0 var(--line);">
             <div style="text-align:center; border-bottom:1px solid var(--line); padding-bottom:26px; margin-bottom:30px;">
               <div style="font-family:var(--font-mono); font-size:10px; letter-spacing:2px; color:var(--accent); margin-bottom:14px;">{{ report.kicker }}</div>
@@ -206,26 +199,22 @@
                 <span>{{ report.metaRole }}</span><span>·</span><span>{{ report.metaYear }}</span><span>·</span><span>{{ report.metaStack }}</span>
               </div>
             </div>
-
             <div style="background:var(--bg); border:1px solid var(--line); border-radius:2px; padding:18px 22px; margin-bottom:30px;">
               <div style="font-family:var(--font-mono); font-size:10px; letter-spacing:2px; color:var(--accent); margin-bottom:8px;">ABSTRACT</div>
               <p style="font-family:var(--font-body); font-size:15px; line-height:1.7; margin:0; color:var(--ink); text-align:justify;">{{ report.abstract }}</p>
             </div>
-
             <sc-for list="{{ report.sections }}" as="sec" hint-placeholder-count="3">
               <div style="margin-bottom:30px;">
                 <h2 style="font-family:var(--font-head); font-size:20px; font-weight:600; margin:0 0 14px;"><span style="font-family:var(--font-mono); font-size:14px; color:var(--accent); margin-right:10px;">{{ sec.n }}</span>{{ sec.heading }}</h2>
                 <sc-for list="{{ sec.paras }}" as="pp" hint-placeholder-count="2">
                   <p style="font-family:var(--font-body); font-size:15.5px; line-height:1.75; margin:0 0 14px; color:var(--ink); text-align:justify;">{{ pp }}</p>
                 </sc-for>
-
                 <sc-if value="{{ sec.hasEq }}" hint-placeholder-val="{{ false }}">
                   <div style="display:flex; align-items:center; gap:16px; margin:20px 0;">
                     <div data-tex="{{ sec.eq }}" data-display="1" style="flex:1; overflow-x:auto; padding:6px 0;"></div>
                     <div style="font-family:var(--font-mono); font-size:12px; color:var(--muted); flex:none;">{{ sec.eqNum }}</div>
                   </div>
                 </sc-if>
-
                 <sc-if value="{{ sec.hasFig }}" hint-placeholder-val="{{ false }}">
                   <figure style="margin:22px 0;">
                     <div style="border:1px solid var(--line); height:230px; display:flex; align-items:center; justify-content:center; background-color:var(--bg); background-image:repeating-linear-gradient(135deg, transparent, transparent 10px, rgba(0,0,0,0.025) 10px, rgba(0,0,0,0.025) 20px);">
@@ -234,17 +223,14 @@
                     <figcaption style="font-family:var(--font-mono); font-size:11.5px; color:var(--muted); margin-top:10px; text-align:center;">{{ sec.figCaption }}</figcaption>
                   </figure>
                 </sc-if>
-
                 <sc-if value="{{ sec.hasTable }}" hint-placeholder-val="{{ false }}">
                   <div style="margin:22px 0;">
                     <table style="width:100%; border-collapse:collapse; font-family:var(--font-mono); font-size:12.5px;">
-                      <thead>
-                        <tr>
-                          <sc-for list="{{ sec.table.head }}" as="h" hint-placeholder-count="3">
-                            <th style="text-align:left; padding:9px 12px; border-top:2px solid var(--ink); border-bottom:1px solid var(--ink); font-weight:600; color:var(--ink);">{{ h }}</th>
-                          </sc-for>
-                        </tr>
-                      </thead>
+                      <thead><tr>
+                        <sc-for list="{{ sec.table.head }}" as="h" hint-placeholder-count="3">
+                          <th style="text-align:left; padding:9px 12px; border-top:2px solid var(--ink); border-bottom:1px solid var(--ink); font-weight:600; color:var(--ink);">{{ h }}</th>
+                        </sc-for>
+                      </tr></thead>
                       <tbody>
                         <sc-for list="{{ sec.table.rows }}" as="row" hint-placeholder-count="3">
                           <tr>
@@ -260,7 +246,6 @@
                 </sc-if>
               </div>
             </sc-for>
-
             <div style="border-top:1px solid var(--line); padding-top:22px; margin-top:6px;">
               <div style="font-family:var(--font-mono); font-size:10px; letter-spacing:2px; color:var(--accent); margin-bottom:14px;">REFERENCES</div>
               <sc-for list="{{ report.references }}" as="r" hint-placeholder-count="3">
@@ -280,7 +265,6 @@
           <div style="font-family:var(--font-mono); font-size:11px; letter-spacing:1px; color:var(--muted); margin-bottom:8px;">{{ demosKicker }}</div>
           <h1 style="font-family:var(--font-head); font-size:38px; font-weight:600; letter-spacing:-0.02em; margin:0 0 6px;">{{ demosTitle }}</h1>
           <p style="font-family:var(--font-body); font-size:16px; line-height:1.6; color:var(--muted); max-width:620px; margin:0 0 34px;">{{ demosIntro }}</p>
-
           <div style="display:grid; grid-template-columns:repeat(auto-fill,minmax(300px,1fr)); gap:20px;">
             <sc-for list="{{ demos }}" as="d" hint-placeholder-count="3">
               <div style="border:1px solid var(--line); border-radius:2px; background:var(--paper); overflow:hidden; display:flex; flex-direction:column;">
@@ -295,7 +279,7 @@
                       <span style="font-family:var(--font-mono); font-size:10px; color:var(--ink); background:var(--bg); border:1px solid var(--line); border-radius:2px; padding:2px 7px;">{{ t }}</span>
                     </sc-for>
                   </div>
-                  <a href="#" style="font-family:var(--font-mono); font-size:11.5px; letter-spacing:0.3px; color:var(--accent); border:1px solid var(--accent); border-radius:2px; padding:8px 13px; text-align:center;">{{ d.cta }}</a>
+                  <a href="{{ d.href }}" style="font-family:var(--font-mono); font-size:11.5px; letter-spacing:0.3px; color:var(--accent); border:1px solid var(--accent); border-radius:2px; padding:8px 13px; text-align:center;">{{ d.cta }}</a>
                 </div>
               </div>
             </sc-for>
@@ -308,7 +292,6 @@
         <div style="animation:scFade .35s ease;">
           <div style="font-family:var(--font-mono); font-size:11px; letter-spacing:1px; color:var(--muted); margin-bottom:8px;">{{ pubsKicker }}</div>
           <h1 style="font-family:var(--font-head); font-size:38px; font-weight:600; letter-spacing:-0.02em; margin:0 0 34px;">{{ pubsTitle }}</h1>
-
           <div style="display:flex; flex-direction:column;">
             <sc-for list="{{ publications }}" as="pub" hint-placeholder-count="3">
               <div style="display:grid; grid-template-columns:64px 1fr; gap:22px; padding:22px 0; border-top:1px solid var(--line);">
@@ -331,7 +314,6 @@
           <div style="font-family:var(--font-mono); font-size:11px; letter-spacing:1px; color:var(--muted); margin-bottom:8px;">{{ contactKicker }}</div>
           <h1 style="font-family:var(--font-head); font-size:38px; font-weight:600; letter-spacing:-0.02em; margin:0 0 6px;">{{ contactTitle }}</h1>
           <p style="font-family:var(--font-body); font-size:17px; line-height:1.7; color:var(--muted); max-width:560px; margin:0 0 36px;">{{ contactIntro }}</p>
-
           <div style="border-top:1px solid var(--line);">
             <sc-for list="{{ contacts }}" as="c" hint-placeholder-count="4">
               <a href="{{ c.href }}" style="display:grid; grid-template-columns:140px 1fr auto; gap:20px; align-items:center; padding:18px 4px; border-bottom:1px solid var(--line);" style-hover="background:var(--accent-soft)">
@@ -348,7 +330,7 @@
   </main>
 </div>
 </x-dc>
-<script type="text/x-dc" data-dc-script data-props="{&quot;name&quot;:{&quot;editor&quot;:&quot;text&quot;,&quot;default&quot;:&quot;Mouhamadou Lamine SOW&quot;,&quot;tsType&quot;:&quot;string&quot;},&quot;accent&quot;:{&quot;editor&quot;:&quot;color&quot;,&quot;default&quot;:&quot;#2563eb&quot;,&quot;tsType&quot;:&quot;string&quot;}}">
+<script type="text/x-dc" data-dc-script>
 class Component extends DCLogic {
   state = { lang: "fr", theme: "paper", view: "about", project: null };
 
@@ -370,15 +352,13 @@ class Component extends DCLogic {
   applyTheme(t) {
     const T = this.THEMES[t] || this.THEMES.paper;
     for (const k in T) document.body.style.setProperty(k, T[k]);
-    if (this.props && this.props.accent) document.body.style.setProperty("--accent", this.props.accent);
   }
 
   renderMath() {
     if (!window.katex || !this._root) return;
     this._root.querySelectorAll("[data-tex]").forEach((el) => {
       const tex = el.getAttribute("data-tex");
-      if (!tex) return;
-      if (el.dataset.rendered === tex) return;
+      if (!tex || el.dataset.rendered === tex) return;
       try {
         window.katex.render(tex, el, { throwOnError: false, displayMode: el.getAttribute("data-display") === "1" });
         el.dataset.rendered = tex;
@@ -393,215 +373,19 @@ class Component extends DCLogic {
 
   get THEMES() {
     return {
-      paper: { "--bg": "#faf9f6", "--paper": "#ffffff", "--ink": "#1a1a1f", "--muted": "#76767f", "--line": "#e7e4dd", "--accent": "#2563eb", "--accent-soft": "#eef3ff", "--font-head": "'Newsreader',Georgia,serif", "--grid-img": "none" },
-      ink: { "--bg": "#fafafa", "--paper": "#ffffff", "--ink": "#101012", "--muted": "#787880", "--line": "#e6e6e6", "--accent": "#2563eb", "--accent-soft": "#eef3ff", "--font-head": "'JetBrains Mono',monospace", "--grid-img": "none" },
+      paper:     { "--bg": "#faf9f6", "--paper": "#ffffff", "--ink": "#1a1a1f", "--muted": "#76767f", "--line": "#e7e4dd", "--accent": "#2563eb", "--accent-soft": "#eef3ff", "--font-head": "'Newsreader',Georgia,serif", "--grid-img": "none" },
+      ink:       { "--bg": "#fafafa", "--paper": "#ffffff", "--ink": "#101012", "--muted": "#787880", "--line": "#e6e6e6", "--accent": "#2563eb", "--accent-soft": "#eef3ff", "--font-head": "'JetBrains Mono',monospace", "--grid-img": "none" },
       blueprint: { "--bg": "#f3f7fc", "--paper": "#ffffff", "--ink": "#15263f", "--muted": "#5d6e87", "--line": "#d6e2f1", "--accent": "#2563eb", "--accent-soft": "#e7f0fd", "--font-head": "'Newsreader',Georgia,serif", "--grid-img": "linear-gradient(rgba(37,99,235,0.045) 1px, transparent 1px), linear-gradient(90deg, rgba(37,99,235,0.045) 1px, transparent 1px)" },
     };
   }
 
-  get DATA() {
-    return {
-      nav: [
-        { group: { fr: "PROFIL", en: "PROFILE" }, items: [
-          { id: "about", fr: "Accueil", en: "Home" },
-          { id: "cv", fr: "Parcours", en: "CV" },
-          { id: "skills", fr: "Compétences", en: "Skills" },
-        ] },
-        { group: { fr: "TRAVAUX", en: "WORK" }, items: [
-          { id: "projects", fr: "Projets", en: "Projects" },
-          { id: "demos", fr: "Démos Streamlit", en: "Streamlit demos" },
-          { id: "publications", fr: "Publications", en: "Publications" },
-        ] },
-        { group: { fr: "JOINDRE", en: "REACH" }, items: [
-          { id: "contact", fr: "Contact", en: "Contact" },
-        ] },
-      ],
-      role: { fr: "Ingénieur · Computer Vision\nRecherche Opérationnelle · Spatial", en: "Engineer · Computer Vision\nOperations Research · Space" },
-      about: {
-        tagline: { fr: "Percevoir, décider, tester.", en: "Perceive, decide, test." },
-        paras: {
-          fr: [
-            "Étudiant ingénieur à l'intersection de la vision par ordinateur, de la recherche opérationnelle et du domaine spatial. Je conçois des systèmes qui perçoivent leur environnement, décident sous contrainte, puis se vérifient — du prototype Streamlit jusqu'au rapport technique formel.",
-            "Mon travail repose sur trois exigences : du machine learning ancré dans la donnée réelle, de l'optimisation qui tient compte des contraintes opérationnelles, et une ingénierie fiable — pipelines reproductibles, tests rigoureux, documentation soignée au format LaTeX.",
-          ],
-          en: [
-            "Engineering student working at the intersection of computer vision, operations research and the space domain. I build systems that perceive their environment, decide under constraints, then verify themselves — from a Streamlit prototype to a formal technical report.",
-            "My work rests on three commitments: machine learning grounded in real data, optimization that respects operational constraints, and reliable engineering — reproducible pipelines, rigorous testing, clean LaTeX documentation.",
-          ],
-        },
-        domains: { fr: ["Computer Vision", "Recherche Opérationnelle", "TAL / NLP", "Spatial & GNC", "MLOps & Test"], en: ["Computer Vision", "Operations Research", "NLP", "Space & GNC", "MLOps & Test"] },
-        status: { fr: "Disponible — stage de fin d'études · 2026", en: "Open to — final-year internship · 2026" },
-      },
-      cv: {
-        title: { fr: "Parcours & formation", en: "Background & education" },
-        blocks: [
-          { label: { fr: "FORMATION", en: "EDUCATION" }, items: [
-            { date: "2023 — 2026", title: { fr: "Diplôme d'ingénieur — spécialité Data & Systèmes intelligents", en: "Engineering degree — Data & Intelligent Systems" }, org: { fr: "École d'ingénieurs", en: "Engineering school" }, desc: { fr: "Vision par ordinateur, optimisation et recherche opérationnelle, apprentissage statistique, calcul scientifique. Projets appliqués au spatial et à la robotique.", en: "Computer vision, optimization and operations research, statistical learning, scientific computing. Applied projects in space and robotics." } },
-            { date: "2021 — 2023", title: { fr: "Classes préparatoires — filière MP", en: "Preparatory classes — Maths & Physics" }, org: { fr: "CPGE", en: "CPGE" }, desc: { fr: "Mathématiques, physique et informatique intensives. Admission sur concours en école d'ingénieurs.", en: "Intensive mathematics, physics and computer science. Competitive admission to engineering school." } },
-          ] },
-          { label: { fr: "EXPÉRIENCE", en: "EXPERIENCE" }, items: [
-            { date: { fr: "Été 2025", en: "Summer 2025" }, title: { fr: "Stage R&D — Vision par ordinateur", en: "R&D internship — Computer Vision" }, org: { fr: "Laboratoire / Entreprise", en: "Lab / Company" }, desc: { fr: "Détection et suivi d'amers visuels pour la navigation relative. Mise en place d'un pipeline d'entraînement reproductible et d'une suite de tests automatisés.", en: "Visual landmark detection and tracking for relative navigation. Built a reproducible training pipeline and an automated test suite." } },
-            { date: "2024 — 2025", title: { fr: "Projet de recherche — Recherche Opérationnelle", en: "Research project — Operations Research" }, org: { fr: "Encadré · groupe de 3", en: "Supervised · team of 3" }, desc: { fr: "Optimisation de la planification d'observations satellites par programmation en nombres entiers et métaheuristiques. Rapport et soutenance.", en: "Satellite observation scheduling via integer programming and metaheuristics. Report and defense." } },
-            { date: { fr: "En continu", en: "Ongoing" }, title: { fr: "Contributions open-source & outils internes", en: "Open-source & internal tooling" }, org: { fr: "Python · C++", en: "Python · C++" }, desc: { fr: "Petits outils de traitement d'images et de visualisation, dashboards Streamlit, intégration continue et tests.", en: "Small image-processing and visualization tools, Streamlit dashboards, continuous integration and testing." } },
-          ] },
-        ],
-      },
-      skills: {
-        title: { fr: "Compétences", en: "Skills" },
-        intro: { fr: "Organisées par domaine — de la perception à la mise en production.", en: "Organized by domain — from perception to production." },
-        groups: [
-          { label: { fr: "COMPUTER VISION & ML", en: "COMPUTER VISION & ML" }, items: ["PyTorch", "OpenCV", "scikit-learn", "Segmentation", "Détection", "SLAM / VO", "Géométrie multi-vues"] },
-          { label: { fr: "RECHERCHE OPÉRATIONNELLE", en: "OPERATIONS RESEARCH" }, items: ["MILP", "Gurobi", "PuLP / OR-Tools", "Métaheuristiques", "Programmation par contraintes", "Optimisation convexe"] },
-          { label: { fr: "TAL / NLP", en: "NLP" }, items: ["spaCy", "Transformers", "Embeddings", "Extraction d'information", "Classification de texte"] },
-          { label: { fr: "SPATIAL & GNC", en: "SPACE & GNC" }, items: ["Mécanique orbitale", "Filtre de Kalman", "Navigation relative", "Estimation d'état", "Simulation"] },
-          { label: { fr: "OPS & TEST", en: "OPS & TEST" }, items: ["pytest", "CI/CD", "Docker", "MLflow", "DVC", "Tests d'intégration"] },
-          { label: { fr: "LANGAGES & OUTILS", en: "LANGUAGES & TOOLS" }, items: ["Python", "C++", "Julia", "LaTeX", "Git", "Streamlit", "NumPy / SciPy"] },
-        ],
-      },
-      projects: {
-        title: { fr: "Projets", en: "Projects" },
-        intro: { fr: "Chaque projet ouvre un rapport technique complet — méthode, équations, résultats, références.", en: "Each project opens a full technical report — method, equations, results, references." },
-        items: [
-          {
-            id: "p1", theme: { fr: "VISION · SPATIAL", en: "VISION · SPACE" }, year: "2025",
-            title: { fr: "Détection d'amers visuels pour navigation autonome", en: "Visual landmark detection for autonomous navigation" },
-            blurb: { fr: "Perception relative basée vision pour des opérations de proximité autour d'un petit corps céleste.", en: "Vision-based relative perception for proximity operations around a small celestial body." },
-            tags: ["PyTorch", "OpenCV", "SLAM", "C++"],
-            report: {
-              kicker: "TECHNICAL REPORT · CV-2025",
-              subtitle: "Vision-based relative navigation for small-body proximity operations",
-              metaRole: "Lead — perception", metaYear: "2025", metaStack: "PyTorch · OpenCV · ROS2",
-              abstract: "We present a perception pipeline that detects and tracks surface landmarks from a monocular camera to estimate the relative pose of a spacecraft during proximity operations. A lightweight detector is trained on rendered imagery and adapted to flight-like conditions; detections feed a pose estimator constrained by the multi-view geometry of the observed surface. The system runs in real time on embedded hardware and degrades gracefully under illumination changes.",
-              sections: [
-                { n: "1", heading: "Introduction", paras: ["Autonomous navigation near a small body cannot rely on a global map. Instead, the spacecraft must build and reuse a local representation of surface features observed across frames. Visual landmarks are attractive because they are passive, low-power and informative about relative motion.", "The challenge is robustness: harsh, fast-changing illumination, low texture, and tight compute budgets. We address this with a compact detector and a geometry-constrained estimator."] },
-                { n: "2", heading: "Method", paras: ["Given a calibrated camera with intrinsics K, a landmark with world coordinates X projects to image coordinates x. We minimize the total reprojection error over all tracked landmarks to recover the relative rotation R and translation t:"], hasEq: true, eq: "E(R,t)=\\sum_{i=1}^{N}\\left\\lVert \\mathbf{x}_i-\\pi\\!\\left(\\mathbf{K}\\,[\\,\\mathbf{R}\\mid\\mathbf{t}\\,]\\,\\mathbf{X}_i\\right)\\right\\rVert^2", eqNum: "(1)" },
-                { n: "3", heading: "Results", paras: ["On a held-out sequence the pipeline maintains sub-pixel median reprojection error while running above 20 Hz on the target board. The detector transfers from synthetic to flight-like imagery with limited fine-tuning."], hasFig: true, figNote: "rendered scene + detected landmarks", figCaption: "Figure 1 — Detected landmarks (overlay) across a descent sequence.", hasTable: true, table: { head: ["Config", "Reproj. err (px)", "Rate (Hz)"], rows: [["Baseline", "1.84", "12"], ["+ geom. constraint", "0.71", "21"], ["+ embedded opt.", "0.74", "27"]] }, tableCaption: "Table 1 — Accuracy / throughput trade-off on the embedded target." },
-              ],
-              references: [
-                { n: "[1]", text: "Hartley & Zisserman. Multiple View Geometry in Computer Vision. Cambridge University Press." },
-                { n: "[2]", text: "Mur-Artal et al. ORB-SLAM: a versatile and accurate monocular SLAM system. IEEE T-RO." },
-                { n: "[3]", text: "Internal technical note — synthetic-to-real adaptation for surface landmark detection, 2025." },
-              ],
-            },
-          },
-          {
-            id: "p2", theme: { fr: "RECHERCHE OPÉRATIONNELLE", en: "OPERATIONS RESEARCH" }, year: "2025",
-            title: { fr: "Optimisation de la planification d'observations satellites", en: "Satellite observation scheduling optimization" },
-            blurb: { fr: "Sélection et ordonnancement d'observations sous contraintes de fenêtres, d'énergie et de mémoire de bord.", en: "Selecting and scheduling observations under visibility, energy and onboard-memory constraints." },
-            tags: ["MILP", "Gurobi", "Python", "OR-Tools"],
-            report: {
-              kicker: "TECHNICAL REPORT · OR-2025",
-              subtitle: "An integer-programming approach to agile Earth-observation scheduling",
-              metaRole: "Optimization & modeling", metaYear: "2025", metaStack: "Gurobi · Python · OR-Tools",
-              abstract: "We formulate the selection and ordering of imaging requests for an agile observation satellite as a mixed-integer linear program. Each candidate acquisition has a value, a visibility window and a slewing cost between consecutive targets; onboard memory and energy impose global constraints. We compare an exact solver against a greedy and a metaheuristic baseline, and report the value/time frontier.",
-              sections: [
-                { n: "1", heading: "Problem", paras: ["A satellite passes over many candidate targets but can only image a subset because of attitude-slewing time, energy and memory. We choose binary variables y indexed by target and time slot, maximizing total acquired value while respecting the operational constraints."] },
-                { n: "2", heading: "Model", paras: ["Let v be the value of acquiring target s. The objective maximizes the total value of selected acquisitions subject to window, transition and resource constraints:"], hasEq: true, eq: "\\max \\sum_{s\\in S}\\sum_{t\\in T} v_{s}\\,y_{s,t}\\quad\\text{s.t.}\\;\\sum_{t} y_{s,t}\\le 1,\\;\\; \\sum_{s} m_{s}\\,y_{s,t}\\le M", eqNum: "(1)" },
-                { n: "3", heading: "Results", paras: ["The exact MILP closes the gap on medium instances within seconds and provides certified optimality; the metaheuristic reaches near-optimal value an order of magnitude faster on large instances, which matters for onboard replanning."], hasTable: true, table: { head: ["Method", "Value (rel.)", "Time"], rows: [["Greedy", "0.78", "<0.1 s"], ["Metaheuristic", "0.96", "1.2 s"], ["Exact (MILP)", "1.00", "8.4 s"]] }, tableCaption: "Table 1 — Value relative to optimum vs. runtime (medium instance)." },
-              ],
-              references: [
-                { n: "[1]", text: "Wolsey. Integer Programming. Wiley-Interscience." },
-                { n: "[2]", text: "Lemaître et al. Selecting and scheduling observations of agile satellites. Aerospace Science and Technology." },
-                { n: "[3]", text: "Project report — agile EO scheduling, engineering research project, 2025." },
-              ],
-            },
-          },
-          {
-            id: "p3", theme: { fr: "TAL / NLP", en: "NLP" }, year: "2024",
-            title: { fr: "Extraction d'information sur rapports d'anomalies", en: "Information extraction from anomaly reports" },
-            blurb: { fr: "Structuration automatique de rapports d'incidents techniques : entités, causes, actions correctives.", en: "Automatically structuring technical incident reports: entities, causes, corrective actions." },
-            tags: ["Transformers", "spaCy", "Python"],
-            report: {
-              kicker: "TECHNICAL REPORT · NLP-2024",
-              subtitle: "Transformer-based extraction over semi-structured engineering reports",
-              metaRole: "Modeling & evaluation", metaYear: "2024", metaStack: "Transformers · spaCy · pandas",
-              abstract: "Engineering anomaly reports mix free text with implicit structure. We fine-tune a transformer encoder to tag entities (component, symptom, root cause, corrective action) and link them into structured records, enabling search and trend analysis across a corpus that was previously read manually.",
-              sections: [
-                { n: "1", heading: "Motivation", paras: ["Hundreds of anomaly reports accumulate over a program's life. Reading them is slow and inconsistent. A structured representation makes recurring failure modes searchable and quantifiable."] },
-                { n: "2", heading: "Approach", paras: ["A pre-trained encoder produces contextual token representations; a tagging head assigns entity labels. The self-attention weights that mix token information are computed as:"], hasEq: true, eq: "\\mathrm{Attention}(Q,K,V)=\\mathrm{softmax}\\!\\left(\\frac{QK^{\\top}}{\\sqrt{d_k}}\\right)V", eqNum: "(1)" },
-                { n: "3", heading: "Evaluation", paras: ["On a manually annotated subset the model reaches strong entity-level F1 and surfaces the most frequent component/root-cause pairs, which were validated by domain experts."], hasFig: true, figNote: "co-occurrence heatmap placeholder", figCaption: "Figure 1 — Component × root-cause co-occurrence over the corpus." },
-              ],
-              references: [
-                { n: "[1]", text: "Vaswani et al. Attention Is All You Need. NeurIPS." },
-                { n: "[2]", text: "Devlin et al. BERT: Pre-training of Deep Bidirectional Transformers. NAACL." },
-              ],
-            },
-          },
-          {
-            id: "p4", theme: { fr: "OPS & TEST", en: "OPS & TEST" }, year: "2024",
-            title: { fr: "Pipeline MLOps & tests pour modèles embarqués", en: "MLOps & testing pipeline for embedded models" },
-            blurb: { fr: "Reproductibilité, versionnage des données et tests automatisés pour des modèles destinés au bord.", en: "Reproducibility, data versioning and automated testing for edge-deployed models." },
-            tags: ["DVC", "MLflow", "pytest", "Docker"],
-            report: {
-              kicker: "TECHNICAL REPORT · OPS-2024",
-              subtitle: "From notebook to verified, reproducible model artifacts",
-              metaRole: "Tooling & reliability", metaYear: "2024", metaStack: "DVC · MLflow · pytest · CI",
-              abstract: "We describe a pipeline that turns exploratory model code into reproducible, tested artifacts. Data and experiments are versioned, training is containerized, and a layered test suite (unit, data-validation, behavioral) gates deployment. We model expected reliability of the gating process to size the test budget.",
-              sections: [
-                { n: "1", heading: "Goals", paras: ["Models that ship to constrained targets must be reproducible and trustworthy. We separate data versioning, experiment tracking and a test gate so that any artifact can be rebuilt and audited."] },
-                { n: "2", heading: "Reliability model", paras: ["Assuming independent test failures arrive at rate λ, the probability that a faulty build survives the gate up to time t decays exponentially, motivating how much test coverage is worth adding:"], hasEq: true, eq: "R(t)=e^{-\\lambda t},\\qquad \\lambda=\\sum_{k} c_k\\,p_k", eqNum: "(1)" },
-                { n: "3", heading: "Outcome", paras: ["The pipeline cut the time to reproduce a result from hours to minutes and caught regressions before deployment via behavioral tests on curated edge cases."], hasTable: true, table: { head: ["Stage", "Gate", "Cost"], rows: [["Unit", "logic", "low"], ["Data-validation", "schema / drift", "low"], ["Behavioral", "edge cases", "medium"]] }, tableCaption: "Table 1 — Layered test gates before deployment." },
-              ],
-              references: [
-                { n: "[1]", text: "Sculley et al. Hidden Technical Debt in Machine Learning Systems. NeurIPS." },
-                { n: "[2]", text: "Internal handbook — reproducible ML pipelines and test gates, 2024." },
-              ],
-            },
-          },
-        ],
-      },
-      demos: {
-        title: { fr: "Démos Streamlit", en: "Streamlit demos" },
-        intro: { fr: "Petites applications interactives pour explorer un modèle ou un solveur en direct.", en: "Small interactive apps to explore a model or a solver live." },
-        items: [
-          { title: { fr: "Planificateur de missions", en: "Mission scheduler" }, desc: { fr: "Visualise la solution d'un MILP de planification d'observations et l'effet des contraintes.", en: "Visualizes the solution of an observation-scheduling MILP and the effect of constraints." }, tags: ["Streamlit", "PuLP", "Plotly"], shot: { fr: "capture · planning", en: "screenshot · schedule" }, cta: { fr: "Lancer la démo ↗", en: "Launch demo ↗" } },
-          { title: { fr: "Explorateur de détections", en: "Detection explorer" }, desc: { fr: "Téléverse une image et inspecte segmentation et amers détectés par le modèle de vision.", en: "Upload an image and inspect the segmentation and landmarks detected by the vision model." }, tags: ["Streamlit", "PyTorch", "OpenCV"], shot: { fr: "capture · overlay", en: "screenshot · overlay" }, cta: { fr: "Lancer la démo ↗", en: "Launch demo ↗" } },
-          { title: { fr: "Analyse de rapports", en: "Report analytics" }, desc: { fr: "Tableau de bord d'extraction d'information sur un corpus de rapports d'anomalies.", en: "Information-extraction dashboard over a corpus of anomaly reports." }, tags: ["Streamlit", "spaCy", "Transformers"], shot: { fr: "capture · dashboard", en: "screenshot · dashboard" }, cta: { fr: "Lancer la démo ↗", en: "Launch demo ↗" } },
-        ],
-      },
-      publications: {
-        title: { fr: "Publications & rapports", en: "Publications & reports" },
-        items: [
-          { year: "2025", type: { fr: "RAPPORT TECHNIQUE", en: "TECHNICAL REPORT" }, title: { fr: "Navigation relative basée vision pour opérations de proximité", en: "Vision-based relative navigation for proximity operations" }, authors: { fr: "Votre Nom, et al.", en: "Your Name, et al." }, venue: { fr: "Rapport de stage R&D · 2025", en: "R&D internship report · 2025" } },
-          { year: "2025", type: { fr: "PROJET DE RECHERCHE", en: "RESEARCH PROJECT" }, title: { fr: "Planification d'observations satellites par programmation en nombres entiers", en: "Satellite observation scheduling via integer programming" }, authors: { fr: "Votre Nom, équipe de 3", en: "Your Name, team of 3" }, venue: { fr: "Soutenance · École d'ingénieurs · 2025", en: "Defense · Engineering school · 2025" } },
-          { year: "2024", type: { fr: "POSTER", en: "POSTER" }, title: { fr: "Extraction d'information sur rapports d'anomalies techniques", en: "Information extraction from technical anomaly reports" }, authors: { fr: "Votre Nom", en: "Your Name" }, venue: { fr: "Journée projets · 2024", en: "Project day · 2024" } },
-        ],
-      },
-      contact: {
-        title: { fr: "Contact", en: "Contact" },
-        intro: { fr: "Ouvert aux discussions autour de la vision, de l'optimisation et du spatial. N'hésitez pas à écrire.", en: "Open to conversations about vision, optimization and space. Feel free to reach out." },
-        items: [
-          { label: "EMAIL", value: "vous@exemple.com", href: "mailto:vous@exemple.com" },
-          { label: "GITHUB", value: "github.com/votre-handle", href: "#" },
-          { label: "LINKEDIN", value: "linkedin.com/in/votre-nom", href: "#" },
-          { label: { fr: "LOCALISATION", en: "LOCATION" }, value: { fr: "France", en: "France" }, href: "#" },
-        ],
-      },
-      ui: {
-        lang: { fr: "LANGUE", en: "LANGUAGE" },
-        theme: { fr: "DIRECTION", en: "DIRECTION" },
-        download: { fr: "Télécharger le CV (PDF) ↗", en: "Download CV (PDF) ↗" },
-        open: { fr: "Ouvrir →", en: "Open →" },
-        back: { fr: "← Retour aux projets", en: "← Back to projects" },
-        kick: {
-          about: { fr: "00 / PROFIL", en: "00 / PROFILE" },
-          cv: { fr: "01 / PARCOURS", en: "01 / BACKGROUND" },
-          skills: { fr: "02 / COMPÉTENCES", en: "02 / SKILLS" },
-          projects: { fr: "03 / PROJETS", en: "03 / PROJECTS" },
-          demos: { fr: "04 / DÉMOS", en: "04 / DEMOS" },
-          pubs: { fr: "05 / PUBLICATIONS", en: "05 / PUBLICATIONS" },
-          contact: { fr: "06 / CONTACT", en: "06 / CONTACT" },
-        },
-      },
-    };
-  }
+  get DATA() { return window.PORTFOLIO_DATA; }
 
   renderVals() {
     const D = this.DATA;
     const lang = this.state.lang;
     const view = this.state.view;
     const L = (o) => this.L(o);
-    const name = (this.props && this.props.name) || "Votre Nom";
 
     const navGroups = D.nav.map((g) => ({
       label: L(g.group),
@@ -613,7 +397,7 @@ class Component extends DCLogic {
           active,
           onClick: (e) => { e.preventDefault(); this.setState({ view: it.id, project: null }, () => window.scrollTo(0, 0)); },
           style: "display:flex; align-items:center; gap:0; padding:7px 0; font-family:var(--font-body); font-size:15.5px; line-height:1.2; cursor:pointer; color:" + (active ? "var(--ink)" : "var(--muted)") + "; font-weight:" + (active ? "600" : "400") + ";",
-          bar: "display:inline-block; width:" + (active ? "16px" : "0px") + "; height:1.5px; background:var(--accent); margin-right:" + (active ? "10px" : "0px") + "; transition:all .18s;",
+          bar:   "display:inline-block; width:" + (active ? "16px" : "0px") + "; height:1.5px; background:var(--accent); margin-right:" + (active ? "10px" : "0px") + "; transition:all .18s;",
         };
       }),
     }));
@@ -635,14 +419,14 @@ class Component extends DCLogic {
     });
 
     const projectCards = D.projects.items.map((p, i) => ({
-      num: String(i + 1).padStart(2, "0"),
-      theme: L(p.theme),
-      year: p.year,
-      title: L(p.title),
-      blurb: L(p.blurb),
-      tags: p.tags,
+      num:       String(i + 1).padStart(2, "0"),
+      theme:     L(p.theme),
+      year:      p.year,
+      title:     L(p.title),
+      blurb:     L(p.blurb),
+      tags:      p.tags,
       openLabel: L(D.ui.open),
-      onOpen: (e) => { e.preventDefault(); this.setState({ project: p.id }, () => window.scrollTo(0, 0)); },
+      onOpen:    (e) => { e.preventDefault(); this.setState({ project: p.id }, () => window.scrollTo(0, 0)); },
     }));
 
     const activeProj = D.projects.items.find((p) => p.id === this.state.project) || null;
@@ -665,65 +449,57 @@ class Component extends DCLogic {
 
     return {
       rootRef: (el) => { this._root = el; },
-      idTag: "// CV — PORTFOLIO",
-      name,
-      role: L(D.role),
+      idTag:   "// CV — PORTFOLIO",
+      name:    D.name,
+      role:    L(D.role),
       navGroups, langBtns, themeBtns,
       langLabel: L(D.ui.lang), themeLabel: L(D.ui.theme),
 
-      showAbout: view === "about",
-      showCV: view === "cv",
-      showSkills: view === "skills",
+      showAbout:        view === "about",
+      showCV:           view === "cv",
+      showSkills:       view === "skills",
       showProjectsGrid: view === "projects" && !this.state.project,
-      showReport: view === "projects" && !!this.state.project,
-      showDemos: view === "demos",
-      showPubs: view === "publications",
-      showContact: view === "contact",
+      showReport:       view === "projects" && !!this.state.project,
+      showDemos:        view === "demos",
+      showPubs:         view === "publications",
+      showContact:      view === "contact",
 
-      // About
-      aboutKicker: L(D.ui.kick.about),
+      aboutKicker:  L(D.ui.kick.about),
       aboutTagline: L(D.about.tagline),
-      aboutParas: L(D.about.paras),
-      domains: L(D.about.domains),
-      statusLine: L(D.about.status),
-      downloadCv: L(D.ui.download),
+      aboutParas:   L(D.about.paras),
+      domains:      L(D.about.domains),
+      statusLine:   L(D.about.status),
+      downloadCv:   L(D.ui.download),
 
-      // CV
-      cvKicker: L(D.ui.kick.cv),
-      cvTitle: L(D.cv.title),
-      cvBlocks: D.cv.blocks.map((b) => ({ label: L(b.label), items: b.items.map((e) => ({ date: L(e.date), title: L(e.title), org: L(e.org), desc: L(e.desc) })) })),
+      cvKicker:  L(D.ui.kick.cv),
+      cvTitle:   L(D.cv.title),
+      cvBlocks:  D.cv.blocks.map((b) => ({ label: L(b.label), items: b.items.map((e) => ({ date: L(e.date), title: L(e.title), org: L(e.org), desc: L(e.desc) })) })),
 
-      // Skills
       skillsKicker: L(D.ui.kick.skills),
-      skillsTitle: L(D.skills.title),
-      skillsIntro: L(D.skills.intro),
-      skillGroups: D.skills.groups.map((g, i) => ({ num: String(i + 1).padStart(2, "0"), label: L(g.label), items: g.items })),
+      skillsTitle:  L(D.skills.title),
+      skillsIntro:  L(D.skills.intro),
+      skillGroups:  D.skills.groups.map((g, i) => ({ num: String(i + 1).padStart(2, "0"), label: L(g.label), items: g.items })),
 
-      // Projects
       projectsKicker: L(D.ui.kick.projects),
-      projectsTitle: L(D.projects.title),
-      projectsIntro: L(D.projects.intro),
-      projectCards,
-      report,
-      backLabel: L(D.ui.back),
+      projectsTitle:  L(D.projects.title),
+      projectsIntro:  L(D.projects.intro),
+      projectCards, report,
+      backLabel:      L(D.ui.back),
       backToProjects: (e) => { e.preventDefault(); this.setState({ project: null }, () => window.scrollTo(0, 0)); },
 
-      // Demos
       demosKicker: L(D.ui.kick.demos),
-      demosTitle: L(D.demos.title),
-      demosIntro: L(D.demos.intro),
-      demos: D.demos.items.map((d) => ({ title: L(d.title), desc: L(d.desc), tags: d.tags, shot: L(d.shot), cta: L(d.cta) })),
+      demosTitle:  L(D.demos.title),
+      demosIntro:  L(D.demos.intro),
+      demos:       D.demos.items.map((d) => ({ title: L(d.title), desc: L(d.desc), tags: d.tags, shot: L(d.shot), cta: L(d.cta), href: d.href })),
 
-      // Publications
-      pubsKicker: L(D.ui.kick.pubs),
-      pubsTitle: L(D.publications.title),
+      pubsKicker:   L(D.ui.kick.pubs),
+      pubsTitle:    L(D.publications.title),
       publications: D.publications.items.map((p) => ({ year: p.year, type: L(p.type), title: L(p.title), authors: L(p.authors), venue: L(p.venue) })),
 
-      // Contact
       contactKicker: L(D.ui.kick.contact),
-      contactTitle: L(D.contact.title),
-      contactIntro: L(D.contact.intro),
-      contacts: D.contact.items.map((c) => ({ label: L(c.label), value: L(c.value), href: c.href })),
+      contactTitle:  L(D.contact.title),
+      contactIntro:  L(D.contact.intro),
+      contacts:      D.contact.items.map((c) => ({ label: L(c.label), value: L(c.value), href: c.href })),
     };
   }
 }
