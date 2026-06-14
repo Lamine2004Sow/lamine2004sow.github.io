@@ -1,0 +1,17 @@
+# Claude Code / MCP tooling
+.claude/
+.dual-graph/
+CLAUDE.md
+.thumbnail
+
+# Screenshots (non référencées dans le site)
+screenshots/
+
+# OS
+.DS_Store
+Thumbs.db
+
+# Éditeur
+.vscode/
+*.swp
+*~
