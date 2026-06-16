@@ -14,10 +14,8 @@
 <script src="./data/publications.js"></script>
 <!-- projets — ajouter un <script> ici pour chaque nouveau projet -->
 <script src="./data/projects.js"></script>
-<script src="./data/projects/p1-vision-landmarks.js"></script>
-<script src="./data/projects/p2-satellite-scheduling.js"></script>
-<script src="./data/projects/p3-anomaly-nlp.js"></script>
-<script src="./data/projects/p4-mlops-pipeline.js"></script>
+<script src="./data/projects/p1-ring-star.js"></script>
+<script src="./data/projects/p2-parcoursup.js"></script>
 <!-- doit être chargé en dernier -->
 <script src="./data/index.js"></script>
 </head>
@@ -31,10 +29,10 @@
   <link rel="stylesheet" href="./style.css">
   <script defer src="https://cdn.jsdelivr.net/npm/katex@0.16.9/dist/katex.min.js"></script>
 </helmet>
-<div ref="{{ rootRef }}" style="display:flex; align-items:flex-start; min-height:100vh; background:var(--bg); background-image:var(--grid-img); color:var(--ink); font-family:var(--font-body); font-size:16px;">
+<div ref="{{ rootRef }}" class="app-container">
 
-  <aside style="position:sticky; top:0; align-self:flex-start; width:300px; flex:none; height:100vh; overflow-y:auto; border-right:1px solid var(--line); background:var(--paper); padding:34px 26px 24px;">
-    <div style="display:flex; flex-direction:column; min-height:calc(100vh - 58px);">
+  <aside class="sidebar">
+    <div class="sidebar-inner">
 
       <div style="margin-bottom:30px;">
         <div style="font-family:var(--font-mono); font-size:10px; letter-spacing:2px; color:var(--accent); margin-bottom:14px;">{{ idTag }}</div>
@@ -42,9 +40,9 @@
         <div style="font-family:var(--font-mono); font-size:10.5px; letter-spacing:0.5px; color:var(--muted); margin-top:9px; line-height:1.7;">{{ role }}</div>
       </div>
 
-      <nav style="display:flex; flex-direction:column; gap:22px;">
+      <nav class="nav-menu" style="display:flex; flex-direction:column; gap:22px;">
         <sc-for list="{{ navGroups }}" as="grp" hint-placeholder-count="3">
-          <div>
+          <div class="nav-group">
             <div style="font-family:var(--font-mono); font-size:9.5px; letter-spacing:2px; color:var(--muted); margin-bottom:9px; opacity:0.8;">{{ grp.label }}</div>
             <div style="display:flex; flex-direction:column; gap:1px;">
               <sc-for list="{{ grp.items }}" as="it" hint-placeholder-count="3">
@@ -60,7 +58,7 @@
 
       <div style="flex:1;"></div>
 
-      <div style="margin-top:30px; border-top:1px solid var(--line); padding-top:18px; display:flex; flex-direction:column; gap:16px;">
+      <div class="sidebar-footer" style="margin-top:30px; border-top:1px solid var(--line); padding-top:18px; display:flex; flex-direction:column; gap:16px;">
         <div>
           <div style="font-family:var(--font-mono); font-size:9.5px; letter-spacing:2px; color:var(--muted); margin-bottom:8px;">{{ langLabel }}</div>
           <div style="display:flex; gap:6px;">
@@ -82,8 +80,8 @@
     </div>
   </aside>
 
-  <main data-main style="flex:1; min-width:0; max-width:calc(100vw - 300px);">
-    <div style="padding:38px 56px 90px; max-width:920px;">
+  <main data-main class="main-content">
+    <div class="main-container">
 
       <!-- ABOUT -->
       <sc-if value="{{ showAbout }}" hint-placeholder-val="{{ true }}">
@@ -118,7 +116,7 @@
             <div style="margin-bottom:40px;">
               <div style="font-family:var(--font-mono); font-size:10px; letter-spacing:2px; color:var(--accent); margin-bottom:20px; padding-bottom:8px; border-bottom:1px solid var(--line);">{{ blk.label }}</div>
               <sc-for list="{{ blk.items }}" as="e" hint-placeholder-count="3">
-                <div style="display:grid; grid-template-columns:120px 1fr; gap:24px; margin-bottom:26px;">
+                <div class="cv-item">
                   <div style="font-family:var(--font-mono); font-size:12px; color:var(--muted); padding-top:3px;">{{ e.date }}</div>
                   <div>
                     <div style="font-family:var(--font-head); font-size:19px; font-weight:600; line-height:1.25;">{{ e.title }}</div>
@@ -164,7 +162,7 @@
           <p style="font-family:var(--font-body); font-size:16px; line-height:1.6; color:var(--muted); max-width:620px; margin:0 0 34px;">{{ projectsIntro }}</p>
           <div style="display:flex; flex-direction:column; gap:1px; background:var(--line); border:1px solid var(--line);">
             <sc-for list="{{ projectCards }}" as="p" hint-placeholder-count="4">
-              <a href="#" onClick="{{ p.onOpen }}" style="display:grid; grid-template-columns:46px 1fr auto; gap:20px; align-items:center; background:var(--paper); padding:24px 26px; transition:background .15s;" style-hover="background:var(--accent-soft)">
+              <a href="#" onClick="{{ p.onOpen }}" class="project-card" style-hover="background:var(--accent-soft)">
                 <div style="font-family:var(--font-mono); font-size:13px; color:var(--accent);">{{ p.num }}</div>
                 <div>
                   <div style="display:flex; align-items:center; gap:10px; flex-wrap:wrap; margin-bottom:7px;">

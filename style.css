@@ -19,6 +19,121 @@ a{color:inherit;text-decoration:none}
   border:3px solid transparent;
   background-clip:content-box;
 }
+
+.app-container {
+  display: flex;
+  align-items: flex-start;
+  min-height: 100vh;
+  background: var(--bg);
+  background-image: var(--grid-img);
+  color: var(--ink);
+  font-family: var(--font-body);
+  font-size: 16px;
+}
+
+.sidebar {
+  position: sticky;
+  top: 0;
+  align-self: flex-start;
+  width: 300px;
+  flex: none;
+  height: 100vh;
+  overflow-y: auto;
+  border-right: 1px solid var(--line);
+  background: var(--paper);
+  padding: 34px 26px 24px;
+  z-index: 10;
+}
+
+.sidebar-inner {
+  display: flex;
+  flex-direction: column;
+  min-height: calc(100vh - 58px);
+}
+
+.main-content {
+  flex: 1;
+  min-width: 0;
+  max-width: calc(100vw - 300px);
+}
+
+.main-container {
+  padding: 38px 56px 90px;
+  max-width: 920px;
+}
+
+.cv-item {
+  display: grid;
+  grid-template-columns: 120px 1fr;
+  gap: 24px;
+  margin-bottom: 26px;
+}
+
+.project-card {
+  display: grid;
+  grid-template-columns: 46px 1fr auto;
+  gap: 20px;
+  align-items: center;
+  background: var(--paper);
+  padding: 24px 26px;
+  transition: background .15s;
+}
+
+/* Responsive */
+@media (max-width: 850px) {
+  .app-container {
+    flex-direction: column;
+  }
+  
+  .sidebar {
+    position: relative;
+    width: 100%;
+    height: auto;
+    border-right: none;
+    border-bottom: 1px solid var(--line);
+    padding: 24px 20px;
+  }
+  
+  .sidebar-inner {
+    min-height: auto;
+  }
+  
+  .main-content {
+    max-width: 100%;
+  }
+  
+  .main-container {
+    padding: 30px 20px 60px;
+  }
+
+  .nav-menu {
+    flex-direction: row !important;
+    flex-wrap: wrap;
+    gap: 20px !important;
+  }
+
+  .nav-group {
+    margin-bottom: 0 !important;
+  }
+
+  .sidebar-footer {
+    margin-top: 20px !important;
+    flex-direction: row !important;
+    flex-wrap: wrap;
+    gap: 24px !important;
+  }
+
+  .cv-item {
+    grid-template-columns: 1fr;
+    gap: 8px;
+  }
+  
+  .project-card {
+    grid-template-columns: 1fr;
+    gap: 12px;
+  }
+}
+
 @keyframes scFade{
   from{opacity:0;transform:translateY(8px)}
   to{opacity:1;transform:none}

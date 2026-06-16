@@ -3,8 +3,8 @@ window._dcIdentity = {
   name: "Mouhamadou Lamine SOW",
 
   role: {
-    fr: "Ingénieur · Computer Vision\nRecherche Opérationnelle · Spatial",
-    en: "Engineer · Computer Vision\nOperations Research · Space",
+    fr: "Ingénieur en IA · Machine Learning\nRecherche Opérationnelle",
+    en: "AI Engineer · Machine Learning\nOperations Research",
   },
 
   nav: [

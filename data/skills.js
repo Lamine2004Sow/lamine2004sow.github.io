@@ -1,15 +1,14 @@
 window._dcSkills = {
 
   title: { fr: "Compétences", en: "Skills" },
-  intro: { fr: "Organisées par domaine — de la perception à la mise en production.", en: "Organized by domain — from perception to production." },
+  intro: { fr: "Organisées par domaine — de l'algorithmique à la modélisation prédictive.", en: "Organized by domain — from algorithms to predictive modeling." },
 
   groups: [
-    { label: { fr: "COMPUTER VISION & ML",    en: "COMPUTER VISION & ML"  }, items: ["PyTorch", "OpenCV", "scikit-learn", "Segmentation", "Détection", "SLAM / VO", "Géométrie multi-vues"] },
-    { label: { fr: "RECHERCHE OPÉRATIONNELLE", en: "OPERATIONS RESEARCH"   }, items: ["MILP", "Gurobi", "PuLP / OR-Tools", "Métaheuristiques", "Programmation par contraintes", "Optimisation convexe"] },
-    { label: { fr: "TAL / NLP",               en: "NLP"                   }, items: ["spaCy", "Transformers", "Embeddings", "Extraction d'information", "Classification de texte"] },
-    { label: { fr: "SPATIAL & GNC",           en: "SPACE & GNC"           }, items: ["Mécanique orbitale", "Filtre de Kalman", "Navigation relative", "Estimation d'état", "Simulation"] },
-    { label: { fr: "OPS & TEST",              en: "OPS & TEST"            }, items: ["pytest", "CI/CD", "Docker", "MLflow", "DVC", "Tests d'intégration"] },
-    { label: { fr: "LANGAGES & OUTILS",       en: "LANGUAGES & TOOLS"     }, items: ["Python", "C++", "Julia", "LaTeX", "Git", "Streamlit", "NumPy / SciPy"] },
+    { label: { fr: "MACHINE LEARNING",        en: "MACHINE LEARNING"      }, items: ["XGBoost", "Scikit-learn", "Reinforcement Learning", "PyTorch / TensorFlow", "Apprentissage symbolique"] },
+    { label: { fr: "RECHERCHE OPÉRATIONNELLE", en: "OPERATIONS RESEARCH"   }, items: ["Optimisation combinatoire", "p-médian / TSP", "PLNE (MILP)", "Heuristiques", "OR-Tools / PuLP", "CPLEX / GLPK"] },
+    { label: { fr: "DATA & ANALYSE",          en: "DATA & ANALYSIS"       }, items: ["Pandas / NumPy / SciPy", "Analyse statistique", "Feature Engineering", "Analyse géospatiale", "PostgreSQL / MongoDB"] },
+    { label: { fr: "DEVELOPPEMENT & OPS",     en: "DEVELOPMENT & OPS"     }, items: ["Git / GitHub", "Linux", "CI/CD (Jenkins/GitHub Actions)", "Docker", "Angular / Node.js"] },
+    { label: { fr: "LANGAGES",                en: "LANGUAGES"             }, items: ["Python", "C / C++", "Java", "Julia", "JS / TS", "LaTeX / Markdown"] },
   ],
 
 };

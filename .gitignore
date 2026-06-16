@@ -7,6 +7,31 @@ CLAUDE.md
 # Screenshots (non référencées dans le site)
 screenshots/
 
+# Cours (CM)
+CM01_*.md
+CM02_*.md
+CM03_*.md
+CM04_*.md
+
+# Python
+__pycache__/
+.venv/
+*.pyc
+.pytest_cache/
+.mypy_cache/
+.ruff_cache/
+.coverage
+
+# Env / Secrets
+.env
+*.key
+secrets.json
+
+# Node
+node_modules/
+dist/
+.npm/
+
 # OS
 .DS_Store
 Thumbs.db

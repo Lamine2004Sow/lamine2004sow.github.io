@@ -14,13 +14,13 @@ window._dcAbout = {
   },
 
   domains: {
-    fr: ["Computer Vision", "Recherche Opérationnelle", "TAL / NLP", "Spatial & GNC", "MLOps & Test"],
-    en: ["Computer Vision", "Operations Research", "NLP", "Space & GNC", "MLOps & Test"],
+    fr: ["Machine Learning", "Recherche Opérationnelle", "Data Engineering", "Optimisation Combinatoire", "Analyse Statistique"],
+    en: ["Machine Learning", "Operations Research", "Data Engineering", "Combinatorial Optimization", "Statistical Analysis"],
   },
 
   status: {
-    fr: "Disponible — stage de fin d'études · 2026",
-    en: "Open to — final-year internship · 2026",
+    fr: "Recherche de stage (2-3 mois) — ML Engineering · RO · 2026",
+    en: "Looking for internship (2-3 months) — ML Engineering · OR · 2026",
   },
 
 };
