@@ -20,6 +20,9 @@ export const metadata: Metadata = {
     "Portfolio de Mouhamadou Lamine SOW, étudiant ingénieur en IA/ML à l'Université Sorbonne Paris Nord. Intelligence Artificielle, Machine Learning, Traitement Automatique des Langues (NLP/TAL), Computer Vision, Vision par Ordinateur, Optimisation et Recherche Opérationnelle (RO).",
   keywords: [
     "Mouhamadou Lamine SOW",
+    "Lamine SOW",
+    "Mouhamadou SOW",
+    "Lamine Sow",
     "IA/ML",
     "Intelligence Artificielle",
     "Machine Learning",
