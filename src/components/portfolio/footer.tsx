@@ -17,7 +17,7 @@ export function Footer() {
                 Mouhamadou Lamine SOW
               </span>
               <span className="text-xs text-muted-foreground font-mono">
-                Data Science · ML · Optimisation
+                IA/ML · Optimisation
               </span>
             </div>
           </div>

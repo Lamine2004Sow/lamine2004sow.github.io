@@ -25,6 +25,34 @@ export type Project = {
 
 export const projects: Project[] = [
   {
+    name: 'Multimodal-CXR-Pathology-Classifier',
+    title: 'Multimodal CXR Pathology Classifier',
+    description:
+      "Classification multimodale de pathologies à partir de radiographies pulmonaires en combinant images et données cliniques.",
+    longDescription:
+      "Ce projet utilise un modèle de deep learning multimodal qui intègre des radiographies pulmonaires (images) avec des données textuelles pour améliorer la précision de la classification des pathologies. Idéal pour l'aide au diagnostic assisté par ordinateur.",
+    icon: Brain,
+    tags: ['Python', 'PyTorch', 'Vision', 'Multimodal', 'Santé'],
+    url: 'https://github.com/Lamine2004Sow/Multimodal-CXR-Pathology-Classifier',
+    stars: 0,
+    category: 'IA & Vision',
+    accent: 'emerald',
+  },
+  {
+    name: 'Optimized-Vulnerability-Remediation-ML-OR',
+    title: 'Optimized Vulnerability Remediation (ML + OR)',
+    description:
+      "Prédiction et optimisation de la remédiation des vulnérabilités de sécurité en couplant ML et Recherche Opérationnelle.",
+    longDescription:
+      "Un système qui utilise des modèles de Machine Learning pour évaluer le risque des vulnérabilités puis applique la recherche opérationnelle pour allouer les ressources de correction de manière optimale, en minimisant l'exposition au risque sous contraintes de budget et de temps.",
+    icon: Shield,
+    tags: ['Python', 'Machine Learning', 'Optimisation', 'Cybersécurité', 'OR'],
+    url: 'https://github.com/Lamine2004Sow/Optimized-Vulnerability-Remediation-ML-OR',
+    stars: 0,
+    category: 'Optimisation',
+    accent: 'amber',
+  },
+  {
     name: 'credit-risk-classification-optimization',
     title: 'Credit Risk Classification & Loan Optimization',
     description:
@@ -177,10 +205,10 @@ export const timeline = [
   {
     year: '2025 — Présent',
     title: 'Université Sorbonne Paris Nord — Sup Galilée',
-    subtitle: 'Data Science · Machine Learning · Optimisation',
+    subtitle: 'Étudiant Ingénieur en IA/ML · Optimisation',
     description:
-      "Formation en informatique avec spécialisation en Data Science et Intelligence Artificielle. Cours couvrant le Machine Learning, la Recherche Opérationnelle, le Big Data et la vision par ordinateur. Projets appliqués en finance, classification de risque et optimisation combinatoire.",
-    tags: ['Data Science', 'ML', 'Optimisation', 'Big Data'],
+      "Formation en ingénierie avec spécialisation en IA et Machine Learning. Cours couvrant le Machine Learning, la Recherche Opérationnelle, le Big Data et la vision par ordinateur. Projets appliqués en finance, classification de risque et optimisation combinatoire.",
+    tags: ['IA/ML', 'Optimisation', 'Big Data'],
   },
   {
     year: '2026',
@@ -203,7 +231,7 @@ export const timeline = [
     title: 'Début du parcours GitHub',
     subtitle: 'Open source & projets personnels',
     description:
-      "Création du compte GitHub et publication progressive de projets académiques et personnels autour de la data science, du Machine Learning et du développement web.",
+      "Création du compte GitHub et publication progressive de projets académiques et personnels autour de l'IA/ML, et du développement web.",
     tags: ['GitHub', 'Open Source'],
   },
 ]

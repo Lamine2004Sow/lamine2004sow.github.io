@@ -71,7 +71,7 @@ export function Hero() {
                 <span className="text-gradient">SOW</span>
               </h1>
               <h2 className="text-xl md:text-2xl lg:text-3xl font-semibold text-muted-foreground text-balance">
-                Étudiant en Data Science · Machine Learning · Optimisation
+                Étudiant ingénieur en IA/ML · Optimisation
               </h2>
             </motion.div>
 
@@ -153,7 +153,7 @@ export function Hero() {
                 <div className="text-center">
                   <p className="text-lg font-bold">@Lamine2004Sow</p>
                   <p className="text-sm text-muted-foreground font-mono">
-                    Data Scientist en formation
+                    Ingénieur IA/ML en formation
                   </p>
                 </div>
 

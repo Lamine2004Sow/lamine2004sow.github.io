@@ -41,7 +41,7 @@ export function Contact() {
         <SectionHeading
           eyebrow="Contact"
           title="Construisons quelque chose ensemble"
-          description="Ouvert aux stages, aux projets collaboratifs et aux discussions autour du Machine Learning, de l'optimisation et de la data science."
+          description="Ouvert aux stages, aux projets collaboratifs et aux discussions autour de l'IA/ML, du Machine Learning et de l'optimisation."
         />
 
         <div className="grid md:grid-cols-2 gap-5 md:gap-6 mb-10">

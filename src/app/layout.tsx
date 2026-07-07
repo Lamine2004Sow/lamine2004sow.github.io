@@ -15,14 +15,23 @@ const geistMono = Geist_Mono({
 });
 
 export const metadata: Metadata = {
-  title: "Mouhamadou Lamine SOW — Data Science & Machine Learning",
+  title: "Mouhamadou Lamine SOW — Étudiant Ingénieur en IA/ML",
   description:
-    "Portfolio de Mouhamadou Lamine SOW, étudiant en Data Science et Intelligence Artificielle à l'Université Sorbonne Paris Nord. Machine Learning, Optimisation, Vision par Ordinateur.",
+    "Portfolio de Mouhamadou Lamine SOW, étudiant ingénieur en IA/ML à l'Université Sorbonne Paris Nord. Intelligence Artificielle, Machine Learning, Traitement Automatique des Langues (NLP/TAL), Computer Vision, Vision par Ordinateur, Optimisation et Recherche Opérationnelle (RO).",
   keywords: [
     "Mouhamadou Lamine SOW",
-    "Data Science",
+    "IA/ML",
+    "Intelligence Artificielle",
     "Machine Learning",
+    "Deep Learning",
+    "NLP",
+    "TAL",
+    "Traitement Automatique des Langues",
+    "Computer Vision",
+    "Vision par Ordinateur",
     "Optimisation",
+    "Recherche Opérationnelle",
+    "RO",
     "Python",
     "Portfolio",
     "Sorbonne Paris Nord",
@@ -30,16 +39,16 @@ export const metadata: Metadata = {
   ],
   authors: [{ name: "Mouhamadou Lamine SOW" }],
   openGraph: {
-    title: "Mouhamadou Lamine SOW — Data Science & ML",
+    title: "Mouhamadou Lamine SOW — Étudiant Ingénieur en IA/ML",
     description:
-      "Étudiant en Data Science & IA · Machine Learning · Optimisation · Vision par Ordinateur",
+      "Étudiant Ingénieur en IA/ML · Machine Learning · NLP · Computer Vision · Optimisation & RO",
     type: "website",
   },
   twitter: {
     card: "summary_large_image",
-    title: "Mouhamadou Lamine SOW — Data Science & ML",
+    title: "Mouhamadou Lamine SOW — Étudiant Ingénieur en IA/ML",
     description:
-      "Étudiant en Data Science & IA · Machine Learning · Optimisation",
+      "Étudiant Ingénieur en IA/ML · Machine Learning · NLP · Computer Vision · Optimisation & RO",
   },
 };
 

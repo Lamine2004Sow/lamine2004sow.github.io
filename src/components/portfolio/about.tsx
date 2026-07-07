@@ -10,7 +10,7 @@ const highlights = [
     icon: GraduationCap,
     title: 'Formation académique',
     description:
-      "Étudiant à l'Université Sorbonne Paris Nord — Sup Galilée, spécialisé en Data Science, Machine Learning et Recherche Opérationnelle.",
+      "Étudiant ingénieur à l'Université Sorbonne Paris Nord — Sup Galilée, spécialisé en IA/ML, Machine Learning et Recherche Opérationnelle.",
   },
   {
     icon: Target,
@@ -58,7 +58,7 @@ export function About() {
                 <span className="font-semibold text-foreground">
                   Mouhamadou Lamine SOW
                 </span>
-                , étudiant en Data Science à l'Université Sorbonne Paris Nord — Sup
+                , étudiant ingénieur en IA/ML à l'Université Sorbonne Paris Nord — Sup
                 Galilée. Mon parcours est animé par une conviction simple : les
                 données racontent une histoire, et le Machine Learning est l'outil qui
                 permet de l'écouter.
