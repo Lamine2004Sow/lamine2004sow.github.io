@@ -1,6 +1,6 @@
 'use client'
 
-import { Github, ArrowUp, Heart } from 'lucide-react'
+import { Github, Linkedin, ArrowUp, Heart } from 'lucide-react'
 
 export function Footer() {
   const year = new Date().getFullYear()
@@ -31,6 +31,15 @@ export function Footer() {
               aria-label="GitHub"
             >
               <Github className="h-4 w-4" />
+            </a>
+            <a
+              href="https://www.linkedin.com/in/mouhamadou-lamine-sow-118097334"
+              target="_blank"
+              rel="noopener noreferrer"
+              className="grid place-items-center h-10 w-10 rounded-full border border-border/40 bg-background/60 hover:bg-accent hover:border-blue-500/40 transition-colors"
+              aria-label="LinkedIn"
+            >
+              <Linkedin className="h-4 w-4" />
             </a>
             <a
               href="#"

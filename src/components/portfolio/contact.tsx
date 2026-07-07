@@ -1,7 +1,7 @@
 'use client'
 
 import { motion } from 'framer-motion'
-import { Mail, Github, ArrowUpRight, Send, MapPin } from 'lucide-react'
+import { Mail, Github, Linkedin, ArrowUpRight, Send, MapPin } from 'lucide-react'
 import { SectionHeading } from './section-heading'
 import { Button } from '@/components/ui/button'
 import { Card, CardContent } from '@/components/ui/card'
@@ -22,6 +22,14 @@ const channels = [
     href: 'mailto:contact@example.com?subject=Contact%20depuis%20le%20portfolio',
     description: 'Pour stages, collaborations ou simples échanges',
     accent: 'amber',
+  },
+  {
+    icon: Linkedin,
+    label: 'LinkedIn',
+    value: 'Mouhamadou Lamine SOW',
+    href: 'https://www.linkedin.com/in/mouhamadou-lamine-sow-118097334',
+    description: 'Mon parcours professionnel et réseau',
+    accent: 'blue',
   },
 ]
 
@@ -67,6 +75,8 @@ export function Contact() {
                     className={`grid place-items-center h-12 w-12 rounded-2xl bg-gradient-to-br ${
                       c.accent === 'emerald'
                         ? 'from-emerald-500/20 to-emerald-500/5 text-emerald-500 border-emerald-500/20'
+                        : c.accent === 'blue'
+                        ? 'from-blue-500/20 to-blue-500/5 text-blue-500 border-blue-500/20'
                         : 'from-amber-500/20 to-amber-500/5 text-amber-500 border-amber-500/20'
                     } border group-hover:scale-110 transition-transform`}
                   >

@@ -2,7 +2,7 @@
 
 import * as React from 'react'
 import { motion } from 'framer-motion'
-import { ArrowDown, Github, MapPin, Sparkles, Star, GitFork, Users } from 'lucide-react'
+import { ArrowDown, Github, Linkedin, MapPin, Sparkles, Star, GitFork, Users } from 'lucide-react'
 import { Button } from '@/components/ui/button'
 import { githubStats } from '@/lib/portfolio-data'
 
@@ -116,6 +116,20 @@ export function Hero() {
                 >
                   <Github className="mr-2 h-4 w-4" />
                   GitHub
+                </Button>
+              </a>
+              <a
+                href="https://www.linkedin.com/in/mouhamadou-lamine-sow-118097334"
+                target="_blank"
+                rel="noopener noreferrer"
+              >
+                <Button
+                  size="lg"
+                  variant="ghost"
+                  className="rounded-full h-12 px-6 text-muted-foreground hover:text-blue-500"
+                >
+                  <Linkedin className="mr-2 h-4 w-4" />
+                  LinkedIn
                 </Button>
               </a>
             </motion.div>
