@@ -14,6 +14,7 @@ const categoryColors: Record<Project['category'], string> = {
   Optimisation: 'text-amber-500 border-amber-500/30 bg-amber-500/10',
   'IA & Vision': 'text-emerald-500 border-emerald-500/30 bg-emerald-500/10',
   'Big Data': 'text-amber-500 border-amber-500/30 bg-amber-500/10',
+  'Data Science': 'text-emerald-500 border-emerald-500/30 bg-emerald-500/10',
 }
 
 export function Projects() {
@@ -23,7 +24,7 @@ export function Projects() {
         <SectionHeading
           eyebrow="Projets"
           title="Projets réalisés et à venir"
-          description="Une sélection de réalisations académiques et de futurs projets personnels. Le prochain chantier sera la prédiction des rendements d'indices boursiers par descente de gradient."
+          description="Mes trois réalisations principales : un stage Data Science chez Sonatel consacré aux PBO FTTH, le problème d'optimisation Ring-Star et la prédiction des rendements d'indices boursiers."
         />
 
         <div className="grid md:grid-cols-2 gap-5 md:gap-6">
@@ -136,7 +137,7 @@ function ProjectCard({ project, index }: { project: Project; index: number }) {
               ))}
             </div>
 
-            <div className="pt-3 mt-auto">
+            {project.url && <div className="pt-3 mt-auto">
               <a
                 href={project.url}
                 target="_blank"
@@ -147,7 +148,7 @@ function ProjectCard({ project, index }: { project: Project; index: number }) {
                 Explorer le dépôt
                 <ArrowUpRight className="h-4 w-4 group-hover/link:translate-x-0.5 group-hover/link:-translate-y-0.5 transition-transform" />
               </a>
-            </div>
+            </div>}
           </div>
         </CardContent>
       </Card>
