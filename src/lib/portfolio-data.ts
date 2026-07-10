@@ -19,78 +19,54 @@ export type Project = {
   tags: string[]
   url: string
   stars: number
+  status?: 'Projet futur' | 'Prochain projet'
   category: 'Machine Learning' | 'Optimisation' | 'IA & Vision' | 'Big Data'
   accent: string
 }
 
 export const projects: Project[] = [
   {
-    name: 'Multimodal-CXR-Pathology-Classifier',
-    title: 'Multimodal CXR Pathology Classifier',
+    name: 'stock-index-return-prediction-gradient-descent',
+    title: 'Stock Index Return Prediction — Gradient Descent',
     description:
-      "Classification multimodale de pathologies à partir de radiographies pulmonaires en combinant images et données cliniques.",
+      "Futur projet de prédiction des rendements d'indices boursiers à l'aide d'une régression implémentée from scratch avec descente de gradient.",
     longDescription:
-      "Ce projet utilise un modèle de deep learning multimodal qui intègre des radiographies pulmonaires (images) avec des données textuelles pour améliorer la précision de la classification des pathologies. Idéal pour l'aide au diagnostic assisté par ordinateur.",
-    icon: Brain,
-    tags: ['Python', 'PyTorch', 'Vision', 'Multimodal', 'Santé'],
-    url: 'https://github.com/Lamine2004Sow/Multimodal-CXR-Pathology-Classifier',
-    stars: 0,
-    category: 'IA & Vision',
-    accent: 'emerald',
-  },
-  {
-    name: 'Optimized-Vulnerability-Remediation-ML-OR',
-    title: 'Optimized Vulnerability Remediation (ML + OR)',
-    description:
-      "Prédiction et optimisation de la remédiation des vulnérabilités de sécurité en couplant ML et Recherche Opérationnelle.",
-    longDescription:
-      "Un système qui utilise des modèles de Machine Learning pour évaluer le risque des vulnérabilités puis applique la recherche opérationnelle pour allouer les ressources de correction de manière optimale, en minimisant l'exposition au risque sous contraintes de budget et de temps.",
-    icon: Shield,
-    tags: ['Python', 'Machine Learning', 'Optimisation', 'Cybersécurité', 'OR'],
-    url: 'https://github.com/Lamine2004Sow/Optimized-Vulnerability-Remediation-ML-OR',
-    stars: 0,
-    category: 'Optimisation',
+      "Ce sera le premier projet à démarrer : une implémentation from scratch d'un algorithme de descente de gradient pour prédire les rendements d'un indice boursier. Le dépôt contient actuellement la documentation et la préparation du projet.",
+    icon: TrendingUp,
+    tags: ['Python', 'NumPy', 'Gradient Descent', 'Finance', 'Régression'],
+    url: 'https://github.com/Lamine2004Sow/stock-index-return-prediction-gradient-descent',
+    stars: 1,
+    status: 'Prochain projet',
+    category: 'Machine Learning',
     accent: 'amber',
   },
   {
     name: 'credit-risk-classification-optimization',
     title: 'Credit Risk Classification & Loan Optimization',
     description:
-      "Système d'aide à la décision combinant Machine Learning et Recherche Opérationnelle pour classifier le risque de crédit et optimiser un portefeuille de prêts.",
+      "Futur système d'aide à la décision combinant Machine Learning et Recherche Opérationnelle pour classifier le risque de crédit et optimiser un portefeuille de prêts.",
     longDescription:
-      "Un système hybride qui classifie les demandeurs de prêt selon leur risque de défaut à l'aide de modèles de Machine Learning, puis utilise un modèle d'optimisation pour sélectionner le portefeuille de prêts le plus rentable sous contraintes financières et de risque. Le projet répond à un problème réel des banques : réduire les impayés tout en maximisant la rentabilité.",
+      "Projet futur qui classifiera les demandeurs de prêt selon leur risque de défaut, puis utilisera un modèle d'optimisation pour sélectionner un portefeuille de prêts rentable sous contraintes financières et de risque. Le dépôt contient actuellement uniquement la présentation du projet.",
     icon: Shield,
     tags: ['Python', 'Scikit-learn', 'PuLP', 'Optimisation', 'Classification'],
     url: 'https://github.com/Lamine2004Sow/credit-risk-classification-optimization',
     stars: 1,
+    status: 'Projet futur',
     category: 'Machine Learning',
     accent: 'emerald',
-  },
-  {
-    name: 'stock-index-return-prediction-gradient-descent',
-    title: 'Stock Index Return Prediction — Gradient Descent',
-    description:
-      "Prédiction des rendements d'indices boursiers à l'aide d'une régression implémentée from scratch avec descente de gradient.",
-    longDescription:
-      "Implémentation from scratch d'un algorithme de descente de gradient pour prédire les rendements d'un indice boursier. Le projet explore les fondamentaux de l'optimisation numérique appliquée à la finance quantitative : fonction de coût, pas d'apprentissage, convergence, et régularisation.",
-    icon: TrendingUp,
-    tags: ['Python', 'NumPy', 'Gradient Descent', 'Finance', 'Régression'],
-    url: 'https://github.com/Lamine2004Sow/stock-index-return-prediction-gradient-descent',
-    stars: 1,
-    category: 'Machine Learning',
-    accent: 'amber',
   },
   {
     name: 'visual-product-assistant-vqa',
     title: 'Visual Product Assistant (VQA)',
     description:
-      "Assistant visuel basé sur le Visual Question Answering : posez une question sur une image de produit et obtenez une réponse automatique.",
+      "Futur assistant visuel basé sur le Visual Question Answering pour répondre à des questions sur une image de produit.",
     longDescription:
-      "Un assistant intelligent qui combine vision par ordinateur et NLP pour répondre à des questions sur des images de produits. Le projet s'appuie sur des modèles de Vision-Language Models (VLM) pour comprendre le contenu visuel et générer des réponses pertinentes, ouvrant la voie à des applications e-commerce accessibles.",
+      "Projet futur d'assistant intelligent combinant vision par ordinateur et NLP pour répondre à des questions sur des images de produits. Le dépôt contient actuellement uniquement la présentation du projet.",
     icon: Eye,
     tags: ['Python', 'PyTorch', 'VLM', 'NLP', 'Vision'],
     url: 'https://github.com/Lamine2004Sow/visual-product-assistant-vqa',
     stars: 1,
+    status: 'Projet futur',
     category: 'IA & Vision',
     accent: 'emerald',
   },

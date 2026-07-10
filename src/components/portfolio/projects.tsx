@@ -22,8 +22,8 @@ export function Projects() {
       <div className="container mx-auto max-w-6xl px-4 md:px-6">
         <SectionHeading
           eyebrow="Projets"
-          title="Des idées qui deviennent des systèmes"
-          description="Sélection de projets académiques et personnels — du scoring de crédit au métro circulaire, en passant par la prédiction de marchés et la vision par ordinateur."
+          title="Projets réalisés et à venir"
+          description="Une sélection de réalisations académiques et de futurs projets personnels. Le prochain chantier sera la prédiction des rendements d'indices boursiers par descente de gradient."
         />
 
         <div className="grid md:grid-cols-2 gap-5 md:gap-6">
@@ -107,6 +107,11 @@ function ProjectCard({ project, index }: { project: Project; index: number }) {
               {isFeatured && (
                 <span className="inline-flex items-center px-2 py-0.5 rounded-full text-[10px] font-mono uppercase tracking-wider border border-foreground/20 text-muted-foreground">
                   Projet phare
+                </span>
+              )}
+              {project.status && (
+                <span className="inline-flex items-center px-2 py-0.5 rounded-full text-[10px] font-mono uppercase tracking-wider border border-amber-500/40 bg-amber-500/10 text-amber-500">
+                  {project.status}
                 </span>
               )}
             </div>
