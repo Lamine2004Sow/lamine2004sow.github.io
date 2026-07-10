@@ -7,6 +7,7 @@ import {
   Database,
   Code2,
   GitBranch,
+  RadioTower,
   type LucideIcon,
 } from 'lucide-react'
 
@@ -17,14 +18,42 @@ export type Project = {
   longDescription: string
   icon: LucideIcon
   tags: string[]
-  url: string
+  url?: string
   stars: number
-  status?: 'Projet futur' | 'Prochain projet'
-  category: 'Machine Learning' | 'Optimisation' | 'IA & Vision' | 'Big Data'
+  status?: 'Projet futur' | 'Prochain projet' | 'Stage 2026'
+  category: 'Machine Learning' | 'Optimisation' | 'IA & Vision' | 'Big Data' | 'Data Science'
   accent: string
 }
 
 export const projects: Project[] = [
+  {
+    name: 'prediction-saturation-pbo-ftth',
+    title: 'Stage Sonatel — Prédiction de saturation des PBO FTTH',
+    description:
+      "Pipeline de machine learning pour anticiper et prioriser la saturation des équipements fibre à 3, 6, 9 et 12 mois.",
+    longDescription:
+      "Stage de deux mois réalisé chez Sonatel (Groupe Orange) : construction d'une solution d'aide à la décision pour anticiper la saturation des Points de Branchement Optique. Le pipeline combine XGBoost, signaux temporels, proximité géographique, calibration isotonique et scoring multi-horizon. Il priorise 69 094 PBO et agrège le risque par plaque, OLT et commune afin d'aider les équipes à planifier les extensions de capacité.",
+    icon: RadioTower,
+    tags: ['Python', 'XGBoost', 'SHAP', 'Scikit-learn', 'Géospatial', 'FTTH'],
+    stars: 0,
+    status: 'Stage 2026',
+    category: 'Data Science',
+    accent: 'emerald',
+  },
+  {
+    name: 'ring-star',
+    title: 'Ring-Star Problem — Optimisation Combinatoire',
+    description:
+      "Optimisation du tracé d'une ligne de métro circulaire : compromis entre coût d'infrastructure et accessibilité des usagers.",
+    longDescription:
+      "Projet d'optimisation combinatoire (SAÉ 2025-2026) visant à concevoir une ligne de métro circulaire en choisissant p stations parmi n pôles. Le problème combine un cycle (ring) et des liens en étoile (star) pour minimiser une fonction de coût intégrant construction et accès usagers. Problème NP-difficile résolu avec PLNE et heuristiques.",
+    icon: Network,
+    tags: ['Python', 'PLNE', 'Gurobi', 'Combinatoire', 'Heuristique'],
+    url: 'https://github.com/Lamine2004Sow/ring-star',
+    stars: 0,
+    category: 'Optimisation',
+    accent: 'amber',
+  },
   {
     name: 'stock-index-return-prediction-gradient-descent',
     title: 'Stock Index Return Prediction — Gradient Descent',
@@ -69,20 +98,6 @@ export const projects: Project[] = [
     status: 'Projet futur',
     category: 'IA & Vision',
     accent: 'emerald',
-  },
-  {
-    name: 'ring-star',
-    title: 'Ring-Star Problem — Optimisation Combinatoire',
-    description:
-      "Optimisation du tracé d'une ligne de métro circulaire : compromis entre coût d'infrastructure et accessibilité des usagers.",
-    longDescription:
-      "Projet d'optimisation combinatoire (SAÉ 2025-2026) visant à concevoir une ligne de métro circulaire en choisissant p stations parmi n pôles. Le problème combine un cycle (ring) et des liens en étoile (star) pour minimiser une fonction de coût intégrant construction et accès usagers. Problème NP-difficile résolu avec PLNE et heuristiques.",
-    icon: Network,
-    tags: ['Python', 'PLNE', 'Gurobi', 'Combinatoire', 'Heuristique'],
-    url: 'https://github.com/Lamine2004Sow/ring-star',
-    stars: 0,
-    category: 'Optimisation',
-    accent: 'amber',
   },
   {
     name: 'tp-bda',
