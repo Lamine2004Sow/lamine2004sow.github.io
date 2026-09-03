@@ -1,0 +1,38 @@
+---
+import MainLayout from '../../layouts/MainLayout.astro';
+import { getCollection, render } from 'astro:content';
+
+export async function getStaticPaths() {
+  const rapports = await getCollection('rapports');
+  return rapports.map((rapport) => ({
+    params: { slug: rapport.id },
+    props: { rapport },
+  }));
+}
+
+const { rapport } = Astro.props;
+const { Content } = await render(rapport);
+---
+
+<MainLayout title={rapport.data.title} description={rapport.data.description}>
+  <article class="px-6 lg:px-12 py-12 max-w-3xl">
+    <a href="/rapports" class="inline-flex items-center gap-1.5 text-sm text-gray-400 hover:text-accent-600 transition-colors mb-8">
+      <svg class="w-4 h-4" fill="none" viewBox="0 0 24 24" stroke="currentColor" stroke-width="2"><path stroke-linecap="round" stroke-linejoin="round" d="M10.5 19.5 3 12m0 0 7.5-7.5M3 12h18" /></svg>
+      Retour aux rapports
+    </a>
+
+    <header class="mb-8">
+      <h1 class="text-3xl font-extrabold text-gray-900 mb-3">{rapport.data.title}</h1>
+      <p class="text-gray-500 mb-2">{rapport.data.description}</p>
+      <div class="flex flex-wrap gap-3 text-xs text-gray-400 font-mono">
+        <span>{rapport.data.date}</span>
+        {rapport.data.entreprise && <span>• {rapport.data.entreprise}</span>}
+        {rapport.data.duree && <span>• {rapport.data.duree}</span>}
+      </div>
+    </header>
+
+    <div class="prose">
+      <Content />
+    </div>
+  </article>
+</MainLayout>

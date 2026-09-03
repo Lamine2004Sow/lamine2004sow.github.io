@@ -1,0 +1,53 @@
+---
+import MainLayout from '../../layouts/MainLayout.astro';
+import { getCollection, render } from 'astro:content';
+
+export async function getStaticPaths() {
+  const projets = await getCollection('projets');
+  return projets.map((projet) => ({
+    params: { slug: projet.id },
+    props: { projet },
+  }));
+}
+
+const { projet } = Astro.props;
+const { Content } = await render(projet);
+---
+
+<MainLayout title={projet.data.title} description={projet.data.description}>
+  <article class="px-6 lg:px-12 py-12 max-w-3xl">
+    <a href="/projets" class="inline-flex items-center gap-1.5 text-sm text-gray-400 hover:text-accent-600 transition-colors mb-8">
+      <svg class="w-4 h-4" fill="none" viewBox="0 0 24 24" stroke="currentColor" stroke-width="2"><path stroke-linecap="round" stroke-linejoin="round" d="M10.5 19.5 3 12m0 0 7.5-7.5M3 12h18" /></svg>
+      Retour aux projets
+    </a>
+
+    <header class="mb-8">
+      <h1 class="text-3xl font-extrabold text-gray-900 mb-3">{projet.data.title}</h1>
+      <p class="text-gray-500 mb-4">{projet.data.description}</p>
+      <div class="flex flex-wrap items-center gap-3">
+        <span class="text-xs text-gray-400 font-mono">{projet.data.date}</span>
+        {projet.data.tags && projet.data.tags.map((tag: string) => (
+          <span class="px-2 py-0.5 text-xs bg-gray-100 text-gray-500 rounded-md">{tag}</span>
+        ))}
+      </div>
+      {(projet.data.github || projet.data.demo) && (
+        <div class="flex gap-3 mt-4">
+          {projet.data.github && (
+            <a href={projet.data.github} target="_blank" rel="noopener" class="inline-flex items-center gap-1.5 text-sm text-accent-600 hover:text-accent-500 transition-colors">
+              GitHub ↗
+            </a>
+          )}
+          {projet.data.demo && (
+            <a href={projet.data.demo} target="_blank" rel="noopener" class="inline-flex items-center gap-1.5 text-sm text-accent-600 hover:text-accent-500 transition-colors">
+              Démo ↗
+            </a>
+          )}
+        </div>
+      )}
+    </header>
+
+    <div class="prose">
+      <Content />
+    </div>
+  </article>
+</MainLayout>

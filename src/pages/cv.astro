@@ -1,0 +1,51 @@
+---
+import MainLayout from '../layouts/MainLayout.astro';
+---
+
+<MainLayout title="CV">
+  <div class="px-6 lg:px-12 py-12 max-w-4xl">
+    <div class="mb-12">
+      <h1 class="text-3xl font-extrabold text-gray-900 mb-2">Curriculum Vitae</h1>
+      <p class="text-gray-500">Votre parcours académique et professionnel.</p>
+    </div>
+
+    <!-- Formation -->
+    <section class="mb-12">
+      <h2 class="text-sm font-semibold uppercase tracking-wider text-accent-600 mb-6">Formation</h2>
+      <div class="space-y-6">
+        <div class="relative pl-6 border-l-2 border-gray-200">
+          <div class="absolute -left-[5px] top-1.5 w-2 h-2 rounded-full bg-accent-500"></div>
+          <span class="text-xs text-gray-400 font-mono">Année — Année</span>
+          <h3 class="text-gray-900 font-semibold mt-1">Votre diplôme</h3>
+          <p class="text-sm text-gray-500">Votre établissement</p>
+        </div>
+      </div>
+    </section>
+
+    <!-- Expériences -->
+    <section class="mb-12">
+      <h2 class="text-sm font-semibold uppercase tracking-wider text-accent-600 mb-6">Expériences</h2>
+      <div class="space-y-6">
+        <div class="relative pl-6 border-l-2 border-gray-200">
+          <div class="absolute -left-[5px] top-1.5 w-2 h-2 rounded-full bg-accent-500"></div>
+          <span class="text-xs text-gray-400 font-mono">Période</span>
+          <h3 class="text-gray-900 font-semibold mt-1">Votre poste</h3>
+          <p class="text-sm text-gray-500">Votre entreprise</p>
+        </div>
+      </div>
+    </section>
+
+    <!-- Compétences -->
+    <section class="mb-12">
+      <h2 class="text-sm font-semibold uppercase tracking-wider text-accent-600 mb-6">Compétences</h2>
+      <div class="grid gap-6 md:grid-cols-2">
+        <div class="p-4 border border-gray-200 rounded-xl">
+          <h3 class="text-sm font-semibold text-gray-900 mb-3">Catégorie</h3>
+          <div class="flex flex-wrap gap-2">
+            <span class="px-2.5 py-1 text-xs bg-gray-100 text-gray-600 rounded-md font-mono">Compétence</span>
+          </div>
+        </div>
+      </div>
+    </section>
+  </div>
+</MainLayout>

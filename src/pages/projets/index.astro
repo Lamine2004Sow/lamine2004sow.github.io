@@ -1,0 +1,39 @@
+---
+import MainLayout from '../../layouts/MainLayout.astro';
+import { getCollection } from 'astro:content';
+
+const projets = (await getCollection('projets')).sort(
+  (a, b) => new Date(b.data.date).getTime() - new Date(a.data.date).getTime()
+);
+---
+
+<MainLayout title="Projets">
+  <div class="px-6 lg:px-12 py-12">
+    <div class="mb-10">
+      <h1 class="text-3xl font-extrabold text-gray-900 mb-2">Projets</h1>
+      <p class="text-gray-500">Vos projets et réalisations.</p>
+    </div>
+
+    <div class="grid gap-4 md:grid-cols-2 lg:grid-cols-3">
+      {projets.map((projet) => (
+        <a href={`/projets/${projet.id}`} class="group block p-5 border border-gray-200 rounded-xl hover:border-accent-300 hover:shadow-sm transition-all duration-200">
+          <div class="flex items-start justify-between mb-3">
+            <h3 class="font-semibold text-gray-900 group-hover:text-accent-600 transition-colors">{projet.data.title}</h3>
+            <svg class="w-4 h-4 text-gray-300 group-hover:text-accent-500 transition-colors mt-1 shrink-0" fill="none" viewBox="0 0 24 24" stroke="currentColor" stroke-width="2"><path stroke-linecap="round" stroke-linejoin="round" d="m4.5 19.5 15-15m0 0H8.25m11.25 0v11.25" /></svg>
+          </div>
+          <p class="text-sm text-gray-500 mb-3 line-clamp-2">{projet.data.description}</p>
+          <div class="flex items-center justify-between">
+            {projet.data.tags && (
+              <div class="flex flex-wrap gap-1.5">
+                {projet.data.tags.slice(0, 3).map((tag: string) => (
+                  <span class="px-2 py-0.5 text-xs bg-gray-100 text-gray-500 rounded-md">{tag}</span>
+                ))}
+              </div>
+            )}
+            <span class="text-xs text-gray-400 font-mono">{projet.data.date}</span>
+          </div>
+        </a>
+      ))}
+    </div>
+  </div>
+</MainLayout>

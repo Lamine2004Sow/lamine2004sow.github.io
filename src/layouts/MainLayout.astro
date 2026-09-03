@@ -1,0 +1,100 @@
+---
+import Sidebar from '../components/Sidebar.astro';
+import Navigation from '../components/Navigation.astro';
+
+interface Props {
+  title: string;
+  description?: string;
+}
+
+const { title, description = 'Mon portfolio personnel' } = Astro.props;
+---
+
+<!doctype html>
+<html lang="fr">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <meta name="description" content={description} />
+    <link rel="icon" type="image/svg+xml" href="/favicon.svg" />
+    <link rel="preconnect" href="https://fonts.googleapis.com" />
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700;800&family=JetBrains+Mono:wght@400;500&display=swap" rel="stylesheet" />
+    <title>{title}</title>
+  </head>
+  <body class="bg-white text-gray-700 antialiased">
+    <Navigation />
+    <Sidebar />
+
+    <main class="lg:ml-64 min-h-screen">
+      <div class="pt-14 lg:pt-0">
+        <slot />
+      </div>
+    </main>
+  </body>
+</html>
+
+<style is:global>
+  * {
+    scrollbar-width: thin;
+    scrollbar-color: #d1d5db transparent;
+  }
+
+  ::selection {
+    background-color: rgba(249, 115, 22, 0.2);
+  }
+
+  .prose {
+    @apply text-gray-600 leading-relaxed;
+  }
+
+  .prose h1, .prose h2, .prose h3, .prose h4 {
+    @apply text-gray-900 font-bold;
+  }
+
+  .prose h1 { @apply text-3xl mt-8 mb-4; }
+  .prose h2 { @apply text-2xl mt-6 mb-3; }
+  .prose h3 { @apply text-xl mt-5 mb-2; }
+
+  .prose p { @apply mb-4; }
+  .prose ul, .prose ol { @apply mb-4 pl-6; }
+  .prose li { @apply mb-1; }
+  .prose ul li { @apply list-disc; }
+  .prose ol li { @apply list-decimal; }
+
+  .prose a {
+    @apply text-accent-600 underline underline-offset-2 hover:text-accent-500 transition-colors;
+  }
+
+  .prose code {
+    @apply bg-gray-100 text-accent-700 px-1.5 py-0.5 rounded text-sm font-mono;
+  }
+
+  .prose pre {
+    @apply bg-gray-50 border border-gray-200 rounded-lg p-4 mb-4 overflow-x-auto;
+  }
+
+  .prose pre code {
+    @apply bg-transparent p-0;
+  }
+
+  .prose blockquote {
+    @apply border-l-4 border-accent-400 pl-4 italic text-gray-500 mb-4;
+  }
+
+  .prose img {
+    @apply rounded-lg my-6;
+  }
+
+  .prose table {
+    @apply w-full mb-4 border-collapse;
+  }
+
+  .prose th, .prose td {
+    @apply border border-gray-200 px-4 py-2 text-left;
+  }
+
+  .prose th {
+    @apply bg-gray-50 font-semibold text-gray-900;
+  }
+</style>

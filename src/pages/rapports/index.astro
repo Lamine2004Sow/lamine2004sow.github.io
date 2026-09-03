@@ -1,0 +1,29 @@
+---
+import MainLayout from '../../layouts/MainLayout.astro';
+import { getCollection } from 'astro:content';
+
+const rapports = (await getCollection('rapports')).sort(
+  (a, b) => new Date(b.data.date).getTime() - new Date(a.data.date).getTime()
+);
+---
+
+<MainLayout title="Rapports">
+  <div class="px-6 lg:px-12 py-12 max-w-3xl">
+    <div class="mb-10">
+      <h1 class="text-3xl font-extrabold text-gray-900 mb-2">Rapports de stage</h1>
+      <p class="text-gray-500">Vos rapports et comptes rendus.</p>
+    </div>
+
+    <div class="space-y-3">
+      {rapports.map((rapport) => (
+        <a href={`/rapports/${rapport.id}`} class="group flex items-center justify-between p-5 border border-gray-200 rounded-xl hover:border-accent-300 hover:shadow-sm transition-all duration-200">
+          <div>
+            <h3 class="font-semibold text-gray-900 group-hover:text-accent-600 transition-colors">{rapport.data.title}</h3>
+            <p class="text-sm text-gray-400 mt-1">{rapport.data.description}</p>
+          </div>
+          <span class="text-xs text-gray-400 whitespace-nowrap ml-4 font-mono">{rapport.data.date}</span>
+        </a>
+      ))}
+    </div>
+  </div>
+</MainLayout>
