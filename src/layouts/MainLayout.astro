@@ -7,7 +7,7 @@ interface Props {
   description?: string;
 }
 
-const { title, description = 'Mon portfolio personnel' } = Astro.props;
+const { title, description = 'Mouhamadou Lamine SOW — Élève-ingénieur en Informatique · Intelligence Artificielle & Recherche Opérationnelle' } = Astro.props;
 ---
 
 <!doctype html>
@@ -20,13 +20,13 @@ const { title, description = 'Mon portfolio personnel' } = Astro.props;
     <link rel="preconnect" href="https://fonts.googleapis.com" />
     <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
     <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700;800&family=JetBrains+Mono:wght@400;500&display=swap" rel="stylesheet" />
-    <title>{title}</title>
+    <title>{title} | Mouhamadou Lamine SOW</title>
   </head>
-  <body class="bg-white text-gray-700 antialiased">
+  <body class="bg-white text-gray-700 antialiased selection:bg-accent-100 selection:text-accent-900">
     <Navigation />
     <Sidebar />
 
-    <main class="lg:ml-64 min-h-screen">
+    <main class="lg:ml-72 min-h-screen">
       <div class="pt-14 lg:pt-0">
         <slot />
       </div>
