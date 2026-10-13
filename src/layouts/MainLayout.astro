@@ -1,13 +1,16 @@
 ---
-import Sidebar from '../components/Sidebar.astro';
-import Navigation from '../components/Navigation.astro';
+import Header from '../components/Header.astro';
 
 interface Props {
-  title: string;
+  title?: string;
   description?: string;
 }
 
-const { title, description = 'Mouhamadou Lamine SOW — Élève-ingénieur en Informatique · Intelligence Artificielle & Recherche Opérationnelle' } = Astro.props;
+const DEFAULT_DESCRIPTION =
+  'Mouhamadou Lamine SOW — élève-ingénieur informatique, machine learning et recherche opérationnelle.';
+
+const { title, description = DEFAULT_DESCRIPTION } = Astro.props;
+const pageTitle = title ? `${title} — Mouhamadou Lamine SOW` : 'Mouhamadou Lamine SOW';
 ---
 
 <!doctype html>
@@ -19,18 +22,24 @@ const { title, description = 'Mouhamadou Lamine SOW — Élève-ingénieur en In
     <link rel="icon" type="image/svg+xml" href="/favicon.svg" />
     <link rel="preconnect" href="https://fonts.googleapis.com" />
     <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
-    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700;800&family=JetBrains+Mono:wght@400;500&display=swap" rel="stylesheet" />
-    <title>{title} | Mouhamadou Lamine SOW</title>
+    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700&display=swap" rel="stylesheet" />
+    <title>{pageTitle}</title>
   </head>
-  <body class="bg-white text-gray-700 antialiased selection:bg-accent-100 selection:text-accent-900">
-    <Navigation />
-    <Sidebar />
+  <body class="bg-white text-gray-600 antialiased selection:bg-accent-100 selection:text-accent-900">
+    <div class="mx-auto max-w-2xl px-5 py-10 sm:py-16">
+      <Header />
 
-    <main class="lg:ml-72 min-h-screen">
-      <div class="pt-14 lg:pt-0">
+      <main class="mt-14 sm:mt-20">
         <slot />
-      </div>
-    </main>
+      </main>
+
+      <footer class="mt-20 pt-6 border-t border-gray-100 text-sm text-gray-400 flex flex-wrap gap-x-4 gap-y-2">
+        <a href="mailto:lamine.2004pro.sow@gmail.com" class="hover:text-accent-700 transition-colors">lamine.2004pro.sow@gmail.com</a>
+        <a href="https://github.com/Lamine2004Sow" target="_blank" rel="noopener noreferrer" class="hover:text-accent-700 transition-colors">GitHub</a>
+        <a href="https://www.linkedin.com/in/mouhamadou-lamine-sow-118097334" target="_blank" rel="noopener noreferrer" class="hover:text-accent-700 transition-colors">LinkedIn</a>
+        <span>© 2026</span>
+      </footer>
+    </div>
   </body>
 </html>
 
@@ -41,7 +50,7 @@ const { title, description = 'Mouhamadou Lamine SOW — Élève-ingénieur en In
   }
 
   ::selection {
-    background-color: rgba(249, 115, 22, 0.2);
+    background-color: rgba(37, 99, 235, 0.15);
   }
 
   .prose {
@@ -49,12 +58,12 @@ const { title, description = 'Mouhamadou Lamine SOW — Élève-ingénieur en In
   }
 
   .prose h1, .prose h2, .prose h3, .prose h4 {
-    @apply text-gray-900 font-bold;
+    @apply text-gray-900 font-semibold;
   }
 
-  .prose h1 { @apply text-3xl mt-8 mb-4; }
-  .prose h2 { @apply text-2xl mt-6 mb-3; }
-  .prose h3 { @apply text-xl mt-5 mb-2; }
+  .prose h1 { @apply text-2xl mt-10 mb-4; }
+  .prose h2 { @apply text-xl mt-10 mb-3; }
+  .prose h3 { @apply text-lg mt-8 mb-2; }
 
   .prose p { @apply mb-4; }
   .prose ul, .prose ol { @apply mb-4 pl-6; }
@@ -63,15 +72,15 @@ const { title, description = 'Mouhamadou Lamine SOW — Élève-ingénieur en In
   .prose ol li { @apply list-decimal; }
 
   .prose a {
-    @apply text-accent-600 underline underline-offset-2 hover:text-accent-500 transition-colors;
+    @apply text-accent-600 underline underline-offset-2 hover:text-accent-700 transition-colors;
   }
 
   .prose code {
-    @apply bg-gray-100 text-accent-700 px-1.5 py-0.5 rounded text-sm font-mono;
+    @apply bg-gray-100 text-gray-800 px-1 py-0.5 rounded text-sm font-mono;
   }
 
   .prose pre {
-    @apply bg-gray-50 border border-gray-200 rounded-lg p-4 mb-4 overflow-x-auto;
+    @apply bg-gray-50 border border-gray-200 rounded p-4 mb-4 overflow-x-auto text-sm;
   }
 
   .prose pre code {
@@ -79,19 +88,20 @@ const { title, description = 'Mouhamadou Lamine SOW — Élève-ingénieur en In
   }
 
   .prose blockquote {
-    @apply border-l-4 border-accent-400 pl-4 italic text-gray-500 mb-4;
+    @apply border-l-2 border-gray-300 pl-4 text-gray-500 mb-4;
   }
 
   .prose img {
-    @apply rounded-lg my-6;
+    @apply rounded my-6;
   }
 
+  /* Tables: scroll horizontally on small screens instead of overflowing the page. */
   .prose table {
-    @apply w-full mb-4 border-collapse;
+    @apply block max-w-full overflow-x-auto mb-4 border-collapse text-sm;
   }
 
   .prose th, .prose td {
-    @apply border border-gray-200 px-4 py-2 text-left;
+    @apply border border-gray-200 px-3 py-2 text-left align-top;
   }
 
   .prose th {

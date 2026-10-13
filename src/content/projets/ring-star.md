@@ -1,74 +1,59 @@
 ---
-title: "Optimisation du Ring-Star Problem — Métro circulaire"
-description: "Modélisation PLNE et métaheuristique pour la conception optimale d'une ligne de métro circulaire conciliant coût d'infrastructure et accessibilité des usagers."
+title: "Ring-Star — Optimisation d’une ligne de métro circulaire"
+description: "Modélisation PLNE et heuristiques pour concevoir le tracé d’une ligne de métro circulaire, en arbitrant le coût de la boucle et la distance d’accès des usagers."
 date: "2026-01"
-tags: ["Recherche Opérationnelle", "PLNE", "Python", "CPLEX", "Métaheuristiques"]
+tags: ["Recherche opérationnelle", "PLNE", "Métaheuristiques", "Python"]
 github: "https://github.com/Lamine2004Sow/ring-star"
 ---
 
-## Contexte & Problématique
+Projet de SAÉ en optimisation (Université Sorbonne Paris Nord, Sup Galilée, 2025-2026) sur le **Ring-Star Problem** : concevoir une ligne de métro circulaire qui couvre un territoire à moindre coût.
 
-L'optimisation des réseaux de transport public constitue un défi classique et central en aménagement du territoire. Dans une agglomération, concevoir le tracé d'une ligne de métro circulaire implique d'arbitrer entre deux objectifs contradictoires :
-1. **Minimiser le coût d'infrastructure et d'exploitation de la ligne** : plus le cycle comprend de stations, plus il est long et coûteux à réaliser.
-2. **Minimiser la distance d'accès pour les usagers** : chaque quartier non directement desservi doit être relié à la station la plus proche (marche, bus, navette).
+## Problème
 
-Le **Ring-Star Problem (RSP)** formalise exactement ce compromis : parmi $n$ pôles d'activité identifiés, on en sélectionne exactement $p$ pour y implanter une station de métro connectée en anneau (le *ring*), tandis que les $n - p$ pôles restants sont rattachés en étoile (le *star*) à leur station la plus proche.
+Parmi `n` pôles d’activité, il faut en choisir exactement `p` comme stations :
 
----
+- les stations sont reliées par **une seule ligne circulaire** (l’anneau) ;
+- chaque pôle non desservi est rattaché par un **lien en étoile** (marche, navette) à la station la plus proche.
 
-## Preuve de NP-difficulté
+L’objectif combine deux coûts : le coût de construction et d’exploitation de la boucle, et le coût d’accès des usagers depuis leur pôle jusqu’à leur station. Le compromis est central : plus de stations allonge le cycle, mais réduit les trajets d’accès.
 
-Le problème Ring-Star est **NP-difficile**. On l'établit en montrant qu'il généralise deux problèmes d'optimisation combinatoire fondamentaux :
+Le problème est NP-difficile : il généralise le problème du voyageur de commerce (cas `p = n`, sans étoile) et le problème du p-médian (cas où le coût de l’anneau est nul).
 
-- **Lien avec le TSP (Voyageur de commerce)** : si $p = n$, tous les pôles sont des stations. Il n'y a plus d'affectation en étoile, et l'objectif se résume à trouver le cycle hamiltonien de coût minimal passant par tous les sommets.
-- **Lien avec le problème du $p$-médian** : si $\alpha = 0$ (coût de l'anneau nul), le problème consiste à choisir $p$ centres et à affecter chaque sommet au centre le plus proche pour minimiser la somme des distances d'affectation.
+## Modélisation (PLNE)
 
-Le problème Ring-Star englobant ces deux cas limites, il est NP-difficile et justifie l'exploration conjointe de méthodes exactes et de métaheuristiques.
+Le modèle en programmation linéaire en nombres entiers utilise trois familles de variables :
 
----
+- `y[i][j]` binaire : vaut 1 si le pôle `i` est rattaché à la station `j` ; `y[j][j]` vaut 1 si `j` est station ;
+- `x[i][j]` binaire : vaut 1 si l’arête `{i, j}` appartient au cycle (pour `i < j`) ;
+- `z[i][j]` continue positive : variables de flot qui éliminent les sous-tours et assurent la connexité du cycle.
 
-## Modélisation Mathématique (PLNE)
+Fonction objectif, avec `D` la matrice des distances et `alpha` le poids du cycle :
 
-Le modèle en Programmation Linéaire en Nombres Entiers (PLNE) a été formulé et implémenté avec **CPLEX** et **PuLP** :
+```
+min  alpha * somme(D[i][j] * x[i][j])  +  somme(D[i][j] * y[i][j])
+```
 
-### Variables de décision
+Contraintes principales : exactement `p` stations ; affectation unique de chaque pôle ; `y[i][j] <= y[j][j]` ; station de référence fixée ; degré 2 dans le cycle pour chaque station ; connexité par le flot (`z[i][j] + z[j][i] <= (p - 1) * x[i][j]`).
 
-- $y_{ij} \in \{0, 1\}$ : $y_{ij} = 1$ si le pôle $i$ est rattaché à la station $j$, avec $y_{jj} = 1$ si $j$ est sélectionné comme station.
-- $x_{ij} \in \{0, 1\}$ : $x_{ij} = 1$ si l'arête $\{i, j\}$ fait partie du cycle circulaire (pour $i < j$).
-- $z_{ij} \ge 0$ : variables de flot auxiliaires pour éliminer les sous-tours et garantir la connexité du cycle sans explosion combinatoire des contraintes.
+Le modèle est résolu avec PuLP et les solveurs CBC, CPLEX et Gurobi.
 
-### Fonction objectif
+## Heuristiques
 
-$$\min \quad \alpha \sum_{\{i,j\}} D_{ij} \, x_{ij} + \sum_{i,j} D_{ij} \, y_{ij}$$
+Pour les instances plus grandes, deux méthodes approchées sont implémentées.
 
-où $\alpha$ contrôle le compromis entre coût du tracé et coût d'accès des usagers.
+**1. Heuristique gloutonne.** En quatre phases :
 
----
+1. partitionnement par grille : une cellule non vide fournit le pôle le plus proche de son centre ;
+2. complétion Maximin : tant que le nombre de stations est inférieur à `p`, ajout du pôle dont la distance minimale aux stations déjà choisies est maximale ;
+3. affectation de chaque pôle à la station la plus proche ;
+4. construction du cycle sur les stations par l’algorithme du plus proche voisin, à partir de la station de référence.
 
-## Approches Algorithmiques Approchées
+**2. Descente stochastique par échanges (SWAP).** Un mouvement retire une station (hors station de référence), la remplace par un pôle non station, puis recalcule affectations, cycle et coût. Le mouvement n’est accepté que s’il diminue le coût. Cette approche n’assure pas l’optimum global, mais améliore en pratique la solution gloutonne.
 
-Face à l'explosion du temps de calcul sur des instances de grande taille ($n \ge 50$), deux algorithmes approchés ont été développés :
+## Résultats
 
-### 1. Heuristique Constructive (Gloutonne)
-- **Partitionnement par grille spatiale** : découpage du plan pour sélectionner les stations pivots proches des barycentres locaux.
-- **Complétion Maximin** : sélection séquentielle des pôles maximisant la distance minimale aux stations déjà choisies pour assurer une couverture territoriale homogène.
-- **Affectation vorace & Tour TSP initial** : rattachement au plus proche voisin et construction d'un cycle par Nearest Neighbor.
+Dans le CV, les résultats sont résumés ainsi : les heuristiques et la recherche locale réduisent les coûts de **19 %** par rapport à l’approche gloutonne, en moins d’une seconde.
 
-### 2. Métaheuristique : Descente Stochastique par Échanges (SWAP)
-- À chaque itération, une station active est échangée avec un pôle non desservi.
-- Réaffectation dynamique et recalcul optimisé du cycle.
-- Acceptation stricte si le coût global diminue, permettant une exploration rapide des voisinages d'instances TSPLIB (jusqu'à 70 sommets).
+## Stack
 
----
-
-## Résultats & Performances Comparatives
-
-Les expérimentations menées sur des instances de référence de la bibliothèque **TSPLIB** mettent en évidence des gains opérationnels majeurs :
-
-| Métrique / Méthode | Solveur Exact (CPLEX) | Heuristique Gloutonne | Descente Stochastique |
-|---|---|---|---|
-| **Temps moyen d'exécution** | 108 s (jusqu'à plusieurs minutes) | **< 0,01 s** | **0,084 s** |
-| **Écart moyen à l'optimum (Gap)** | 0,00 % (Optimal) | ~25 % | **4,9 %** |
-| **Amélioration vs Glouton** | — | Référence | **+20,7 % à +38 %** |
-
-> **Conclusion de l'étude** : La métaheuristique par descente stochastique permet de converger en moins d'un dixième de seconde vers des solutions à moins de 5 % de l'optimum absolu, divisant le temps de calcul par plus de **1 200** par rapport au solveur exact.
+Python. Modélisation PLNE avec PuLP, résolution avec CBC, CPLEX ou Gurobi. Heuristiques et recherche locale implémentées en Python.

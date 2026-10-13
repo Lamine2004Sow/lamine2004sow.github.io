@@ -10,59 +10,60 @@ tags: ["Recherche Opérationnelle", "PLNE", "Métaheuristiques", "Complexité"]
 En optimisation des réseaux de télécommunication ou de transport, un problème récurrent consiste à concevoir une dorsale circulaire reliant des nœuds stratégiques, tout en raccordant les nœuds périphériques à cette dorsale. Ce problème porte le nom de **Ring-Star Problem (RSP)**.
 
 Sur le plan théorique, le Ring-Star Problem est particulièrement riche car il se situe à la croisée de deux problèmes canoniques de la recherche opérationnelle :
-- Le **Voyageur de commerce (TSP)** : recherche du cycle le plus court reliant un sous-ensemble de points.
-- Le **Problème du $p$-médian** : sélection optimale de $p$ centres et affectation au plus proche voisin.
+- Le **voyageur de commerce (TSP)** : recherche du cycle le plus court reliant un sous-ensemble de points.
+- Le **problème du p-médian** : sélection optimale de `p` centres et affectation au plus proche voisin.
 
 ---
 
 ## Modélisation mathématique : l'art de formuler les sous-tours
 
-La formulation en Programmation Linéaire en Nombres Entiers (PLNE) d'un cycle exige d'éliminer les "sous-tours" (cycles disjoints ne couvrant pas l'ensemble des stations sélectionnées). Deux approches classiques existent :
+La formulation en programmation linéaire en nombres entiers (PLNE) d'un cycle exige d'éliminer les « sous-tours » (cycles disjoints ne couvrant pas l'ensemble des stations sélectionnées). Deux approches classiques existent :
 
-1. **Les contraintes de Dantzig-Fulkerson-Johnson (DFJ)** : très serrées mais en nombre exponentiel ($O(2^p)$), nécessitant un algorithme de séparation dynamique de coupes (Branch & Cut).
-2. **La formulation par multiflots ou flots simples** : en injectant une unité de flot fictif par une station d'origine et en consommant une unité sur chaque station du cycle, on garantit la connexité avec un nombre polynomial de variables et de contraintes ($O(n^2)$).
+1. **Les contraintes de Dantzig-Fulkerson-Johnson (DFJ)** : très serrées mais en nombre exponentiel, elles nécessitent un algorithme de séparation dynamique de coupes (branch and cut).
+2. **La formulation par flot** : en injectant un flot fictif depuis une station d'origine, avec une unité consommée sur chaque station du cycle, on garantit la connexité avec un nombre polynomial de variables et de contraintes.
 
-Pour des instances de taille modérée (jusqu'à 50 sommets), l'approche par flot se résout très efficacement à l'aide de solveurs tels que CPLEX ou Gurobi.
+Le modèle utilisé dans ce projet suit la seconde approche : des variables de flot `z` éliminent les sous-tours, et le problème est résolu avec PuLP et le solveur CBC. Les solveurs CPLEX et Gurobi sont également mentionnés comme alternatives.
 
 ---
 
 ## Pourquoi les méthodes exactes capitulent-elles ?
 
-Lorsque le nombre de sommets $n$ dépasse une centaine et que le paramètre $p$ se situe dans la zone de difficulté maximale ($p \approx n/2$), l'arbre de Branch & Bound explose. Le temps de calcul peut passer de quelques secondes à plusieurs dizaines de minutes, voire plusieurs heures.
+Lorsque la taille des instances augmente, l'arbre de branch and bound peut croître très vite, et le temps de calcul devient difficile à prévoir. Le projet a donc été conçu avec une approche exacte pour les petites instances et des heuristiques pour les instances plus grandes.
 
-Pour une application d'aide à la décision interactive, l'utilisateur a besoin d'explorer plusieurs scénarios en temps réel. C'est ici qu'interviennent les **métaheuristiques**.
+Pour une application d'aide à la décision interactive, l'utilisateur a besoin d'explorer plusieurs scénarios rapidement. C'est ici qu'interviennent les **métaheuristiques**.
 
 ---
 
 ## La descente stochastique par échanges de stations
 
-L'approche développée dans mes travaux repose sur un schéma en deux temps :
+L'approche développée dans ce projet repose sur un schéma en deux temps :
 
 ```
-[Nuage de points] 
+[Ensemble de pôles]
       │
       ▼
-Heuristique Constructive (Partitionnement grille + Maximin)
+Heuristique gloutonne (grille + complétion Maximin + plus proche voisin)
       │
-      ▼ (Solution initiale réalisable en < 10 ms)
-Descente Stochastique (Échanges de stations - SWAP)
+      ▼  solution initiale réalisable
+Descente stochastique (échanges de stations - SWAP)
       │
-      ▼ (Convergence en ~80 ms)
-Solution quasi-optimale (Gap < 5 %)
+      ▼  solution améliorée
+Solution retenue
 ```
 
 ### Mécanisme de l'échange (SWAP)
-À chaque étape :
-1. Une station active $s \in S$ est choisie aléatoirement (en dehors de la station de référence).
-2. Un pôle non desservi $v \notin S$ la remplace.
-3. Les réaffectations étoiles sont recalculées de façon vectorisée en $O(n)$.
-4. Le cycle TSP sur les $p$ stations est réévalué par heuristique locale (Nearest Neighbor ou 2-opt).
-5. L'échange n'est validé que s'il abaisse la valeur de la fonction objectif.
 
-En pratique, cette stratégie permet de s'approcher à **moins de 5 % de la solution optimale prouvée par CPLEX**, tout en réduisant le temps d'exécution de 108 secondes à **0,084 seconde**.
+À chaque étape :
+1. Une station active `s` est choisie aléatoirement, hors station de référence.
+2. Un pôle non desservi `v` la remplace.
+3. Les affectations des pôles aux stations et le cycle sur les stations sont recalculés.
+4. Le coût total est recalculé.
+5. L'échange n'est retenu que s'il abaisse la valeur de la fonction objectif.
+
+Sur les instances du projet, la recherche locale réduit les coûts de **19 %** par rapport à l'approche gloutonne, en moins d'une seconde.
 
 ---
 
 ## Enseignements pour l'ingénieur
 
-Cette étude illustre un principe clé en ingénierie décisionnelle : **le solveur exact fournit la vérité terrain et la borne inférieure pour évaluer la qualité**, mais **la métaheuristique fournit la réactivité et la scalabilité nécessaires au déploiement opérationnel**.
+Cette étude illustre un principe clé en ingénierie décisionnelle : **le solveur exact fournit une référence et une borne inférieure pour évaluer la qualité**, mais **la métaheuristique apporte la réactivité nécessaire à une utilisation interactive**.

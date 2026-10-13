@@ -7,23 +7,19 @@ const rapports = (await getCollection('rapports')).sort(
 );
 ---
 
-<MainLayout title="Rapports">
-  <div class="px-6 lg:px-12 py-12 max-w-3xl">
-    <div class="mb-10">
-      <h1 class="text-3xl font-extrabold text-gray-900 mb-2">Rapports de stage</h1>
-      <p class="text-gray-500">Vos rapports et comptes rendus.</p>
-    </div>
+<MainLayout title="Rapport de stage">
+  <h1 class="text-2xl font-bold text-gray-900 tracking-tight">Rapport de stage</h1>
+  <p class="mt-2">Rapports issus de mes stages.</p>
 
-    <div class="space-y-3">
-      {rapports.map((rapport) => (
-        <a href={`/rapports/${rapport.id}`} class="group flex items-center justify-between p-5 border border-gray-200 rounded-xl hover:border-accent-300 hover:shadow-sm transition-all duration-200">
-          <div>
-            <h3 class="font-semibold text-gray-900 group-hover:text-accent-600 transition-colors">{rapport.data.title}</h3>
-            <p class="text-sm text-gray-400 mt-1">{rapport.data.description}</p>
-          </div>
-          <span class="text-xs text-gray-400 whitespace-nowrap ml-4 font-mono">{rapport.data.date}</span>
-        </a>
-      ))}
-    </div>
-  </div>
+  <ul class="mt-10 divide-y divide-gray-100">
+    {rapports.map((rapport) => (
+      <li class="py-5 first:pt-0">
+        <a href={`/rapports/${rapport.id}`} class="font-medium text-gray-900 hover:text-accent-700 transition-colors">{rapport.data.title}</a>
+        <p class="mt-1">{rapport.data.description}</p>
+        <p class="mt-1 text-sm text-gray-400">
+          {[rapport.data.entreprise, rapport.data.duree, rapport.data.date].filter(Boolean).join(' · ')}
+        </p>
+      </li>
+    ))}
+  </ul>
 </MainLayout>
