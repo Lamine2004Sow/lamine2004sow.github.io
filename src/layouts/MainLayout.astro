@@ -1,45 +1,89 @@
 ---
-import Header from '../components/Header.astro';
+import TopBar from '../components/TopBar.astro';
+import Sidebar from '../components/Sidebar.astro';
+import { stripLang, url } from '../i18n/paths';
+import { ui, type Lang } from '../i18n/ui';
 
 interface Props {
+  lang: Lang;
   title?: string;
   description?: string;
 }
 
-const DEFAULT_DESCRIPTION =
-  'Mouhamadou Lamine SOW — élève-ingénieur informatique, machine learning et recherche opérationnelle.';
+const { lang, title, description } = Astro.props;
+const t = ui[lang];
+const pageTitle = title ? `${title} — ${t.common.siteName}` : t.common.siteName;
+const metaDescription = description ?? t.common.description;
 
-const { title, description = DEFAULT_DESCRIPTION } = Astro.props;
-const pageTitle = title ? `${title} — Mouhamadou Lamine SOW` : 'Mouhamadou Lamine SOW';
+// Same page in both languages, for hreflang.
+const path = stripLang(Astro.url.pathname);
+const site = Astro.site ?? Astro.url;
+const alternate = (l: Lang) => new URL(url(l, path), site).href;
 ---
 
 <!doctype html>
-<html lang="fr">
+<html lang={lang}>
   <head>
     <meta charset="UTF-8" />
     <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-    <meta name="description" content={description} />
+    <meta name="description" content={metaDescription} />
     <link rel="icon" type="image/svg+xml" href="/favicon.svg" />
+    <link rel="alternate" hreflang="fr" href={alternate('fr')} />
+    <link rel="alternate" hreflang="en" href={alternate('en')} />
+    <link rel="alternate" hreflang="x-default" href={alternate('fr')} />
     <link rel="preconnect" href="https://fonts.googleapis.com" />
     <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
     <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700&display=swap" rel="stylesheet" />
     <title>{pageTitle}</title>
+    <!-- Applies the saved or system theme before first paint, to avoid a flash. -->
+    <script is:inline>
+      (function () {
+        try {
+          var saved = localStorage.getItem('theme');
+          var dark = saved ? saved === 'dark' : window.matchMedia('(prefers-color-scheme: dark)').matches;
+          document.documentElement.classList.toggle('dark', dark);
+        } catch (e) {}
+      })();
+    </script>
   </head>
-  <body class="bg-white text-gray-600 antialiased selection:bg-accent-100 selection:text-accent-900">
-    <div class="mx-auto max-w-2xl px-5 py-10 sm:py-16">
-      <Header />
+  <body class="min-h-screen bg-white text-gray-600 antialiased selection:bg-accent-100 selection:text-accent-900 dark:bg-gray-950 dark:text-gray-300 dark:selection:bg-accent-900 dark:selection:text-accent-100">
+    <TopBar lang={lang} />
+    <Sidebar lang={lang} />
 
-      <main class="mt-14 sm:mt-20">
+    <div class="lg:pl-72">
+      <main class="mx-auto max-w-3xl px-5 py-10 sm:px-8 sm:py-14">
         <slot />
       </main>
 
-      <footer class="mt-20 pt-6 border-t border-gray-100 text-sm text-gray-400 flex flex-wrap gap-x-4 gap-y-2">
-        <a href="mailto:lamine.2004pro.sow@gmail.com" class="hover:text-accent-700 transition-colors">lamine.2004pro.sow@gmail.com</a>
-        <a href="https://github.com/Lamine2004Sow" target="_blank" rel="noopener noreferrer" class="hover:text-accent-700 transition-colors">GitHub</a>
-        <a href="https://www.linkedin.com/in/mouhamadou-lamine-sow-118097334" target="_blank" rel="noopener noreferrer" class="hover:text-accent-700 transition-colors">LinkedIn</a>
-        <span>© 2026</span>
+      <footer class="mx-auto max-w-3xl border-t border-gray-200 px-5 pb-10 pt-6 text-sm text-gray-400 sm:px-8 dark:border-gray-800 dark:text-gray-500">
+        {t.common.footer}
       </footer>
     </div>
+
+    <script>
+      const root = document.documentElement;
+
+      const setDark = (dark: boolean) => {
+        root.classList.toggle('dark', dark);
+        try {
+          localStorage.setItem('theme', dark ? 'dark' : 'light');
+        } catch (e) {}
+      };
+
+      document.querySelectorAll<HTMLButtonElement>('.js-theme-toggle').forEach((btn) => {
+        btn.addEventListener('click', () => setDark(!root.classList.contains('dark')));
+      });
+
+      const sidebar = document.getElementById('sidebar');
+      document.querySelectorAll<HTMLButtonElement>('.js-menu-toggle').forEach((btn) => {
+        btn.addEventListener('click', () => {
+          if (!sidebar) return;
+          const open = sidebar.classList.contains('hidden');
+          sidebar.classList.toggle('hidden', !open);
+          btn.setAttribute('aria-expanded', String(open));
+        });
+      });
+    </script>
   </body>
 </html>
 
@@ -49,21 +93,43 @@ const pageTitle = title ? `${title} — Mouhamadou Lamine SOW` : 'Mouhamadou Lam
     scrollbar-color: #d1d5db transparent;
   }
 
-  ::selection {
-    background-color: rgba(37, 99, 235, 0.15);
+  .dark * {
+    scrollbar-color: #374151 transparent;
   }
 
+  html.dark {
+    color-scheme: dark;
+  }
+
+  ::selection {
+    background-color: rgba(249, 115, 22, 0.18);
+  }
+
+  /* Shared UI building blocks. */
+  .link {
+    @apply text-accent-600 hover:text-accent-700 dark:text-accent-400 dark:hover:text-accent-300 transition-colors;
+  }
+
+  .section-title {
+    @apply mb-5 text-sm font-semibold uppercase tracking-wide text-accent-700 dark:text-accent-400;
+  }
+
+  .tag {
+    @apply inline-block rounded-full bg-accent-50 px-2.5 py-0.5 text-xs font-medium text-accent-700 dark:bg-accent-900/30 dark:text-accent-300;
+  }
+
+  /* Markdown content. */
   .prose {
-    @apply text-gray-600 leading-relaxed;
+    @apply leading-relaxed text-gray-600 dark:text-gray-300;
   }
 
   .prose h1, .prose h2, .prose h3, .prose h4 {
-    @apply text-gray-900 font-semibold;
+    @apply font-semibold text-gray-900 dark:text-gray-100;
   }
 
-  .prose h1 { @apply text-2xl mt-10 mb-4; }
-  .prose h2 { @apply text-xl mt-10 mb-3; }
-  .prose h3 { @apply text-lg mt-8 mb-2; }
+  .prose h1 { @apply mt-10 mb-4 text-2xl; }
+  .prose h2 { @apply mt-10 mb-3 text-xl; }
+  .prose h3 { @apply mt-8 mb-2 text-lg; }
 
   .prose p { @apply mb-4; }
   .prose ul, .prose ol { @apply mb-4 pl-6; }
@@ -72,39 +138,39 @@ const pageTitle = title ? `${title} — Mouhamadou Lamine SOW` : 'Mouhamadou Lam
   .prose ol li { @apply list-decimal; }
 
   .prose a {
-    @apply text-accent-600 underline underline-offset-2 hover:text-accent-700 transition-colors;
+    @apply text-accent-600 underline underline-offset-2 transition-colors hover:text-accent-700 dark:text-accent-400 dark:hover:text-accent-300;
   }
 
   .prose code {
-    @apply bg-gray-100 text-gray-800 px-1 py-0.5 rounded text-sm font-mono;
+    @apply rounded bg-gray-100 px-1 py-0.5 font-mono text-sm text-gray-800 dark:bg-gray-800 dark:text-gray-200;
   }
 
   .prose pre {
-    @apply bg-gray-50 border border-gray-200 rounded p-4 mb-4 overflow-x-auto text-sm;
+    @apply mb-4 overflow-x-auto rounded border border-gray-200 bg-gray-50 p-4 text-sm dark:border-gray-800 dark:bg-gray-900;
   }
 
   .prose pre code {
-    @apply bg-transparent p-0;
+    @apply bg-transparent p-0 text-inherit dark:bg-transparent dark:text-inherit;
   }
 
   .prose blockquote {
-    @apply border-l-2 border-gray-300 pl-4 text-gray-500 mb-4;
+    @apply mb-4 border-l-2 border-accent-300 pl-4 text-gray-500 dark:border-accent-700 dark:text-gray-400;
   }
 
   .prose img {
-    @apply rounded my-6;
+    @apply my-6 rounded;
   }
 
   /* Tables: scroll horizontally on small screens instead of overflowing the page. */
   .prose table {
-    @apply block max-w-full overflow-x-auto mb-4 border-collapse text-sm;
+    @apply mb-4 block max-w-full overflow-x-auto border-collapse text-sm;
   }
 
   .prose th, .prose td {
-    @apply border border-gray-200 px-3 py-2 text-left align-top;
+    @apply border border-gray-200 px-3 py-2 text-left align-top dark:border-gray-800;
   }
 
   .prose th {
-    @apply bg-gray-50 font-semibold text-gray-900;
+    @apply bg-gray-50 font-semibold text-gray-900 dark:bg-gray-800/60 dark:text-gray-100;
   }
 </style>

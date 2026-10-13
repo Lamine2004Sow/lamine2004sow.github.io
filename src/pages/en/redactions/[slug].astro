@@ -1,0 +1,13 @@
+---
+import EntryView from '../../../components/views/EntryView.astro';
+import { getEntries } from '../../../i18n/content';
+
+export async function getStaticPaths() {
+  const entries = await getEntries('redactions', 'en');
+  return entries.map((entry) => ({ params: { slug: entry.slug }, props: { entry } }));
+}
+
+const { entry } = Astro.props;
+---
+
+<EntryView collection="redactions" lang="en" entry={entry} />

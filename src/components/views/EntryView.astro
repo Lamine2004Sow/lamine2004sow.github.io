@@ -1,0 +1,58 @@
+---
+import { render } from 'astro:content';
+import MainLayout from '../../layouts/MainLayout.astro';
+import type { LocalizedEntry, CollectionName } from '../../i18n/content';
+import { url } from '../../i18n/paths';
+import { ui, type Lang } from '../../i18n/ui';
+
+interface Props {
+  collection: CollectionName;
+  lang: Lang;
+  entry: LocalizedEntry;
+}
+
+const { collection, lang, entry } = Astro.props;
+const t = ui[lang];
+const data = entry.data as {
+  title: string;
+  description: string;
+  date: string;
+  tags?: string[];
+  entreprise?: string;
+  duree?: string;
+  github?: string;
+  demo?: string;
+};
+const { Content } = await render(entry);
+
+const meta =
+  collection === 'rapports'
+    ? [data.entreprise, data.duree, data.date].filter(Boolean).join(' · ')
+    : [data.date, ...(data.tags ?? [])].join(' · ');
+---
+
+<MainLayout lang={lang} title={data.title} description={data.description}>
+  <a href={url(lang, `/${collection}`)} class="link text-sm">{t.common.back}</a>
+
+  <article class="mt-8">
+    <header>
+      <h1 class="text-2xl font-bold tracking-tight text-gray-900 sm:text-3xl dark:text-gray-100">{data.title}</h1>
+      <p class="mt-3">{data.description}</p>
+      <p class="mt-2 text-sm text-gray-400 dark:text-gray-500">{meta}</p>
+      {(data.github || data.demo) && (
+        <p class="mt-3 flex gap-4 text-sm">
+          {data.github && (
+            <a href={data.github} target="_blank" rel="noopener" class="link">{t.common.codeLink}</a>
+          )}
+          {data.demo && (
+            <a href={data.demo} target="_blank" rel="noopener" class="link">{t.common.demoLink}</a>
+          )}
+        </p>
+      )}
+    </header>
+
+    <div class="prose mt-10">
+      <Content />
+    </div>
+  </article>
+</MainLayout>

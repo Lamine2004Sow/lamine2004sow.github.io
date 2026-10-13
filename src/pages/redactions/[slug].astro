@@ -1,32 +1,13 @@
 ---
-import MainLayout from '../../layouts/MainLayout.astro';
-import { getCollection, render } from 'astro:content';
+import EntryView from '../../components/views/EntryView.astro';
+import { getEntries } from '../../i18n/content';
 
 export async function getStaticPaths() {
-  const redactions = await getCollection('redactions');
-  return redactions.map((article) => ({
-    params: { slug: article.id },
-    props: { article },
-  }));
+  const entries = await getEntries('redactions', 'fr');
+  return entries.map((entry) => ({ params: { slug: entry.slug }, props: { entry } }));
 }
 
-const { article } = Astro.props;
-const { Content } = await render(article);
-const meta = [article.data.date, ...(article.data.tags ?? [])].join(' · ');
+const { entry } = Astro.props;
 ---
 
-<MainLayout title={article.data.title} description={article.data.description}>
-  <a href="/redactions" class="text-sm text-gray-500 hover:text-accent-700 transition-colors">← Retour</a>
-
-  <article class="mt-8">
-    <header>
-      <h1 class="text-2xl sm:text-3xl font-bold text-gray-900 tracking-tight">{article.data.title}</h1>
-      <p class="mt-3">{article.data.description}</p>
-      <p class="mt-2 text-sm text-gray-400">{meta}</p>
-    </header>
-
-    <div class="prose mt-10">
-      <Content />
-    </div>
-  </article>
-</MainLayout>
+<EntryView collection="redactions" lang="fr" entry={entry} />
