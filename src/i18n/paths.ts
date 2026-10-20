@@ -2,7 +2,6 @@ import type { Lang } from './ui';
 
 export const SECTION_PATH = {
   projets: '/projets',
-  redactions: '/redactions',
   rapports: '/rapports',
 } as const;
 

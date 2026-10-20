@@ -1,6 +1,8 @@
 ---
 title: "ROADEF/EURO 2020 — Planification de la maintenance RTE"
 description: "Planification des interventions de maintenance du réseau électrique de RTE sous risque incertain : glouton, recuit simulé et PLNE avec Gurobi, évalués sur les instances du challenge."
+result: "Solutions à 0,52 % en moyenne de la meilleure solution connue (contre 2,83 % pour le glouton) ; optimalité prouvée sur 8 instances sur 15."
+joke: "Les interventions sont planifiées au cordeau. Mon emploi du temps personnel, lui, n'a jamais été optimisé."
 date: "2026-10"
 tags: ["Recherche opérationnelle", "PLNE", "Gurobi", "Recuit simulé"]
 github: "https://github.com/Lamine2004Sow/roadef2020"

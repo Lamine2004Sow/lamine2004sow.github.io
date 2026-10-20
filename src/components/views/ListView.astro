@@ -1,5 +1,6 @@
 ---
 import MainLayout from '../../layouts/MainLayout.astro';
+import Joke from '../Joke.astro';
 import { getEntries, type CollectionName } from '../../i18n/content';
 import { url } from '../../i18n/paths';
 import { ui, type Lang } from '../../i18n/ui';
@@ -19,25 +20,35 @@ const metaOf = (data: { date: string; tags?: string[]; entreprise?: string; dure
   collection === 'rapports'
     ? [data.entreprise, data.duree, data.date].filter(Boolean)
     : [data.date, ...(data.tags ?? [])];
+
+const jokeText = collection === 'projets' ? t.jokes.projets : undefined;
+// Only projects carry a key result.
+const resultOf = (data: { result?: string }) => data.result;
 ---
 
 <MainLayout lang={lang} title={t.nav[collection]}>
-  <h1 class="text-2xl font-bold tracking-tight text-gray-900 sm:text-3xl dark:text-gray-100">{t.nav[collection]}</h1>
-  <p class="mt-2 text-gray-500 dark:text-gray-400">{t.intros[collection]}</p>
+  <h1 class="page-title">{t.nav[collection]}</h1>
+  <Joke text={jokeText} />
+  <p class="lead">{t.intros[collection]}</p>
 
-  <ul class="mt-10 divide-y divide-gray-100 dark:divide-gray-800">
-    {entries.map((entry) => (
-      <li class="py-5 first:pt-0">
-        <a href={url(lang, `${sectionPath}/${entry.slug}`)} class="font-medium text-gray-900 transition-colors hover:text-accent-700 dark:text-gray-100 dark:hover:text-accent-400">{entry.data.title}</a>
-        <p class="mt-1">{entry.data.description}</p>
-        <p class="mt-2 flex flex-wrap items-center gap-1.5 text-sm text-gray-400 dark:text-gray-500">
-          {metaOf(entry.data).map((item, i) => (
-            <>
-              {i === 0 ? <span>{item}</span> : collection === 'rapports' ? <span>· {item}</span> : <span class="tag">{item}</span>}
-            </>
-          ))}
-        </p>
-      </li>
-    ))}
-  </ul>
+  <div class="section">
+    <ul class="entry-list">
+      {entries.map((entry) => (
+        <li>
+          <a class="entry-title" href={url(lang, `${sectionPath}/${entry.slug}`)}>{entry.data.title}</a>
+          <p>{entry.data.description}</p>
+          {resultOf(entry.data) && <p class="entry-result">{resultOf(entry.data)}</p>}
+          {collection === 'rapports' ? (
+            <p class="meta inline-list">
+              {metaOf(entry.data).map((item) => <span>{item}</span>)}
+            </p>
+          ) : (
+            <p class="meta">
+              {metaOf(entry.data).map((item, i) => (i === 0 ? <span>{item}</span> : <span class="tag">{item}</span>))}
+            </p>
+          )}
+        </li>
+      ))}
+    </ul>
+  </div>
 </MainLayout>

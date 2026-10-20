@@ -1,0 +1,37 @@
+---
+import LangSwitch from './LangSwitch.astro';
+import { normalize, url } from '../i18n/paths';
+import { ui, type Lang } from '../i18n/ui';
+
+interface Props {
+  lang: Lang;
+}
+
+const { lang } = Astro.props;
+const t = ui[lang];
+const current = normalize(Astro.url.pathname);
+
+const nav = [
+  { href: url(lang, '/projets'), label: t.nav.projets },
+  { href: url(lang, '/rapports'), label: t.nav.rapports },
+];
+
+const isActive = (href: string) => {
+  const target = normalize(href);
+  return current === target || current.startsWith(target + '/');
+};
+---
+
+<header class="site-header">
+  <div class="container">
+    <a class="site-name" href={url(lang, '/')}>{t.common.siteName}</a>
+    <nav class="site-nav" aria-label={t.common.mainNav}>
+      {
+        nav.map(({ href, label }) => (
+          <a href={href} aria-current={isActive(href) ? 'page' : undefined}>{label}</a>
+        ))
+      }
+    </nav>
+    <LangSwitch lang={lang} />
+  </div>
+</header>

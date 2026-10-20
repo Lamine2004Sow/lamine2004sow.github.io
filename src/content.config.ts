@@ -11,16 +11,8 @@ const projets = defineCollection({
     image: z.string().optional(),
     github: z.string().optional(),
     demo: z.string().optional(),
-  }),
-});
-
-const redactions = defineCollection({
-  loader: glob({ pattern: '**/*.md', base: './src/content/redactions' }),
-  schema: z.object({
-    title: z.string(),
-    description: z.string(),
-    date: z.string(),
-    tags: z.array(z.string()).optional(),
+    result: z.string().optional(),
+    joke: z.string().optional(),
   }),
 });
 
@@ -35,4 +27,4 @@ const rapports = defineCollection({
   }),
 });
 
-export const collections = { projets, redactions, rapports };
+export const collections = { projets, rapports };

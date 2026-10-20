@@ -1,7 +1,7 @@
 import { getCollection, type CollectionEntry } from 'astro:content';
 import type { Lang } from './ui';
 
-export type CollectionName = 'projets' | 'redactions' | 'rapports';
+export type CollectionName = 'projets' | 'rapports';
 
 /**
  * Content entry in one language. Ids follow the layout `<lang>/<slug>`
