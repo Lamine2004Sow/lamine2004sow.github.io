@@ -2,7 +2,7 @@
 title: "DermTriage — Dermatological image classification"
 description: "Experimental PyTorch pipeline (ResNet-18) to classify seven skin lesion types from the HAM10000 dataset, with an evaluation protocol free of leakage between lesions."
 result: "2.5× better than a classical baseline: macro-F1 of 0.66 vs. 0.26 (5-fold cross-validation), on 10,015 images and 7 classes."
-joke: "My model spots skin lesions very well, as long as you stay inside its training dataset."
+joke: "55 pytest tests, all green. The only red in this project is in the images."
 date: "2026-10"
 tags: ["Deep learning", "Computer vision", "PyTorch", "ResNet-18"]
 github: "https://github.com/Lamine2004Sow/DermTriage"

@@ -58,8 +58,19 @@ const fr = {
     rapports: 'Rapports issus de mes stages.',
   },
   jokes: {
-    home: 'Ce portfolio est en HTML pur : zéro JavaScript, donc rien ne peut vraiment planter. Sauf moi.',
-    projets: 'Chaque projet a commencé par une version naïve. Elle marchait, mais lentement, et sans doute mal.',
+    home: 'Il y a 10 types de recruteurs : ceux qui comprennent le binaire, et les autres. Bienvenue aux deux.',
+    projets: 'J’ai demandé à Gurobi de résoudre mes problèmes. Il m’a répondu : infeasible.',
+    footer: '0 ligne de JavaScript, 0 « undefined is not a function ». Coïncidence ?',
+  },
+  notFound: {
+    title: 'Page introuvable',
+    text: 'Cette adresse n’existe pas ou a été déplacée. Vous pouvez revenir à l’accueil.',
+    back: 'Retour à l’accueil →',
+    jokes: [
+      'Le solveur a exploré toutes les branches. Cette page n’est dans aucune.',
+      'Cette page a été supprimée par un rm -rf un peu trop enthousiaste.',
+      'Ce n’est pas un bug, c’est une fonctionnalité non documentée.',
+    ],
   },
   home: {
     subtitle: 'Élève-ingénieur informatique — Machine learning et recherche opérationnelle',
@@ -174,8 +185,19 @@ const en: Strings = {
     rapports: 'Reports from my internships.',
   },
   jokes: {
-    home: 'This site ships zero JavaScript. Nothing here can break, except possibly me.',
-    projets: 'Every project started as a naive version that worked, slowly. The optimization came later.',
+    home: 'There are 10 types of recruiters: those who understand binary, and those who don’t. Both are welcome.',
+    projets: 'I asked Gurobi to solve my problems. It replied: infeasible.',
+    footer: '0 lines of JavaScript, 0 “undefined is not a function”. Coincidence?',
+  },
+  notFound: {
+    title: 'Page not found',
+    text: 'This address does not exist or has been moved. You can return to the home page.',
+    back: 'Back to the home page →',
+    jokes: [
+      'The solver explored every branch. This page wasn’t in any of them.',
+      'This page was removed by an overly enthusiastic rm -rf.',
+      'It’s not a bug, it’s an undocumented feature.',
+    ],
   },
   home: {
     subtitle: 'Computer Science Engineering Student — Machine Learning and Operations Research',

@@ -2,7 +2,7 @@
 title: "Ring-Star — Optimizing a circular metro line"
 description: "MILP modeling and heuristics to design the route of a circular metro line, trading off the cost of the loop against users' access distance."
 result: "19 % lower cost than the greedy approach, in under one second."
-joke: "NP-hard, like my attempts to find the shortest route to the metro on rainy mornings."
+joke: "NP-hard, solved in under a second. Approximately. Please don’t tell my professor."
 date: "2026-01"
 tags: ["Operations research", "MILP", "Metaheuristics", "Python"]
 github: "https://github.com/Lamine2004Sow/ring-star"

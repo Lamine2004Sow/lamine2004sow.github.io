@@ -1,6 +1,7 @@
 ---
 import '../styles/global.css';
 import SiteHeader from '../components/SiteHeader.astro';
+import Joke from '../components/Joke.astro';
 import { stripLang, url } from '../i18n/paths';
 import { ui, type Lang } from '../i18n/ui';
 
@@ -44,7 +45,10 @@ const alternate = (l: Lang) => new URL(url(l, path), site).href;
     </main>
 
     <footer class="site-footer">
-      <div class="container">{t.common.footer}</div>
+      <div class="container">
+        {t.common.footer}
+        <Joke text={t.jokes.footer} variant="footer" />
+      </div>
     </footer>
   </body>
 </html>

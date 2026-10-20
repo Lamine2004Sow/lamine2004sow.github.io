@@ -2,7 +2,7 @@
 title: "Ring-Star — Optimisation d’une ligne de métro circulaire"
 description: "Modélisation PLNE et heuristiques pour concevoir le tracé d’une ligne de métro circulaire, en arbitrant le coût de la boucle et la distance d’accès des usagers."
 result: "Coût réduit de 19 % par rapport à l’approche gloutonne, en moins d’une seconde."
-joke: "Le ring-star : un problème NP-difficile, et moi qui pensais que mon trajet du matin était compliqué."
+joke: "Problème NP-difficile, résolu en moins d’une seconde. Approximativement. Ne le dites pas à mon prof."
 date: "2026-01"
 tags: ["Recherche opérationnelle", "PLNE", "Métaheuristiques", "Python"]
 github: "https://github.com/Lamine2004Sow/ring-star"

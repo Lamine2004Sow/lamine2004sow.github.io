@@ -2,7 +2,7 @@
 title: "ROADEF/EURO 2020 — RTE maintenance scheduling"
 description: "Scheduling of maintenance operations on RTE's electricity network under uncertain risk: greedy, simulated annealing and MILP with Gurobi, evaluated on the challenge instances."
 result: "Within 0.52 % on average of the best known result (vs. 2.83 % for the greedy baseline); proven optimal on 8 of 15 instances."
-joke: "The maintenance schedule is optimized to within half a percent. My own calendar still runs on vibes."
+joke: "Greedy: 2.83 %. Simulated annealing: 0.52 %. Moral: never trust a hungry algorithm."
 date: "2026-10"
 tags: ["Operations research", "MILP", "Gurobi", "Simulated annealing"]
 github: "https://github.com/Lamine2004Sow/roadef2020"
