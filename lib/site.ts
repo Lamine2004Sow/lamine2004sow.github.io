@@ -4,7 +4,7 @@
 export const PROFILE = {
   name: 'Mouhamadou Lamine SOW',
   shortName: 'Lamine',
-  title: 'Élève-ingénieur informatique · Machine learning & recherche opérationnelle',
+  title: 'AI Engineer · IA générative, machine learning, optimisation et mise en production',
   availability: 'Stage de fin d’études · 6 mois · dès mars 2027',
   location: 'Paris, France',
   email: 'lamine.2004pro.sow@gmail.com',

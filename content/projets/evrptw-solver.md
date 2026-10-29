@@ -6,7 +6,7 @@ result: "Flotte optimale connue retrouvée sur 54/56 grandes instances (+0,17 % 
 date: "2026-10"
 tags: ["Recherche opérationnelle", "C++17", "Gurobi", "Métaheuristiques"]
 github: "https://github.com/Lamine2004Sow/evrptw-solver"
-order: 5
+order: 6
 ---
 
 L’**E-VRPTW** (Electric Vehicle Routing Problem with Time Windows) consiste à servir des clients avec une flotte de véhicules électriques : chaque client a une fenêtre horaire, la batterie est limitée et il faut planifier les arrêts de recharge.

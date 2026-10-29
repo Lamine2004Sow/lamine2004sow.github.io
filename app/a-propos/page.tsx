@@ -4,23 +4,28 @@ import { EDUCATION, EXPERIENCES, PROFILE } from '@/lib/site';
 
 export const metadata: Metadata = {
   title: 'À propos',
-  description: 'Parcours de Mouhamadou Lamine SOW : Sup Galilée, stages chez Orange (Sonatel), machine learning et recherche opérationnelle.',
+  description: 'Parcours de Mouhamadou Lamine SOW : Sup Galilée, stages chez Orange (Sonatel), AI engineering, IA générative, machine learning et optimisation.',
 };
 
 export default function APropos() {
   return (
     <>
       <p className="kicker">À PROPOS</p>
-      <h1 id="titre">Prédire, puis décider</h1>
+      <h1 id="titre">Construire, déployer, prouver</h1>
       <p className="lede">
-        Je suis {PROFILE.name}, élève-ingénieur en informatique. Ce qui me plaît, c’est d’aller au bout de la chaîne : un modèle qui prédit bien
-        ne sert à rien si personne ne peut décider avec.
+        Je suis {PROFILE.name}, élève-ingénieur en informatique, orienté AI engineering. Ce qui me plaît, c’est d’aller au bout de la chaîne :
+        construire un système d’IA, le mettre en production, et montrer avec des chiffres qu’il fait ce qu’on attend de lui.
       </p>
       <p>
-        C’est ce qui m’a mené au croisement du machine learning et de la recherche opérationnelle. Chez Orange (Sonatel), j’ai prédit quels
-        équipements du réseau fibre allaient saturer pour aider les équipes à planifier leurs interventions. Sur le challenge ROADEF/EURO 2020,
-        j’ai planifié la maintenance du réseau électrique de RTE. Entre les deux, j’essaie de faire des projets qu’on peut vérifier : des
-        protocoles fixés à l’avance, des tests, et des chiffres qu’on peut rejouer.
+        Côté IA générative, j’ai construit un agent LLM juridique (LangGraph, RAG hybride FAISS + BM25) avec un garde-fou, des citations vérifiées
+        et un banc d’évaluation qui échoue si un prompt change sans que l’évaluation soit rejouée. Je fine-tune maintenant un modèle d’embeddings
+        pour améliorer sa recherche. Côté mise en production, une plateforme MLOps sur Kubernetes détecte seule la dégradation de son modèle et
+        le réentraîne.
+      </p>
+      <p>
+        Je viens du machine learning et de la recherche opérationnelle. Chez Orange (Sonatel), j’ai prédit les risques sur le réseau fibre pour
+        aider les équipes à prioriser leurs interventions. Sur le challenge ROADEF/EURO 2020, j’ai planifié la maintenance du réseau électrique de
+        RTE. Le fil rouge : des protocoles fixés à l’avance, des tests, et des chiffres qu’on peut rejouer.
       </p>
       <h2>Expérience</h2>
       {EXPERIENCES.map((e) => (

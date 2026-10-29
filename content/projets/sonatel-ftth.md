@@ -8,7 +8,7 @@ kind: "stage"
 role: "Stagiaire ML / Data Science"
 duree: "Mai – juillet 2026"
 tags: ["XGBoost", "SHAP", "Calibration", "Séries temporelles", "Python"]
-order: 1
+order: 3
 ---
 
 Stage (INFO2) au sein du pôle machine learning de Sonatel, filiale du groupe Orange au Sénégal, dans une cellule dédiée à la planification et au dimensionnement du réseau FTTH. Le stage a été mené du 11 mai au 10 juillet 2026, sous la forme d’une preuve de concept et non d’un modèle de production.

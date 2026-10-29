@@ -1,6 +1,6 @@
 ---
 short: "DERMTRIAGE"
-order: 4
+order: 5
 title: "DermTriage — Classification d’images dermatologiques"
 description: "Pipeline PyTorch expérimental (ResNet-18) pour classer sept types de lésions cutanées du jeu HAM10000, avec un protocole d’évaluation sans fuite entre lésions."
 result: "2,5 fois plus performant qu’une baseline classique : macro-F1 de 0,66 contre 0,26 (validation croisée à 5 plis), sur 10 015 images et 7 classes."

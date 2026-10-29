@@ -10,9 +10,10 @@ export default function Home() {
       <h1 id="titre">{PROFILE.name}</h1>
       <p className="lede">{PROFILE.title}</p>
       <p>
-        Élève-ingénieur en dernière année à Sup Galilée (Université Sorbonne Paris Nord). Je travaille à l’interface du machine learning et de la
-        recherche opérationnelle : prédire avec des modèles, puis décider avec la PLNE et les métaheuristiques. Mis en pratique chez Orange
-        (Sonatel), sur le challenge ROADEF/EURO 2020 de RTE, et sur des projets de LLM et de MLOps.
+        Élève-ingénieur en dernière année à Sup Galilée (Université Sorbonne Paris Nord), orienté AI engineering : IA générative (LLM, RAG,
+        agents), machine learning, optimisation et mise en production, avec des modèles évalués avant d’être utilisés. Concrètement : un agent
+        LLM juridique qui vérifie ses citations, une plateforme MLOps qui se réentraîne seule, un modèle de risque réseau chez Orange (Sonatel)
+        et le challenge ROADEF/EURO 2020 de RTE.
       </p>
       <p className="note">{PROFILE.availability}.</p>
       <div className="links">

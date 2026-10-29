@@ -7,7 +7,7 @@ date: "2026-10"
 status: "en cours"
 tags: ["NLP", "Embeddings", "sentence-transformers", "PyTorch", "MLflow"]
 github: "https://github.com/Lamine2004Sow/legal-embeddings-finetune"
-order: 7
+order: 4
 ---
 
 Suite directe de l’agent RAG juridique : améliorer la brique de recherche en spécialisant le modèle d’embeddings sur le vocabulaire du droit.

@@ -17,7 +17,7 @@ const silk = Silkscreen({ subsets: ['latin'], weight: '400', variable: '--font-s
 export const metadata: Metadata = {
   metadataBase: new URL(PROFILE.site),
   title: { default: `${PROFILE.name} · Portfolio`, template: `%s · ${PROFILE.name}` },
-  description: `${PROFILE.name}, élève-ingénieur informatique en machine learning et recherche opérationnelle. ${PROFILE.availability}.`,
+  description: `${PROFILE.name}, élève-ingénieur et AI Engineer : IA générative (LLM, RAG, agents), machine learning, optimisation et MLOps. ${PROFILE.availability}.`,
   icons: { icon: '/favicon.svg' },
   openGraph: { type: 'website', locale: 'fr_FR', siteName: PROFILE.name },
 };

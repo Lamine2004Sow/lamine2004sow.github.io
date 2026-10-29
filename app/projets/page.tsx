@@ -4,7 +4,7 @@ import { getProjects } from '@/lib/content';
 
 export const metadata: Metadata = {
   title: 'Projets',
-  description: 'Projets de machine learning, LLM, MLOps et recherche opérationnelle, avec leurs résultats chiffrés.',
+  description: 'Projets d’IA générative (LLM, RAG), MLOps, machine learning et recherche opérationnelle, avec leurs résultats chiffrés.',
 };
 
 export default function Projets() {
@@ -13,7 +13,7 @@ export default function Projets() {
     <>
       <p className="kicker">PROJETS</p>
       <h1 id="titre">Ce que j’ai construit</h1>
-      <p className="lede">Machine learning, LLM, MLOps et recherche opérationnelle. Chaque fiche donne le contexte, la méthode et des résultats vérifiables.</p>
+      <p className="lede">IA générative, MLOps, machine learning et recherche opérationnelle. Chaque fiche donne le contexte, la méthode et des résultats vérifiables.</p>
       <ul className="cards">
         {projects.map((p) => (
           <li key={p.slug}>

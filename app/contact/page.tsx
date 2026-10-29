@@ -3,7 +3,7 @@ import { CV, PROFILE } from '@/lib/site';
 
 export const metadata: Metadata = {
   title: 'Contact',
-  description: 'Contacter Mouhamadou Lamine SOW pour un stage de fin d’études de 6 mois en machine learning ou recherche opérationnelle, dès mars 2027.',
+  description: 'Contacter Mouhamadou Lamine SOW pour un stage de fin d’études de 6 mois en AI engineering (IA générative, machine learning, MLOps), dès mars 2027.',
 };
 
 export default function Contact() {
@@ -11,7 +11,7 @@ export default function Contact() {
     <>
       <p className="kicker">CONTACT</p>
       <h1 id="titre">On en parle ?</h1>
-      <p className="lede">Je cherche un stage de fin d’études de 6 mois en machine learning, data science ou recherche opérationnelle, à partir de mars 2027.</p>
+      <p className="lede">Je cherche un stage de fin d’études de 6 mois d’AI Engineer : IA générative, machine learning, MLOps ou optimisation, à partir de mars 2027.</p>
       <div className="rows">
         <div>
           <span>E-mail</span>

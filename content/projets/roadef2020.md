@@ -1,6 +1,6 @@
 ---
 short: "ROADEF"
-order: 6
+order: 7
 title: "ROADEF/EURO 2020 — Planification de la maintenance RTE"
 description: "Planification des interventions de maintenance du réseau électrique de RTE sous risque incertain : glouton, recuit simulé et PLNE avec Gurobi, évalués sur les instances du challenge."
 result: "Solutions à 0,52 % en moyenne de la meilleure solution connue (contre 2,83 % pour le glouton) ; optimalité prouvée sur 8 instances sur 15."

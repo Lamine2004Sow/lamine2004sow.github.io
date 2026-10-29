@@ -6,7 +6,7 @@ result: "Article attendu retrouvé dans 90 % des cas, 92,3 % de citations exacte
 date: "2026-10"
 tags: ["LLM", "RAG", "LangGraph", "FAISS", "Évaluation"]
 github: "https://github.com/Lamine2004Sow/legal-rag-agent"
-order: 3
+order: 1
 ---
 
 Agent de questions-réponses juridiques sur environ 5 100 articles du Code civil et du Code de la consommation. L’objectif n’est pas seulement de répondre, mais de **répondre juste ou se taire**, et de le prouver par une évaluation automatique.

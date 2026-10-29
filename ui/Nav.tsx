@@ -21,7 +21,7 @@ export function Nav() {
         Aller au contenu
       </a>
       <Link href="/" className="brand">
-        Lamine SOW <small>ML · RO</small>
+        Lamine SOW <small>AI ENGINEER</small>
       </Link>
       <nav className="zones" aria-label="Zones du portfolio">
         {ZONES.map((z, i) => (
