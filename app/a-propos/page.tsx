@@ -23,9 +23,10 @@ export default function APropos() {
         le réentraîne.
       </p>
       <p>
-        Je viens du machine learning et de la recherche opérationnelle. Chez Orange (Sonatel), j’ai prédit les risques sur le réseau fibre pour
-        aider les équipes à prioriser leurs interventions. Sur le challenge ROADEF/EURO 2020, j’ai planifié la maintenance du réseau électrique de
-        RTE. Le fil rouge : des protocoles fixés à l’avance, des tests, et des chiffres qu’on peut rejouer.
+        Avant l’IA générative, j’ai commencé par le machine learning classique et l’optimisation mathématique (la recherche opérationnelle). Chez
+        Orange (Sonatel), j’ai prédit les risques sur le réseau fibre pour aider les équipes à prioriser leurs interventions. Sur le challenge
+        ROADEF/EURO 2020, j’ai planifié la maintenance du réseau électrique de RTE. Dans tous mes projets, je fixe la méthode d’évaluation avant de
+        commencer, j’écris des tests et je publie des chiffres que chacun peut vérifier.
       </p>
       <h2>Expérience</h2>
       {EXPERIENCES.map((e) => (
