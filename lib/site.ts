@@ -13,10 +13,8 @@ export const PROFILE = {
   site: 'https://lamine-sow.me',
 };
 
-export const CVS = [
-  { label: 'Machine learning & recherche opérationnelle', fr: '/cv/cv-ml-ro-fr.pdf', en: '/cv/cv-ml-ro-en.pdf' },
-  { label: 'Data science & machine learning', fr: '/cv/cv-data-ml-fr.pdf', en: '/cv/cv-data-ml-en.pdf' },
-];
+// CV général (le même que sur LinkedIn), copié depuis my_resume/LinkedIn_public_CV-AI-Engineer.
+export const CV = { label: 'AI Engineer · stage de fin d’études', href: '/cv/CV_Lamine_SOW_AI-Engineer.pdf' };
 
 export type ZoneId = 'accueil' | 'projets' | 'competences' | 'a-propos' | 'contact';
 

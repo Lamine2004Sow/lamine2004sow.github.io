@@ -1,6 +1,6 @@
 import Link from 'next/link';
 import { getProjects } from '@/lib/content';
-import { PROFILE } from '@/lib/site';
+import { CV, PROFILE } from '@/lib/site';
 
 export default function Home() {
   const featured = getProjects().slice(0, 4);
@@ -22,6 +22,9 @@ export default function Home() {
         <Link className="btn" href="/contact/">
           ME CONTACTER
         </Link>
+        <a className="btn" href={CV.href}>
+          CV (PDF)
+        </a>
       </div>
       <h2>En bref</h2>
       <ul className="cards">

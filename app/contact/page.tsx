@@ -1,5 +1,5 @@
 import type { Metadata } from 'next';
-import { CVS, PROFILE } from '@/lib/site';
+import { CV, PROFILE } from '@/lib/site';
 
 export const metadata: Metadata = {
   title: 'Contact',
@@ -42,18 +42,19 @@ export default function Contact() {
       </div>
       <h2>CV</h2>
       <div className="rows">
-        {CVS.map((cv) => (
-          <div key={cv.label}>
-            <span>{cv.label}</span>
-            <b>
-              <a href={cv.fr}>FR</a> · <a href={cv.en}>EN</a>
-            </b>
-          </div>
-        ))}
+        <div>
+          <span>{CV.label}</span>
+          <b>
+            <a href={CV.href}>PDF, 1 page</a>
+          </b>
+        </div>
       </div>
       <div className="links">
         <a className="btn primary" href={`mailto:${PROFILE.email}`}>
           M’ÉCRIRE
+        </a>
+        <a className="btn" href={CV.href}>
+          TÉLÉCHARGER LE CV
         </a>
       </div>
     </>
