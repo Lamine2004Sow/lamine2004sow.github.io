@@ -176,6 +176,13 @@ export function Guide() {
     rt.intro = top === 'intro';
     if (!rt.intro) rt.introDone = true;
 
+    // Saut interrompu (ex. arrivée directe sur une zone) : on pose le perso à l'arrivée.
+    // À faire avant le déplacement, sinon un saut qui démarre à cette image serait annulé.
+    if (top !== 'jumping' && G.jump) {
+      G.s = G.jump.to;
+      G.jump = null;
+    }
+
     // ---- déplacement le long du chemin
     if ((top === 'navigating' || top === 'walking') && ctx.target != null) {
       const r = step(G.s, ctx.target, ctx.run ? RUN_SPEED : WALK_SPEED, dt, rt.face);
@@ -187,10 +194,6 @@ export function Guide() {
         G.s = r.s;
         if (r.arrived) actor.send({ type: 'ARRIVED' });
       }
-    }
-    if (top !== 'jumping' && G.jump) {
-      G.s = G.jump.to;
-      G.jump = null;
     }
 
     // ---- sprite et horloge des images (durées par image du manifest)
