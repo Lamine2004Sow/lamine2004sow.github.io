@@ -165,9 +165,15 @@ nav.zones a:focus-visible,
   color: #fff;
   border-color: var(--lav);
 }
-/* Le bouton n'a de sens que si le monde peut s'afficher. */
-html:not(.world):not([data-classic='1']) .toggle {
+/* Sans JavaScript, le monde ne peut pas s'afficher : pas de bouton. */
+html:not(.js) .toggle {
   display: none;
+}
+.world-issue {
+  flex-basis: 100%;
+  margin: 0;
+  font-size: 13px;
+  color: var(--muted);
 }
 
 /* ------------------------------------------------------------------ bulle */

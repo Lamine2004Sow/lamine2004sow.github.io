@@ -25,7 +25,7 @@ export const metadata: Metadata = {
 export const viewport: Viewport = { themeColor: '#f6f1e8', viewportFit: 'cover' };
 
 // Applique le mode classique mémorisé avant le premier affichage (évite un flash du monde).
-const classicScript = `try{if(localStorage.getItem('classic')==='1')document.documentElement.dataset.classic='1'}catch(e){}`;
+const classicScript = `document.documentElement.classList.add('js');try{if(localStorage.getItem('classic')==='1')document.documentElement.dataset.classic='1'}catch(e){}`;
 
 export default function RootLayout({ children }: { children: ReactNode }) {
   const projects = getProjectMetas();

@@ -9,6 +9,9 @@ export function Nav() {
   const zone = zoneFromPath(usePathname());
   const classic = useStore((s) => s.classic);
   const setClassic = useStore((s) => s.setClassic);
+  const worldOn = useStore((s) => s.worldOn);
+  const issue = useStore((s) => s.worldIssue);
+  const retry = useStore((s) => s.retryWorld);
   return (
     <header className="bar">
       <a
@@ -30,9 +33,30 @@ export function Nav() {
           </Link>
         ))}
       </nav>
-      <button className="chip toggle" type="button" aria-pressed={classic} onClick={() => setClassic(!classic)}>
-        {classic ? 'RETOUR AU MONDE' : 'MODE CLASSIQUE'}
-      </button>
+      {issue ? (
+        issue.retry && (
+          <button className="chip toggle" type="button" onClick={retry}>
+            RÉESSAYER LA 3D
+          </button>
+        )
+      ) : classic ? (
+        <button className="chip toggle" type="button" aria-pressed="true" onClick={() => setClassic(false)}>
+          VOIR LA VERSION 3D
+        </button>
+      ) : worldOn ? (
+        <button className="chip toggle" type="button" aria-pressed="false" onClick={() => setClassic(true)}>
+          VERSION TEXTE
+        </button>
+      ) : (
+        <button className="chip toggle" type="button" aria-busy="true" onClick={() => setClassic(true)}>
+          CHARGEMENT 3D…
+        </button>
+      )}
+      {issue && (
+        <p className="world-issue" role="status">
+          {issue.reason} Le contenu reste disponible ci-dessous.
+        </p>
+      )}
     </header>
   );
 }

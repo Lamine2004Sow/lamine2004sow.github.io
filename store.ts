@@ -35,6 +35,10 @@ interface State {
   classic: boolean;
   /** Le monde est chargé et affiché. */
   worldOn: boolean;
+  /** Pourquoi le monde ne s'affiche pas (null si tout va bien) ; retry = on peut réessayer. */
+  worldIssue: { reason: string; retry: boolean } | null;
+  /** Numéro de tentative : l'incrémenter remonte le monde. */
+  worldAttempt: number;
   hovered: Hovered;
   /** Point survolé dans le monde (pour que le perso regarde dans cette direction). */
   hoverX: number | null;
@@ -44,6 +48,8 @@ interface State {
   closePanel: () => void;
   setClassic: (on: boolean) => void;
   setWorldOn: (on: boolean) => void;
+  setWorldIssue: (issue: { reason: string; retry: boolean } | null) => void;
+  retryWorld: () => void;
   setHovered: (h: Hovered, x?: number | null) => void;
   say: (text: string, ms?: number, actions?: BubbleAction[]) => void;
   hush: () => void;
@@ -57,6 +63,8 @@ export const useStore = create<State>((set) => ({
   panelZone: null,
   classic: false,
   worldOn: false,
+  worldIssue: null,
+  worldAttempt: 0,
   hovered: null,
   hoverX: null,
   bubble: null,
@@ -69,7 +77,9 @@ export const useStore = create<State>((set) => ({
     } catch {}
     set({ classic });
   },
-  setWorldOn: (worldOn) => set({ worldOn }),
+  setWorldOn: (worldOn) => set(worldOn ? { worldOn, worldIssue: null } : { worldOn }),
+  setWorldIssue: (worldIssue) => set({ worldIssue }),
+  retryWorld: () => set((s) => ({ worldIssue: null, classic: false, worldAttempt: s.worldAttempt + 1 })),
   setHovered: (hovered, x = null) => set({ hovered, hoverX: x }),
   say: (text, ms = 3200, actions = []) =>
     set({
