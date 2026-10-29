@@ -45,7 +45,7 @@ export default function Contact() {
         <div>
           <span>{CV.label}</span>
           <b>
-            <a href={CV.href}>PDF, 1 page</a>
+            <a href={CV.href}>Français</a> · <a href={CV.hrefEn}>English</a>
           </b>
         </div>
       </div>
