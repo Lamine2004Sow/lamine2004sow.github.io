@@ -1,0 +1,286 @@
+{
+ "_info": {
+  "frameWidth": 64,
+  "frameHeight": 80,
+  "groundY": 77,
+  "anchor": [
+   32,
+   77
+  ],
+  "animationScale": 4,
+  "facing": "right",
+  "note": "Spritesheets horizontales. Chaque frame a sa propre durée (durations, ms)."
+ },
+ "repos": {
+  "label": "Respiration · clignement",
+  "frameWidth": 64,
+  "frameHeight": 80,
+  "frames": 8,
+  "durations": [
+   180,
+   160,
+   160,
+   200,
+   180,
+   160,
+   110,
+   200
+  ],
+  "durationMs": 169,
+  "loopMs": 1350,
+  "sequence": [
+   0,
+   1,
+   2,
+   3,
+   4,
+   5,
+   6,
+   7
+  ],
+  "lift": [
+   0,
+   0,
+   0,
+   0,
+   0,
+   0,
+   0,
+   0
+  ]
+ },
+ "marche": {
+  "label": "Cycle de marche",
+  "frameWidth": 64,
+  "frameHeight": 80,
+  "frames": 8,
+  "durations": [
+   105,
+   105,
+   105,
+   105,
+   105,
+   105,
+   105,
+   105
+  ],
+  "durationMs": 105,
+  "loopMs": 840,
+  "sequence": [
+   0,
+   1,
+   2,
+   3,
+   4,
+   5,
+   6,
+   7
+  ],
+  "lift": [
+   0,
+   0,
+   0,
+   0,
+   0,
+   0,
+   0,
+   0
+  ]
+ },
+ "course": {
+  "label": "Course · phase aérienne",
+  "frameWidth": 64,
+  "frameHeight": 80,
+  "frames": 6,
+  "durations": [
+   80,
+   80,
+   80,
+   80,
+   80,
+   80
+  ],
+  "durationMs": 80,
+  "loopMs": 480,
+  "sequence": [
+   0,
+   1,
+   2,
+   3,
+   4,
+   5
+  ],
+  "lift": [
+   0,
+   2,
+   1,
+   0,
+   2,
+   1
+  ]
+ },
+ "saut": {
+  "label": "Anticipation · réception",
+  "frameWidth": 64,
+  "frameHeight": 80,
+  "frames": 10,
+  "durations": [
+   140,
+   150,
+   70,
+   90,
+   120,
+   120,
+   80,
+   70,
+   130,
+   140
+  ],
+  "durationMs": 111,
+  "loopMs": 1110,
+  "sequence": [
+   0,
+   1,
+   2,
+   3,
+   4,
+   5,
+   6,
+   7,
+   8,
+   9
+  ],
+  "lift": [
+   0,
+   0,
+   0,
+   13,
+   21,
+   21,
+   11,
+   3,
+   0,
+   0
+  ]
+ },
+ "parle": {
+  "label": "Parole · gestes",
+  "frameWidth": 64,
+  "frameHeight": 80,
+  "frames": 8,
+  "durations": [
+   150,
+   150,
+   150,
+   150,
+   150,
+   150,
+   150,
+   150
+  ],
+  "durationMs": 150,
+  "loopMs": 1200,
+  "sequence": [
+   0,
+   1,
+   2,
+   3,
+   4,
+   5,
+   6,
+   7
+  ],
+  "lift": [
+   0,
+   0,
+   0,
+   0,
+   0,
+   0,
+   0,
+   0
+  ]
+ },
+ "assis": {
+  "label": "Pause laptop",
+  "frameWidth": 64,
+  "frameHeight": 80,
+  "frames": 8,
+  "durations": [
+   130,
+   130,
+   130,
+   130,
+   130,
+   130,
+   130,
+   130
+  ],
+  "durationMs": 130,
+  "loopMs": 1040,
+  "sequence": [
+   0,
+   1,
+   2,
+   3,
+   4,
+   5,
+   6,
+   7
+  ],
+  "lift": [
+   -1,
+   -1,
+   -1,
+   -1,
+   -1,
+   -1,
+   -1,
+   -1
+  ]
+ },
+ "interaction": {
+  "label": "Surprise · coucou",
+  "frameWidth": 64,
+  "frameHeight": 80,
+  "frames": 10,
+  "durations": [
+   160,
+   90,
+   110,
+   120,
+   120,
+   120,
+   120,
+   120,
+   120,
+   160
+  ],
+  "durationMs": 124,
+  "loopMs": 1240,
+  "sequence": [
+   0,
+   1,
+   2,
+   3,
+   4,
+   5,
+   6,
+   7,
+   8,
+   9
+  ],
+  "lift": [
+   0,
+   0,
+   3,
+   0,
+   0,
+   0,
+   0,
+   0,
+   0,
+   0
+  ]
+ }
+}
